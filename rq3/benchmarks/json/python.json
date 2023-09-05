@@ -1,0 +1,452 @@
+[
+    {
+        "type": "summary",
+        "id": "https://github.com/astropy/astropy/pull/3067#discussion_r19736856#old",
+        "old_code_raw": "def __contains__(self, item):\n    try:\n        self.index_of(item)\n        return True\n    except KeyError:\n        return False",
+        "old_comment_raw": "Used by the 'in' operator",
+        "new_code_raw": "def __contains__(self, item):\n    try:\n        self.index_of(item)\n        return True\n    except KeyError:\n        return False",
+        "new_comment_raw": "Used by the 'in' operator",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/astropy/astropy/pull/3067#discussion_r19736856#new",
+        "old_code_raw": "def __contains__(self, item):\n    try:\n        self.index_of(item)\n        return True\n    except KeyError:\n        return False",
+        "old_comment_raw": "Returns `True` if HDUList.index_of(item) succeeds.",
+        "new_code_raw": "def __contains__(self, item):\n    try:\n        self.index_of(item)\n        return True\n    except KeyError:\n        return False",
+        "new_comment_raw": "Returns `True` if HDUList.index_of(item) succeeds.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pretix/pretix/pull/334#discussion_r89618197#old",
+        "old_code_raw": "def is_allowed(self, request: HttpRequest) -> bool:\n    return self._is_still_available()",
+        "old_comment_raw": "You can use this method to disable this payment provider for certain groups of users, products or other criteria.",
+        "new_code_raw": "def is_allowed(self, request: HttpRequest) -> bool:\n    return self._is_still_available()",
+        "new_comment_raw": "You can use this method to disable this payment provider for certain groups of users, products or other criteria.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pretix/pretix/pull/334#discussion_r89618197#new",
+        "old_code_raw": "def is_allowed(self, request: HttpRequest) -> bool:\n    return self._is_still_available()",
+        "old_comment_raw": "You can use this method to disable this payment provider for certain groups of users, products or other criteria.",
+        "new_code_raw": "def is_allowed(self, request: HttpRequest) -> bool:\n    return self._is_still_available()",
+        "new_comment_raw": "You can use this method to disable this payment provider for certain groups of users, products or other criteria.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/matplotlib/matplotlib/pull/5942#discussion_r51233494#old",
+        "old_code_raw": "def option_scale_image(self):\n    return True",
+        "old_comment_raw": "agg backend support arbitrary scaling of image.",
+        "new_code_raw": "def option_scale_image(self):\n    return True",
+        "new_comment_raw": "agg backend support arbitrary scaling of image.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/matplotlib/matplotlib/pull/5942#discussion_r51233494#new",
+        "old_code_raw": "def option_scale_image(self):\n    return False",
+        "old_comment_raw": "agg backend doesn't support arbitrary scaling of image.",
+        "new_code_raw": "def option_scale_image(self):\n    return False",
+        "new_comment_raw": "agg backend doesn't support arbitrary scaling of image.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/TheAlgorithms/Python/pull/3115#discussion_r505426662#old",
+        "old_code_raw": "def is_9_palindromic(n: int) -> bool:\n    s = str(n)\n    return len(s) == 9 and set(s) == set(\"123456789\")",
+        "old_comment_raw": "Checks whether n is a 9-digit 1 to 9 pandigital number.",
+        "new_code_raw": "def is_9_palindromic(n: int) -> bool:\n    s = str(n)\n    return len(s) == 9 and set(s) == set(\"123456789\")",
+        "new_comment_raw": "Checks whether n is a 9-digit 1 to 9 pandigital number.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/TheAlgorithms/Python/pull/3115#discussion_r505426662#new",
+        "old_code_raw": "def is_9_pandigital(n: int) -> bool:\n    s = str(n)\n    return len(s) == 9 and set(s) == set(\"123456789\")",
+        "old_comment_raw": "Checks whether n is a 9-digit 1 to 9 pandigital number.",
+        "new_code_raw": "def is_9_pandigital(n: int) -> bool:\n    s = str(n)\n    return len(s) == 9 and set(s) == set(\"123456789\")",
+        "new_comment_raw": "Checks whether n is a 9-digit 1 to 9 pandigital number.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/SwissDataScienceCenter/renku-python/pull/3047#discussion_r931177369#old",
+        "old_code_raw": "def get_credentials_names() -> Tuple[str, ...]:\n    raise NotImplementedError",
+        "old_comment_raw": "Return list of the required credentials for a provider.",
+        "new_code_raw": "def get_credentials_names() -> Tuple[str, ...]:\n    raise NotImplementedError",
+        "new_comment_raw": "Return list of the required credentials for a provider.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/SwissDataScienceCenter/renku-python/pull/3047#discussion_r931177369#new",
+        "old_code_raw": "def get_credentials_names() -> Tuple[str, ...]:\n    raise NotImplementedError",
+        "old_comment_raw": "Return a tuple of the required credentials for a provider.",
+        "new_code_raw": "def get_credentials_names() -> Tuple[str, ...]:\n    raise NotImplementedError",
+        "new_comment_raw": "Return a tuple of the required credentials for a provider.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/metoppv/improver/pull/875#discussion_r294704128#old",
+        "old_code_raw": "def test_realizations_predictor_keyerror(self):\n        predictor_of_mean_flag = \"realizations\"\n        distribution = \"foo\"\n\n        plugin = Plugin()\n        msg = \"Distribution requested\"\n        with self.assertRaisesRegex(KeyError, msg):\n            plugin.crps_minimiser_wrapper(\n                self.initial_guess_for_realization,\n                self.forecast_predictor_realizations, self.truth,\n                self.forecast_variance, predictor_of_mean_flag, distribution)",
+        "old_comment_raw": "Test that the minimisation has resulted in a successful convergence, and that the object returned is an OptimizeResult object, when the ensemble realizations are the predictor.",
+        "new_code_raw": "def test_realizations_predictor_keyerror(self):\n        predictor_of_mean_flag = \"realizations\"\n        distribution = \"foo\"\n\n        plugin = Plugin()\n        msg = \"Distribution requested\"\n        with self.assertRaisesRegex(KeyError, msg):\n            plugin.crps_minimiser_wrapper(\n                self.initial_guess_for_realization,\n                self.forecast_predictor_realizations, self.truth,\n                self.forecast_variance, predictor_of_mean_flag, distribution)",
+        "new_comment_raw": "Test that the minimisation has resulted in a successful convergence, and that the object returned is an OptimizeResult object, when the ensemble realizations are the predictor.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/metoppv/improver/pull/875#discussion_r294704128#new",
+        "old_code_raw": "def test_realizations_predictor_keyerror(self):\n        predictor_of_mean_flag = \"realizations\"\n        distribution = \"foo\"\n\n        plugin = Plugin()\n        msg = \"Distribution requested\"\n        with self.assertRaisesRegex(KeyError, msg):\n            plugin.crps_minimiser_wrapper(\n                self.initial_guess_for_realization,\n                self.forecast_predictor_realizations, self.truth,\n                self.forecast_variance, predictor_of_mean_flag, distribution)",
+        "old_comment_raw": "Test that an exception is raised when the distribution requested is not an available option when the predictor_of_mean_flag is the ensemble realizations.",
+        "new_code_raw": "def test_realizations_predictor_keyerror(self):\n        predictor_of_mean_flag = \"realizations\"\n        distribution = \"foo\"\n\n        plugin = Plugin()\n        msg = \"Distribution requested\"\n        with self.assertRaisesRegex(KeyError, msg):\n            plugin.crps_minimiser_wrapper(\n                self.initial_guess_for_realization,\n                self.forecast_predictor_realizations, self.truth,\n                self.forecast_variance, predictor_of_mean_flag, distribution)",
+        "new_comment_raw": "Test that an exception is raised when the distribution requested is not an available option when the predictor_of_mean_flag is the ensemble realizations.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/primeqa/primeqa/pull/321#discussion_r1082098230#old",
+        "old_code_raw": "def prune_hallucinations(self, qdicts, num_instances=5, hallucination_prop=0.25):\n        new_qdicts = []\n        reserve_hallucinated_qdict = []\n        reserve_non_hallucinated_qdict = []\n        question_words = set(['what', 'when', 'where', 'which', 'how', 'who', 'whose', 'whom'])\n        for qdict in qdicts:\n            answer = qdict['answer']\n            context = qdict.pop('context')\n            questions = qdict.pop('questions')\n            if not reserve_hallucinated_qdict:\n                qdict['question'] = questions[0]\n                reserve_hallucinated_qdict.append(qdict)\n            context_tokens = set([tok.text.lower() for tok in self.path_sampler.nlp_model.process(\\\n                                context, processors='tokenize').sentences[0].tokens])\n            flag = False\n            same_questions = set([])\n            for question in questions:\n                if not question.strip() or question in same_questions: continue\n                same_questions.add(question)\n                doc = self.path_sampler.nlp_model(question)\n                hallucinated = set([])\n                for entity in doc.sentences[0].entities:\n                    entity = entity.text.lower()\n                    entity_tokens = set([etok.text.strip().lower() for etok in self.path_sampler.nlp_model.process(\\\n                                        entity, processors='tokenize').sentences[0].tokens if etok.text.strip().lower() != \"'s\"])\n                    has_qs_words = question_words.intersection(entity_tokens)\n                    if has_qs_words: continue\n\n                    hcount = 0\n                    for e_tok in entity_tokens:\n                        if e_tok not in context_tokens:\n                            hcount += 1\n\n                    if hcount == 0: continue\n\n                    hall_quant = round(len(entity_tokens) * hallucination_prop) #no. of hall. words tolerable\n                    if hcount > hall_quant or len(entity_tokens) == hcount:\n                        hallucinated.add(entity)\n\n                if not hallucinated:\n                    qdict_copy = copy.deepcopy(qdict)\n                    qdict_copy['question'] = question\n                    if flag:\n                        reserve_non_hallucinated_qdict.append(qdict_copy)\n                    else:\n                        new_qdicts.append(qdict_copy)\n                    flag = True\n\n        if not new_qdicts:\n            return reserve_hallucinated_qdict\n        elif len(new_qdicts) < num_instances:\n            diff = num_instances - len(new_qdicts)\n            np.random.shuffle(reserve_non_hallucinated_qdict) \n            return new_qdicts + reserve_non_hallucinated_qdict[:diff]\n        else: \n            return new_qdicts",
+        "old_comment_raw": "Prunes hallucinated questions using an entity lookup approach.",
+        "new_code_raw": "def prune_hallucinations(self, qdicts, num_instances=5, hallucination_prop=0.25):\n        new_qdicts = []\n        reserve_hallucinated_qdict = []\n        reserve_non_hallucinated_qdict = []\n        question_words = set(['what', 'when', 'where', 'which', 'how', 'who', 'whose', 'whom'])\n        for qdict in qdicts:\n            answer = qdict['answer']\n            context = qdict.pop('context')\n            questions = qdict.pop('questions')\n            if not reserve_hallucinated_qdict:\n                qdict['question'] = questions[0]\n                reserve_hallucinated_qdict.append(qdict)\n            context_tokens = set([tok.text.lower() for tok in self.path_sampler.nlp_model.process(\\\n                                context, processors='tokenize').sentences[0].tokens])\n            flag = False\n            same_questions = set([])\n            for question in questions:\n                if not question.strip() or question in same_questions: continue\n                same_questions.add(question)\n                doc = self.path_sampler.nlp_model(question)\n                hallucinated = set([])\n                for entity in doc.sentences[0].entities:\n                    entity = entity.text.lower()\n                    entity_tokens = set([etok.text.strip().lower() for etok in self.path_sampler.nlp_model.process(\\\n                                        entity, processors='tokenize').sentences[0].tokens if etok.text.strip().lower() != \"'s\"])\n                    has_qs_words = question_words.intersection(entity_tokens)\n                    if has_qs_words: continue\n\n                    hcount = 0\n                    for e_tok in entity_tokens:\n                        if e_tok not in context_tokens:\n                            hcount += 1\n\n                    if hcount == 0: continue\n\n                    hall_quant = round(len(entity_tokens) * hallucination_prop) #no. of hall. words tolerable\n                    if hcount > hall_quant or len(entity_tokens) == hcount:\n                        hallucinated.add(entity)\n\n                if not hallucinated:\n                    qdict_copy = copy.deepcopy(qdict)\n                    qdict_copy['question'] = question\n                    if flag:\n                        reserve_non_hallucinated_qdict.append(qdict_copy)\n                    else:\n                        new_qdicts.append(qdict_copy)\n                    flag = True\n\n        if not new_qdicts:\n            return reserve_hallucinated_qdict\n        elif len(new_qdicts) < num_instances:\n            diff = num_instances - len(new_qdicts)\n            np.random.shuffle(reserve_non_hallucinated_qdict) \n            return new_qdicts + reserve_non_hallucinated_qdict[:diff]\n        else: \n            return new_qdicts",
+        "new_comment_raw": "Prunes hallucinated questions using an entity lookup approach.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/primeqa/primeqa/pull/321#discussion_r1082098230#new",
+        "old_code_raw": "def prune_hallucinations(self, qdicts, num_instances=5, hallucination_prop=0.25):\n        new_qdicts = []\n        reserve_hallucinated_qdict = []\n        reserve_non_hallucinated_qdict = []\n        question_words = set(['what', 'when', 'where', 'which', 'how', 'who', 'whose', 'whom'])\n        for qdict in qdicts:\n            answer = qdict['answer']\n            context = qdict.pop('context')\n            questions = qdict.pop('questions')\n            if not reserve_hallucinated_qdict:\n                qdict['question'] = questions[0]\n                reserve_hallucinated_qdict.append(qdict)\n            context_tokens = set([tok.text.lower() for tok in self.path_sampler.nlp_model.process(\\\n                                context, processors='tokenize').sentences[0].tokens])\n            flag = False\n            same_questions = set([])\n            for question in questions:\n                if not question.strip() or question in same_questions: continue\n                same_questions.add(question)\n                doc = self.path_sampler.nlp_model(question)\n                hallucinated = set([])\n                for entity in doc.sentences[0].entities:\n                    entity = entity.text.lower()\n                    entity_tokens = set([etok.text.strip().lower() for etok in self.path_sampler.nlp_model.process(\\\n                                        entity, processors='tokenize').sentences[0].tokens if etok.text.strip().lower() != \"'s\"])\n                    has_qs_words = question_words.intersection(entity_tokens)\n                    if has_qs_words: continue\n\n                    hcount = 0\n                    for e_tok in entity_tokens:\n                        if e_tok not in context_tokens:\n                            hcount += 1\n\n                    if hcount == 0: continue\n\n                    hall_quant = round(len(entity_tokens) * hallucination_prop) #no. of hall. words tolerable\n                    if hcount > hall_quant or len(entity_tokens) == hcount:\n                        hallucinated.add(entity)\n\n                if not hallucinated:\n                    qdict_copy = copy.deepcopy(qdict)\n                    qdict_copy['question'] = question\n                    if flag:\n                        reserve_non_hallucinated_qdict.append(qdict_copy)\n                    else:\n                        new_qdicts.append(qdict_copy)\n                    flag = True\n\n        if not new_qdicts:\n            #don't prune if all the generated questions are hallucinated \n            return reserve_hallucinated_qdict\n        elif len(new_qdicts) < num_instances:\n            #if number of questions are less than `num_instances` after pruning\n            #use pruned questions to return number of questions equal to `num_instances`\n            diff = num_instances - len(new_qdicts)\n            np.random.shuffle(reserve_non_hallucinated_qdict) \n            return new_qdicts + reserve_non_hallucinated_qdict[:diff]\n        else: \n            return new_qdicts",
+        "old_comment_raw": "Our approach to pruning hallucinated questions uses an entity lookup to check that a generated entity or a part of it is present in the hybrid context.",
+        "new_code_raw": "def prune_hallucinations(self, qdicts, num_instances=5, hallucination_prop=0.25):\n        new_qdicts = []\n        reserve_hallucinated_qdict = []\n        reserve_non_hallucinated_qdict = []\n        question_words = set(['what', 'when', 'where', 'which', 'how', 'who', 'whose', 'whom'])\n        for qdict in qdicts:\n            answer = qdict['answer']\n            context = qdict.pop('context')\n            questions = qdict.pop('questions')\n            if not reserve_hallucinated_qdict:\n                qdict['question'] = questions[0]\n                reserve_hallucinated_qdict.append(qdict)\n            context_tokens = set([tok.text.lower() for tok in self.path_sampler.nlp_model.process(\\\n                                context, processors='tokenize').sentences[0].tokens])\n            flag = False\n            same_questions = set([])\n            for question in questions:\n                if not question.strip() or question in same_questions: continue\n                same_questions.add(question)\n                doc = self.path_sampler.nlp_model(question)\n                hallucinated = set([])\n                for entity in doc.sentences[0].entities:\n                    entity = entity.text.lower()\n                    entity_tokens = set([etok.text.strip().lower() for etok in self.path_sampler.nlp_model.process(\\\n                                        entity, processors='tokenize').sentences[0].tokens if etok.text.strip().lower() != \"'s\"])\n                    has_qs_words = question_words.intersection(entity_tokens)\n                    if has_qs_words: continue\n\n                    hcount = 0\n                    for e_tok in entity_tokens:\n                        if e_tok not in context_tokens:\n                            hcount += 1\n\n                    if hcount == 0: continue\n\n                    hall_quant = round(len(entity_tokens) * hallucination_prop) #no. of hall. words tolerable\n                    if hcount > hall_quant or len(entity_tokens) == hcount:\n                        hallucinated.add(entity)\n\n                if not hallucinated:\n                    qdict_copy = copy.deepcopy(qdict)\n                    qdict_copy['question'] = question\n                    if flag:\n                        reserve_non_hallucinated_qdict.append(qdict_copy)\n                    else:\n                        new_qdicts.append(qdict_copy)\n                    flag = True\n\n        if not new_qdicts:\n            #don't prune if all the generated questions are hallucinated \n            return reserve_hallucinated_qdict\n        elif len(new_qdicts) < num_instances:\n            #if number of questions are less than `num_instances` after pruning\n            #use pruned questions to return number of questions equal to `num_instances`\n            diff = num_instances - len(new_qdicts)\n            np.random.shuffle(reserve_non_hallucinated_qdict) \n            return new_qdicts + reserve_non_hallucinated_qdict[:diff]\n        else: \n            return new_qdicts",
+        "new_comment_raw": "Our approach to pruning hallucinated questions uses an entity lookup to check that a generated entity or a part of it is present in the hybrid context.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/Qiskit-Partners/qiskit-ionq/pull/52#discussion_r604487898#old",
+        "old_code_raw": "def test_output_map__with_multiple_measurements_to_different_clbits(simulator_backend):\n    qc = QuantumCircuit(2, 2, name=\"test_name\")\n    qc.measure(0, 0)\n    qc.measure(0, 1)\n    ionq_json = qiskit_to_ionq(\n        qc,\n        simulator_backend.name(),\n        passed_args={\"shots\": 200},\n    )\n    actual = json.loads(ionq_json)\n    actual_maps = actual.pop(\"registers\") or {}\n    actual_output_map = actual_maps.pop(\"meas_mapped\")\n\n    assert actual_output_map == [0, 0]",
+        "old_comment_raw": "Test a full circuit",
+        "new_code_raw": "def test_output_map__with_multiple_measurements_to_different_clbits(simulator_backend):\n    qc = QuantumCircuit(2, 2, name=\"test_name\")\n    qc.measure(0, 0)\n    qc.measure(0, 1)\n    ionq_json = qiskit_to_ionq(\n        qc,\n        simulator_backend.name(),\n        passed_args={\"shots\": 200},\n    )\n    actual = json.loads(ionq_json)\n    actual_maps = actual.pop(\"registers\") or {}\n    actual_output_map = actual_maps.pop(\"meas_mapped\")\n\n    assert actual_output_map == [0, 0]",
+        "new_comment_raw": "Test a full circuit",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/Qiskit-Partners/qiskit-ionq/pull/52#discussion_r604487898#new",
+        "old_code_raw": "def test_output_map__with_multiple_measurements_to_different_clbits(simulator_backend):\n    qc = QuantumCircuit(2, 2, name=\"test_name\")\n    qc.measure(0, 0)\n    qc.measure(0, 1)\n    ionq_json = qiskit_to_ionq(\n        qc,\n        simulator_backend.name(),\n        passed_args={\"shots\": 200},\n    )\n    actual = json.loads(ionq_json)\n    actual_maps = actual.pop(\"registers\") or {}\n    actual_output_map = actual_maps.pop(\"meas_mapped\")\n\n    assert actual_output_map == [0, 0]",
+        "old_comment_raw": "Test output mapping handles multiple measurements from the same qubit to different clbits correctly",
+        "new_code_raw": "def test_output_map__with_multiple_measurements_to_different_clbits(simulator_backend):\n    qc = QuantumCircuit(2, 2, name=\"test_name\")\n    qc.measure(0, 0)\n    qc.measure(0, 1)\n    ionq_json = qiskit_to_ionq(\n        qc,\n        simulator_backend.name(),\n        passed_args={\"shots\": 200},\n    )\n    actual = json.loads(ionq_json)\n    actual_maps = actual.pop(\"registers\") or {}\n    actual_output_map = actual_maps.pop(\"meas_mapped\")\n\n    assert actual_output_map == [0, 0]",
+        "new_comment_raw": "Test output mapping handles multiple measurements from the same qubit to different clbits correctly",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pytorch/ignite/pull/1714/files/f06592e3c6ebf3f466f0b445dc257370cfbd3d39#r585571973#old",
+        "old_code_raw": "def supervised_evaluation_step(\n    model: torch.nn.Module,\n    device: Optional[Union[str, torch.device]] = None,\n    non_blocking: bool = False,\n    prepare_batch: Callable = _prepare_batch,\n    output_transform: Callable = lambda x, y, y_pred: (y_pred, y),\n) -> Callable:\n\n    def evaluate_step(engine: Engine, batch: Sequence[torch.Tensor]) -> Union[Any, Tuple[torch.Tensor]]:\n        model.eval()\n        with torch.no_grad():\n            x, y = prepare_batch(batch, device=device, non_blocking=non_blocking)\n            y_pred = model(x)\n            return output_transform(x, y, y_pred)\n\n    return evaluate_step",
+        "old_comment_raw": "Factory function for creating an evaluator for supervised models.",
+        "new_code_raw": "def supervised_evaluation_step(\n    model: torch.nn.Module,\n    device: Optional[Union[str, torch.device]] = None,\n    non_blocking: bool = False,\n    prepare_batch: Callable = _prepare_batch,\n    output_transform: Callable = lambda x, y, y_pred: (y_pred, y),\n) -> Callable:\n\n    def evaluate_step(engine: Engine, batch: Sequence[torch.Tensor]) -> Union[Any, Tuple[torch.Tensor]]:\n        model.eval()\n        with torch.no_grad():\n            x, y = prepare_batch(batch, device=device, non_blocking=non_blocking)\n            y_pred = model(x)\n            return output_transform(x, y, y_pred)\n\n    return evaluate_step",
+        "new_comment_raw": "Factory function for creating an evaluator for supervised models.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pytorch/ignite/pull/1714/files/f06592e3c6ebf3f466f0b445dc257370cfbd3d39#r585571973#new",
+        "old_code_raw": "def supervised_evaluation_step(\n    model: torch.nn.Module,\n    device: Optional[Union[str, torch.device]] = None,\n    non_blocking: bool = False,\n    prepare_batch: Callable = _prepare_batch,\n    output_transform: Callable = lambda x, y, y_pred: (y_pred, y),\n) -> Callable:\n\n    def evaluate_step(engine: Engine, batch: Sequence[torch.Tensor]) -> Union[Any, Tuple[torch.Tensor]]:\n        model.eval()\n        with torch.no_grad():\n            x, y = prepare_batch(batch, device=device, non_blocking=non_blocking)\n            y_pred = model(x)\n            return output_transform(x, y, y_pred)\n\n    return evaluate_step",
+        "old_comment_raw": "Factory function for supervised evaluation.",
+        "new_code_raw": "def supervised_evaluation_step(\n    model: torch.nn.Module,\n    device: Optional[Union[str, torch.device]] = None,\n    non_blocking: bool = False,\n    prepare_batch: Callable = _prepare_batch,\n    output_transform: Callable = lambda x, y, y_pred: (y_pred, y),\n) -> Callable:\n\n    def evaluate_step(engine: Engine, batch: Sequence[torch.Tensor]) -> Union[Any, Tuple[torch.Tensor]]:\n        model.eval()\n        with torch.no_grad():\n            x, y = prepare_batch(batch, device=device, non_blocking=non_blocking)\n            y_pred = model(x)\n            return output_transform(x, y, y_pred)\n\n    return evaluate_step",
+        "new_comment_raw": "Factory function for supervised evaluation.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/matrix-org/synapse/pull/3574#discussion_r208528659#old",
+        "old_code_raw": "def get_user_count_txn(self, txn):\n        sql_count = \"SELECT COUNT(*) FROM users WHERE is_guest = 0;\"\n        txn.execute(sql_count)\n        count = txn.fetchone()[0]\n        defer.returnValue(count)",
+        "old_comment_raw": "Get a total number of registerd users in the users list.",
+        "new_code_raw": "def get_user_count_txn(self, txn):\n        sql_count = \"SELECT COUNT(*) FROM users WHERE is_guest = 0;\"\n        txn.execute(sql_count)\n        count = txn.fetchone()[0]\n        defer.returnValue(count)",
+        "new_comment_raw": "Get a total number of registerd users in the users list.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/matrix-org/synapse/pull/3574#discussion_r208528659#new",
+        "old_code_raw": "def get_user_count_txn(self, txn):\n        sql_count = \"SELECT COUNT(*) FROM users WHERE is_guest = 0;\"\n        txn.execute(sql_count)\n        return txn.fetchone()[0]",
+        "old_comment_raw": "Get a total number of registered users in the users list.",
+        "new_code_raw": "def get_user_count_txn(self, txn):\n        sql_count = \"SELECT COUNT(*) FROM users WHERE is_guest = 0;\"\n        txn.execute(sql_count)\n        return txn.fetchone()[0]",
+        "new_comment_raw": "Get a total number of registered users in the users list.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/red-hat-storage/ocs-ci/pull/40#discussion_r287815310#old",
+        "old_code_raw": "def get_random_str(size=13):\n    chars = string.ascii_lowercase + string.digits\n    return ''.join(random.choice(chars) for _ in range(size))",
+        "old_comment_raw": "generates the random string of 13 characters",
+        "new_code_raw": "def get_random_str(size=13):\n    chars = string.ascii_lowercase + string.digits\n    return ''.join(random.choice(chars) for _ in range(size))",
+        "new_comment_raw": "generates the random string of 13 characters",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/red-hat-storage/ocs-ci/pull/40#discussion_r287815310#new",
+        "old_code_raw": "def get_random_str(size=13):\n    chars = string.ascii_lowercase + string.digits\n    return ''.join(random.choice(chars) for _ in range(size))",
+        "old_comment_raw": "generates the random string of given size",
+        "new_code_raw": "def get_random_str(size=13):\n    chars = string.ascii_lowercase + string.digits\n    return ''.join(random.choice(chars) for _ in range(size))",
+        "new_comment_raw": "generates the random string of given size",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pynucastro/pynucastro/pull/330#discussion_r918935363#old",
+        "old_code_raw": "def derived_forward(self):\n\n        collect_rates = []\n        onlyfwd = self.forward()\n\n        for r in onlyfwd.get_rates():\n\n            try:\n                DerivedRate(r, use_pf=True, use_A_nuc=True)\n            except ValueError:\n                continue\n            else:\n                collect_rates.append(r)\n\n        list1 = Library(rates=collect_rates)\n        return list1",
+        "old_comment_raw": "We exclude the weak and tabular rates from the .foward() library.",
+        "new_code_raw": "def derived_forward(self):\n\n        collect_rates = []\n        onlyfwd = self.forward()\n\n        for r in onlyfwd.get_rates():\n\n            try:\n                DerivedRate(r, use_pf=True, use_A_nuc=True)\n            except ValueError:\n                continue\n            else:\n                collect_rates.append(r)\n\n        list1 = Library(rates=collect_rates)\n        return list1",
+        "new_comment_raw": "We exclude the weak and tabular rates from the .foward() library.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pynucastro/pynucastro/pull/330#discussion_r918935363#new",
+        "old_code_raw": "def derived_forward(self):\n\n        collect_rates = []\n        onlyfwd = self.forward()\n\n        for r in onlyfwd.get_rates():\n\n            try:\n                DerivedRate(r, use_pf=True, use_A_nuc=True)\n            except ValueError:\n                continue\n            else:\n                collect_rates.append(r)\n\n        list1 = Library(rates=collect_rates)\n        return list1",
+        "old_comment_raw": "In this library, We exclude the weak and tabular rates from the .foward() library which includes all the ReacLib forward reactions.",
+        "new_code_raw": "def derived_forward(self):\n\n        collect_rates = []\n        onlyfwd = self.forward()\n\n        for r in onlyfwd.get_rates():\n\n            try:\n                DerivedRate(r, use_pf=True, use_A_nuc=True)\n            except ValueError:\n                continue\n            else:\n                collect_rates.append(r)\n\n        list1 = Library(rates=collect_rates)\n        return list1",
+        "new_comment_raw": "In this library, We exclude the weak and tabular rates from the .foward() library which includes all the ReacLib forward reactions.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/movingpandas/movingpandas/pull/100#discussion_r569232659#old",
+        "old_code_raw": "def _measure_distance(point1, point2, spherical=False):\n    if spherical:\n        return measure_distance_spherical(point1, point2)\n    else:\n        return measure_distance_euclidean(point1, point2)",
+        "old_comment_raw": "Convenience function that returns either euclidean or spherical distance between two points",
+        "new_code_raw": "def _measure_distance(point1, point2, spherical=False):\n    if spherical:\n        return measure_distance_spherical(point1, point2)\n    else:\n        return measure_distance_euclidean(point1, point2)",
+        "new_comment_raw": "Convenience function that returns either euclidean or spherical distance between two points",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/movingpandas/movingpandas/pull/100#discussion_r569232659#new",
+        "old_code_raw": "def _measure_distance(point1, point2, spherical=False):\n    if spherical:\n        return measure_distance_geodesic(point1, point2)\n    else:\n        return measure_distance_euclidean(point1, point2)",
+        "old_comment_raw": "Convenience function that returns either euclidean or geodesic distance between two points",
+        "new_code_raw": "def _measure_distance(point1, point2, spherical=False):\n    if spherical:\n        return measure_distance_geodesic(point1, point2)\n    else:\n        return measure_distance_euclidean(point1, point2)",
+        "new_comment_raw": "Convenience function that returns either euclidean or geodesic distance between two points",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/ReactionMechanismGenerator/RMG-Py/pull/1260/files#r166817460#old",
+        "old_code_raw": "def isOrder(self, otherOrder):\n        return abs(self.order - otherOrder) <= 1e-4",
+        "old_comment_raw": "Return ``True`` if the bond represents a single bond or ``False`` if not.",
+        "new_code_raw": "def isOrder(self, otherOrder):\n        return abs(self.order - otherOrder) <= 1e-4",
+        "new_comment_raw": "Return ``True`` if the bond represents a single bond or ``False`` if not.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/ReactionMechanismGenerator/RMG-Py/pull/1260/files#r166817460#new",
+        "old_code_raw": "def isOrder(self, otherOrder):\n        return abs(self.order - otherOrder) <= 1e-4",
+        "old_comment_raw": "Return ``True`` if the bond is of order otherOrder or ``False`` if not.",
+        "new_code_raw": "def isOrder(self, otherOrder):\n        return abs(self.order - otherOrder) <= 1e-4",
+        "new_comment_raw": "Return ``True`` if the bond is of order otherOrder or ``False`` if not.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/aiidateam/aiida-core/pull/4470#discussion_r508120179#old",
+        "old_code_raw": "def pop(self, **kwargs):  # pylint: disable=arguments-differ\n        data = self.get_list()\n        data.pop(**kwargs)\n        if not self._using_list_reference():\n            self.set_list(data)",
+        "old_comment_raw": "Remove and return item at index (default last).",
+        "new_code_raw": "def pop(self, **kwargs):  # pylint: disable=arguments-differ\n        data = self.get_list()\n        data.pop(**kwargs)\n        if not self._using_list_reference():\n            self.set_list(data)",
+        "new_comment_raw": "Remove and return item at index (default last).",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/aiidateam/aiida-core/pull/4470#discussion_r508120179#new",
+        "old_code_raw": "def pop(self, **kwargs):  # pylint: disable=arguments-differ\n        data = self.get_list()\n        item = data.pop(**kwargs)\n        if not self._using_list_reference():\n            self.set_list(data)\n        return item",
+        "old_comment_raw": "Remove and return item at index (default last).",
+        "new_code_raw": "def pop(self, **kwargs):  # pylint: disable=arguments-differ\n        data = self.get_list()\n        item = data.pop(**kwargs)\n        if not self._using_list_reference():\n            self.set_list(data)\n        return item",
+        "new_comment_raw": "Remove and return item at index (default last).",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/stfc/PSyclone/pull/413#discussion_r296794376#old",
+        "old_code_raw": "def else_body(self):\n        if len(self._children) == 3:\n            return self._children[2]\n        return []",
+        "old_comment_raw": "Return children of the Schedule executed when the IfBlock evaluates to False.",
+        "new_code_raw": "def else_body(self):\n        if len(self._children) == 3:\n            return self._children[2]\n        return []",
+        "new_comment_raw": "Return children of the Schedule executed when the IfBlock evaluates to False.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/stfc/PSyclone/pull/413#discussion_r296794376#new",
+        "old_code_raw": "def else_body(self):\n        if len(self._children) == 3:\n            return self._children[2]\n        return None",
+        "old_comment_raw": "If available return the Schedule executed when the IfBlock evaluates to False, otherwise return None.",
+        "new_code_raw": "def else_body(self):\n        if len(self._children) == 3:\n            return self._children[2]\n        return None",
+        "new_comment_raw": "If available return the Schedule executed when the IfBlock evaluates to False, otherwise return None.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/metoppv/improver/pull/827/files/b76730a7c991d4dc8726e80e524c41b652ce4d58#r270913988#old",
+        "old_code_raw": "def process(self, cubes_in):\n        # create copies of input cubes so as not to modify in place\n        if isinstance(cubes_in, iris.cube.Cube):\n            cubes = iris.cube.CubeList([cubes_in.copy()])\n        else:\n            cubes = iris.cube.CubeList([])\n            for cube in cubes_in:\n                cubes.append(cube.copy())\n\n        # check master coordinate is on cubes - if not, throw error\n        if not all(cube.coords(self.master_coord) for cube in cubes):\n            raise ValueError(\n                \"Master coordinate {} is not present on input cube(s)\".format(\n                    self.master_coord))\n\n        # slice over requested coordinates\n        for coord_to_slice_over in self.coords_to_slice_over:\n            cubes = self._slice_over_coordinate(cubes, coord_to_slice_over)\n\n        # remove unmatched attributes\n        equalise_cube_attributes(cubes, silent=self.silent_attributes)\n\n        # remove cube variable names\n        strip_var_names(cubes)\n\n        # promote scalar coordinates to auxiliary as necessary\n        associated_master_cubelist = iris.cube.CubeList([])\n        for cube in cubes:\n            associated_master_cubelist.append(\n                self._associate_any_coordinate_with_master_coordinate(cube))\n\n        # concatenate cube\n        result = associated_master_cubelist.concatenate_cube()\n        return result",
+        "old_comment_raw": "Concatenate cubes",
+        "new_code_raw": "def process(self, cubes_in):\n        # create copies of input cubes so as not to modify in place\n        if isinstance(cubes_in, iris.cube.Cube):\n            cubes = iris.cube.CubeList([cubes_in.copy()])\n        else:\n            cubes = iris.cube.CubeList([])\n            for cube in cubes_in:\n                cubes.append(cube.copy())\n\n        # check master coordinate is on cubes - if not, throw error\n        if not all(cube.coords(self.master_coord) for cube in cubes):\n            raise ValueError(\n                \"Master coordinate {} is not present on input cube(s)\".format(\n                    self.master_coord))\n\n        # slice over requested coordinates\n        for coord_to_slice_over in self.coords_to_slice_over:\n            cubes = self._slice_over_coordinate(cubes, coord_to_slice_over)\n\n        # remove unmatched attributes\n        equalise_cube_attributes(cubes, silent=self.silent_attributes)\n\n        # remove cube variable names\n        strip_var_names(cubes)\n\n        # promote scalar coordinates to auxiliary as necessary\n        associated_master_cubelist = iris.cube.CubeList([])\n        for cube in cubes:\n            associated_master_cubelist.append(\n                self._associate_any_coordinate_with_master_coordinate(cube))\n\n        # concatenate cube\n        result = associated_master_cubelist.concatenate_cube()\n        return result",
+        "new_comment_raw": "Concatenate cubes",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/metoppv/improver/pull/827/files/b76730a7c991d4dc8726e80e524c41b652ce4d58#r270913988#new",
+        "old_code_raw": "def process(self, cubes_in):\n        # create copies of input cubes so as not to modify in place\n        if isinstance(cubes_in, iris.cube.Cube):\n            cubes = iris.cube.CubeList([cubes_in.copy()])\n        else:\n            cubes = iris.cube.CubeList([])\n            for cube in cubes_in:\n                cubes.append(cube.copy())\n\n        # check master coordinate is on cubes - if not, throw error\n        if not all(cube.coords(self.master_coord) for cube in cubes):\n            raise ValueError(\n                \"Master coordinate {} is not present on input cube(s)\".format(\n                    self.master_coord))\n\n        # slice over requested coordinates\n        for coord_to_slice_over in self.coords_to_slice_over:\n            cubes = self._slice_over_coordinate(cubes, coord_to_slice_over)\n\n        # remove unmatched attributes\n        equalise_cube_attributes(cubes, silent=self.silent_attributes)\n\n        # remove cube variable names\n        strip_var_names(cubes)\n\n        # promote scalar coordinates to auxiliary as necessary\n        associated_master_cubelist = iris.cube.CubeList([])\n        for cube in cubes:\n            associated_master_cubelist.append(\n                self._associate_any_coordinate_with_master_coordinate(cube))\n\n        # concatenate cube\n        result = associated_master_cubelist.concatenate_cube()\n        return result",
+        "old_comment_raw": "Processes a list of cubes to ensure compatibility before calling the iris.cube.CubeList.concatenate_cube() method.",
+        "new_code_raw": "def process(self, cubes_in):\n        # create copies of input cubes so as not to modify in place\n        if isinstance(cubes_in, iris.cube.Cube):\n            cubes = iris.cube.CubeList([cubes_in.copy()])\n        else:\n            cubes = iris.cube.CubeList([])\n            for cube in cubes_in:\n                cubes.append(cube.copy())\n\n        # check master coordinate is on cubes - if not, throw error\n        if not all(cube.coords(self.master_coord) for cube in cubes):\n            raise ValueError(\n                \"Master coordinate {} is not present on input cube(s)\".format(\n                    self.master_coord))\n\n        # slice over requested coordinates\n        for coord_to_slice_over in self.coords_to_slice_over:\n            cubes = self._slice_over_coordinate(cubes, coord_to_slice_over)\n\n        # remove unmatched attributes\n        equalise_cube_attributes(cubes, silent=self.silent_attributes)\n\n        # remove cube variable names\n        strip_var_names(cubes)\n\n        # promote scalar coordinates to auxiliary as necessary\n        associated_master_cubelist = iris.cube.CubeList([])\n        for cube in cubes:\n            associated_master_cubelist.append(\n                self._associate_any_coordinate_with_master_coordinate(cube))\n\n        # concatenate cube\n        result = associated_master_cubelist.concatenate_cube()\n        return result",
+        "new_comment_raw": "Processes a list of cubes to ensure compatibility before calling the iris.cube.CubeList.concatenate_cube() method.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/alteryx/evalml/pull/682#discussion_r412524712#old",
+        "old_code_raw": "def rankings(self):\n        return self.full_rankings.drop_duplicates(subset=\"pipeline_name\", keep=\"first\")",
+        "old_comment_raw": "Returns a pandas.DataFrame with scoring results from the best pipeline from each model family",
+        "new_code_raw": "def rankings(self):\n        return self.full_rankings.drop_duplicates(subset=\"pipeline_name\", keep=\"first\")",
+        "new_comment_raw": "Returns a pandas.DataFrame with scoring results from the best pipeline from each model family",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/alteryx/evalml/pull/682#discussion_r412524712#new",
+        "old_code_raw": "def rankings(self):\n        return self.full_rankings.drop_duplicates(subset=\"pipeline_name\", keep=\"first\")",
+        "old_comment_raw": "Returns a pandas.DataFrame with scoring results from the highest-scoring set of parameters used with each pipeline.",
+        "new_code_raw": "def rankings(self):\n        return self.full_rankings.drop_duplicates(subset=\"pipeline_name\", keep=\"first\")",
+        "new_comment_raw": "Returns a pandas.DataFrame with scoring results from the highest-scoring set of parameters used with each pipeline.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/terrapower/armi/pull/1171/files/8c1f5fa737f5051c6d6e9613d9ecbefad72d17e0#r1102186697#old",
+        "old_code_raw": "def getComponentArea(self, cold=False):\n        od = self.getDimension(\"od\", cold=cold)\n        holeOP = self.getDimension(\"holeOP\", cold=cold)\n        mult = self.getDimension(\"mult\")\n        hexArea = math.sqrt(3.0) / 2.0 * (holeOP ** 2)\n        circularArea = math.pi * ((od / 2.0) ** 2)\n        area = mult * (circularArea - hexArea)\n        return area",
+        "old_comment_raw": "Computes the area for the hexagon with n number of circular holes in cm^2.",
+        "new_code_raw": "def getComponentArea(self, cold=False):\n        od = self.getDimension(\"od\", cold=cold)\n        holeOP = self.getDimension(\"holeOP\", cold=cold)\n        mult = self.getDimension(\"mult\")\n        hexArea = math.sqrt(3.0) / 2.0 * (holeOP ** 2)\n        circularArea = math.pi * ((od / 2.0) ** 2)\n        area = mult * (circularArea - hexArea)\n        return area",
+        "new_comment_raw": "Computes the area for the hexagon with n number of circular holes in cm^2.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/terrapower/armi/pull/1171/files/8c1f5fa737f5051c6d6e9613d9ecbefad72d17e0#r1102186697#new",
+        "old_code_raw": "def getComponentArea(self, cold=False):\n        od = self.getDimension(\"od\", cold=cold)\n        holeOP = self.getDimension(\"holeOP\", cold=cold)\n        mult = self.getDimension(\"mult\")\n        hexArea = math.sqrt(3.0) / 2.0 * (holeOP ** 2)\n        circularArea = math.pi * ((od / 2.0) ** 2)\n        area = mult * (circularArea - hexArea)\n        return area",
+        "old_comment_raw": "Computes the area for the circle with one hexagonal hole.",
+        "new_code_raw": "def getComponentArea(self, cold=False):\n        od = self.getDimension(\"od\", cold=cold)\n        holeOP = self.getDimension(\"holeOP\", cold=cold)\n        mult = self.getDimension(\"mult\")\n        hexArea = math.sqrt(3.0) / 2.0 * (holeOP ** 2)\n        circularArea = math.pi * ((od / 2.0) ** 2)\n        area = mult * (circularArea - hexArea)\n        return area",
+        "new_comment_raw": "Computes the area for the circle with one hexagonal hole.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/Project-MONAI/MONAI/pull/4289/files#r877253536#old",
+        "old_code_raw": "def box_area(boxes: NdarrayOrTensor) -> NdarrayOrTensor:\n\n    if not check_boxes(boxes):\n        raise ValueError(\"Given boxes has invalid values. The box size must be non-negative.\")\n\n    spatial_dims = get_spatial_dims(boxes=boxes)\n\n    area = boxes[:, spatial_dims] - boxes[:, 0] + TO_REMOVE\n    for axis in range(1, spatial_dims):\n        area = area * (boxes[:, axis + spatial_dims] - boxes[:, axis] + TO_REMOVE)\n\n    # convert numpy to tensor if needed\n    area_t, *_ = convert_data_type(area, torch.Tensor)\n\n    # check if NaN or Inf, especially for half precision\n    if area_t.isnan().any() or area_t.isinf().any():\n        if area_t.dtype is torch.float16:\n            raise ValueError(\"Box area is NaN or Inf. boxes is float16. Please change to float32 and test it again.\")\n        else:\n            raise ValueError(\"Box area is NaN or Inf.\")\n\n    # convert tensor back to numpy if needed\n    area, *_ = convert_to_dst_type(src=area_t, dst=area)\n    return area",
+        "old_comment_raw": "This function computes the area of each box",
+        "new_code_raw": "def box_area(boxes: NdarrayOrTensor) -> NdarrayOrTensor:\n\n    if not check_boxes(boxes):\n        raise ValueError(\"Given boxes has invalid values. The box size must be non-negative.\")\n\n    spatial_dims = get_spatial_dims(boxes=boxes)\n\n    area = boxes[:, spatial_dims] - boxes[:, 0] + TO_REMOVE\n    for axis in range(1, spatial_dims):\n        area = area * (boxes[:, axis + spatial_dims] - boxes[:, axis] + TO_REMOVE)\n\n    # convert numpy to tensor if needed\n    area_t, *_ = convert_data_type(area, torch.Tensor)\n\n    # check if NaN or Inf, especially for half precision\n    if area_t.isnan().any() or area_t.isinf().any():\n        if area_t.dtype is torch.float16:\n            raise ValueError(\"Box area is NaN or Inf. boxes is float16. Please change to float32 and test it again.\")\n        else:\n            raise ValueError(\"Box area is NaN or Inf.\")\n\n    # convert tensor back to numpy if needed\n    area, *_ = convert_to_dst_type(src=area_t, dst=area)\n    return area",
+        "new_comment_raw": "This function computes the area of each box",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/Project-MONAI/MONAI/pull/4289/files#r877253536#new",
+        "old_code_raw": "def box_area(boxes: NdarrayOrTensor) -> NdarrayOrTensor:\n\n    if not is_valid_box_values(boxes):\n        raise ValueError(\"Given boxes has invalid values. The box size must be non-negative.\")\n\n    spatial_dims = get_spatial_dims(boxes=boxes)\n\n    area = boxes[:, spatial_dims] - boxes[:, 0] + TO_REMOVE\n    for axis in range(1, spatial_dims):\n        area = area * (boxes[:, axis + spatial_dims] - boxes[:, axis] + TO_REMOVE)\n\n    # convert numpy to tensor if needed\n    area_t, *_ = convert_data_type(area, torch.Tensor)\n\n    # check if NaN or Inf, especially for half precision\n    if area_t.isnan().any() or area_t.isinf().any():\n        if area_t.dtype is torch.float16:\n            raise ValueError(\"Box area is NaN or Inf. boxes is float16. Please change to float32 and test it again.\")\n        else:\n            raise ValueError(\"Box area is NaN or Inf.\")\n\n    return area",
+        "old_comment_raw": "This function computes the area (2D) or volume (3D) of each box.",
+        "new_code_raw": "def box_area(boxes: NdarrayOrTensor) -> NdarrayOrTensor:\n\n    if not is_valid_box_values(boxes):\n        raise ValueError(\"Given boxes has invalid values. The box size must be non-negative.\")\n\n    spatial_dims = get_spatial_dims(boxes=boxes)\n\n    area = boxes[:, spatial_dims] - boxes[:, 0] + TO_REMOVE\n    for axis in range(1, spatial_dims):\n        area = area * (boxes[:, axis + spatial_dims] - boxes[:, axis] + TO_REMOVE)\n\n    # convert numpy to tensor if needed\n    area_t, *_ = convert_data_type(area, torch.Tensor)\n\n    # check if NaN or Inf, especially for half precision\n    if area_t.isnan().any() or area_t.isinf().any():\n        if area_t.dtype is torch.float16:\n            raise ValueError(\"Box area is NaN or Inf. boxes is float16. Please change to float32 and test it again.\")\n        else:\n            raise ValueError(\"Box area is NaN or Inf.\")\n\n    return area",
+        "new_comment_raw": "This function computes the area (2D) or volume (3D) of each box.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/NREL/reV/pull/72/commits/4d8592400706971c7e59644982bb75b588c01354#r351407399#old",
+        "old_code_raw": "def _get_site_mem_req(shape, dtype, n=100):\n\n        site_mem = sys.getsizeof(np.ones((shape[0], n), dtype=dtype)) / n\n        return site_mem",
+        "old_comment_raw": "Get the memory requirement to collect a dataset of shape and dtype Parameters ----------",
+        "new_code_raw": "def _get_site_mem_req(shape, dtype, n=100):\n\n        site_mem = sys.getsizeof(np.ones((shape[0], n), dtype=dtype)) / n\n        return site_mem",
+        "new_comment_raw": "Get the memory requirement to collect a dataset of shape and dtype Parameters ----------",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/NREL/reV/pull/72/commits/4d8592400706971c7e59644982bb75b588c01354#r351407399#new",
+        "old_code_raw": "def _get_site_mem_req(shape, dtype, n=100):\n\n        site_mem = sys.getsizeof(np.ones((shape[0], n), dtype=dtype)) / n",
+        "old_comment_raw": "Get the memory requirement to collect one site from a dataset of shape and dtype Parameters ----------",
+        "new_code_raw": "def _get_site_mem_req(shape, dtype, n=100):\n\n        site_mem = sys.getsizeof(np.ones((shape[0], n), dtype=dtype)) / n",
+        "new_comment_raw": "Get the memory requirement to collect one site from a dataset of shape and dtype Parameters ----------",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pyRiemann/pyRiemann/pull/111#discussion_r635571167#old",
+        "old_code_raw": "def normalize(X, norm):\n    if X.ndim < 2:\n        raise ValueError('Input must have at least 2 dimensions')\n    if X.shape[-2] != X.shape[-1]:\n        raise ValueError('Matrices must be square')\n\n    if norm == \"trace\":\n        num = numpy.trace(X, axis1=-2, axis2=-1)\n    elif norm  == \"determinant\":\n        num = numpy.abs(numpy.linalg.det(X)) ** (1 / X.shape[-1])\n    else:\n        raise ValueError(\"'%s' is not a supported normalization\" % norm)\n\n    while num.ndim != X.ndim:\n        num = num[..., numpy.newaxis]\n    Xn = numpy.divide(X, num)\n    return Xn",
+        "old_comment_raw": "Normalize a set of matrices, using trace or determinant.",
+        "new_code_raw": "def normalize(X, norm):\n    if X.ndim < 2:\n        raise ValueError('Input must have at least 2 dimensions')\n    if X.shape[-2] != X.shape[-1]:\n        raise ValueError('Matrices must be square')\n\n    if norm == \"trace\":\n        num = numpy.trace(X, axis1=-2, axis2=-1)\n    elif norm  == \"determinant\":\n        num = numpy.abs(numpy.linalg.det(X)) ** (1 / X.shape[-1])\n    else:\n        raise ValueError(\"'%s' is not a supported normalization\" % norm)\n\n    while num.ndim != X.ndim:\n        num = num[..., numpy.newaxis]\n    Xn = numpy.divide(X, num)\n    return Xn",
+        "new_comment_raw": "Normalize a set of matrices, using trace or determinant.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/pyRiemann/pyRiemann/pull/111#discussion_r635571167#new",
+        "old_code_raw": "def normalize(X, norm):\n    if X.ndim < 2:\n        raise ValueError('Input must have at least 2 dimensions')\n    if X.shape[-2] != X.shape[-1]:\n        raise ValueError('Matrices must be square')\n\n    if norm == \"trace\":\n        denom = numpy.trace(X, axis1=-2, axis2=-1)\n    elif norm  == \"determinant\":\n        denom = numpy.abs(numpy.linalg.det(X)) ** (1 / X.shape[-1])\n    else:\n        raise ValueError(\"'%s' is not a supported normalization\" % norm)\n\n    while denom.ndim != X.ndim:\n        denom = denom[..., numpy.newaxis]\n    Xn = X / denom\n    return Xn",
+        "old_comment_raw": "Normalize a set of square matrices, using trace or determinant.",
+        "new_code_raw": "def normalize(X, norm):\n    if X.ndim < 2:\n        raise ValueError('Input must have at least 2 dimensions')\n    if X.shape[-2] != X.shape[-1]:\n        raise ValueError('Matrices must be square')\n\n    if norm == \"trace\":\n        denom = numpy.trace(X, axis1=-2, axis2=-1)\n    elif norm  == \"determinant\":\n        denom = numpy.abs(numpy.linalg.det(X)) ** (1 / X.shape[-1])\n    else:\n        raise ValueError(\"'%s' is not a supported normalization\" % norm)\n\n    while denom.ndim != X.ndim:\n        denom = denom[..., numpy.newaxis]\n    Xn = X / denom\n    return Xn",
+        "new_comment_raw": "Normalize a set of square matrices, using trace or determinant.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/artefactual/archivematica-storage-service/pull/33#discussion_r18488678#old",
+        "old_code_raw": "def _create_local_directory(self, path, mode=None):\n        if mode is None:\n            mode = (stat.S_IRUSR + stat.S_IWUSR + stat.S_IXUSR +\n                    stat.S_IRGRP + stat.S_IWGRP + stat.S_IXGRP +\n                    stat.S_IROTH +                stat.S_IXOTH)\n        dir_path = os.path.dirname(path)\n        if not dir_path:\n            return\n        try:\n            os.makedirs(dir_path, mode)\n        except os.error as e:\n            # If the leaf node already exists, that's fine\n            if e.errno != errno.EEXIST:\n                LOGGER.warning(\"Could not create storage directory: %s\", e)\n                raise\n\n        # os.makedirs may ignore the mode when creating directories, so force\n        # the permissions here. Some spaces (eg CIFS) doesn't allow chmod, so\n        # wrap it in a try-catch and ignore the failure.\n        try:\n            os.chmod(os.path.dirname(path), mode)\n        except os.error as e:\n            LOGGER.warning(e)",
+        "old_comment_raw": "Creates a local directory at 'path' with 'mode' (default 775).",
+        "new_code_raw": "def _create_local_directory(self, path, mode=None):\n        if mode is None:\n            mode = (stat.S_IRUSR + stat.S_IWUSR + stat.S_IXUSR +\n                    stat.S_IRGRP + stat.S_IWGRP + stat.S_IXGRP +\n                    stat.S_IROTH +                stat.S_IXOTH)\n        dir_path = os.path.dirname(path)\n        if not dir_path:\n            return\n        try:\n            os.makedirs(dir_path, mode)\n        except os.error as e:\n            # If the leaf node already exists, that's fine\n            if e.errno != errno.EEXIST:\n                LOGGER.warning(\"Could not create storage directory: %s\", e)\n                raise\n\n        # os.makedirs may ignore the mode when creating directories, so force\n        # the permissions here. Some spaces (eg CIFS) doesn't allow chmod, so\n        # wrap it in a try-catch and ignore the failure.\n        try:\n            os.chmod(os.path.dirname(path), mode)\n        except os.error as e:\n            LOGGER.warning(e)",
+        "new_comment_raw": "Creates a local directory at 'path' with 'mode' (default 775).",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/artefactual/archivematica-storage-service/pull/33#discussion_r18488678#new",
+        "old_code_raw": "def _create_local_directory(self, path, mode=None):\n        if mode is None:\n            mode = (stat.S_IRUSR + stat.S_IWUSR + stat.S_IXUSR +\n                    stat.S_IRGRP + stat.S_IWGRP + stat.S_IXGRP +\n                    stat.S_IROTH +                stat.S_IXOTH)\n        dir_path = os.path.dirname(path)\n        if not dir_path:\n            return\n        try:\n            os.makedirs(dir_path, mode)\n        except os.error as e:\n            # If the leaf node already exists, that's fine\n            if e.errno != errno.EEXIST:\n                LOGGER.warning(\"Could not create storage directory: %s\", e)\n                raise\n\n        # os.makedirs may ignore the mode when creating directories, so force\n        # the permissions here. Some spaces (eg CIFS) doesn't allow chmod, so\n        # wrap it in a try-catch and ignore the failure.\n        try:\n            os.chmod(os.path.dirname(path), mode)\n        except os.error as e:\n            LOGGER.warning(e)",
+        "old_comment_raw": "Creates directory structure for `path` with `mode` (default 775).",
+        "new_code_raw": "def _create_local_directory(self, path, mode=None):\n        if mode is None:\n            mode = (stat.S_IRUSR + stat.S_IWUSR + stat.S_IXUSR +\n                    stat.S_IRGRP + stat.S_IWGRP + stat.S_IXGRP +\n                    stat.S_IROTH +                stat.S_IXOTH)\n        dir_path = os.path.dirname(path)\n        if not dir_path:\n            return\n        try:\n            os.makedirs(dir_path, mode)\n        except os.error as e:\n            # If the leaf node already exists, that's fine\n            if e.errno != errno.EEXIST:\n                LOGGER.warning(\"Could not create storage directory: %s\", e)\n                raise\n\n        # os.makedirs may ignore the mode when creating directories, so force\n        # the permissions here. Some spaces (eg CIFS) doesn't allow chmod, so\n        # wrap it in a try-catch and ignore the failure.\n        try:\n            os.chmod(os.path.dirname(path), mode)\n        except os.error as e:\n            LOGGER.warning(e)",
+        "new_comment_raw": "Creates directory structure for `path` with `mode` (default 775).",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/kensho-technologies/graphql-compiler/pull/187#discussion_r255645481#old",
+        "old_code_raw": "def get_and_validate_macro_edge_info(schema, ast, macro_directives, macro_edge_args,\n                                     type_equivalence_hints=None):\n    _validate_macro_ast_with_macro_directives(schema, ast, macro_directives)\n\n    macro_defn_ast, macro_defn_directive = macro_directives[MacroEdgeDefinitionDirective.name][0]\n    macro_target_ast, _ = macro_directives[MacroEdgeTargetDirective.name][0]\n\n    # TODO(predrag): Required further validation:\n    # - the macro definition directive AST contains only @filter/@fold directives together with\n    #   the target directive;\n    # - after adding an output, the macro compiles successfully, the macro args and necessary and\n    #   sufficient for the macro, and the macro args' types match the inferred types of the\n    #   runtime parameters in the macro.\n\n    class_ast = get_only_selection_from_ast(ast)\n    class_name = get_ast_field_name(class_ast)\n\n    _validate_class_selection_ast(class_ast, macro_defn_ast)\n\n    macro_edge_name = macro_defn_directive.arguments['name'].value\n\n    _validate_macro_edge_name_for_class_name(schema, class_name, macro_edge_name)\n\n    _make_macro_edge_descriptor()",
+        "old_comment_raw": "Return a tuple of ASTs with the three parts of a macro edge given the directive mapping.",
+        "new_code_raw": "def get_and_validate_macro_edge_info(schema, ast, macro_directives, macro_edge_args,\n                                     type_equivalence_hints=None):\n    _validate_macro_ast_with_macro_directives(schema, ast, macro_directives)\n\n    macro_defn_ast, macro_defn_directive = macro_directives[MacroEdgeDefinitionDirective.name][0]\n    macro_target_ast, _ = macro_directives[MacroEdgeTargetDirective.name][0]\n\n    # TODO(predrag): Required further validation:\n    # - the macro definition directive AST contains only @filter/@fold directives together with\n    #   the target directive;\n    # - after adding an output, the macro compiles successfully, the macro args and necessary and\n    #   sufficient for the macro, and the macro args' types match the inferred types of the\n    #   runtime parameters in the macro.\n\n    class_ast = get_only_selection_from_ast(ast)\n    class_name = get_ast_field_name(class_ast)\n\n    _validate_class_selection_ast(class_ast, macro_defn_ast)\n\n    macro_edge_name = macro_defn_directive.arguments['name'].value\n\n    _validate_macro_edge_name_for_class_name(schema, class_name, macro_edge_name)\n\n    _make_macro_edge_descriptor()",
+        "new_comment_raw": "Return a tuple of ASTs with the three parts of a macro edge given the directive mapping.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/kensho-technologies/graphql-compiler/pull/187#discussion_r255645481#new",
+        "old_code_raw": "def get_and_validate_macro_edge_info(schema, ast, macro_directives, macro_edge_args,\n                                     type_equivalence_hints=None):\n    _validate_macro_ast_with_macro_directives(schema, ast, macro_directives)\n\n    macro_defn_ast, macro_defn_directive = macro_directives[MacroEdgeDefinitionDirective.name][0]\n    # macro_target_ast, _ = macro_directives[MacroEdgeTargetDirective.name][0]\n\n    # TODO(predrag): Required further validation:\n    # - the macro definition directive AST contains only @filter/@fold directives together with\n    #   the target directive;\n    # - after adding an output, the macro compiles successfully, the macro args and necessary and\n    #   sufficient for the macro, and the macro args' types match the inferred types of the\n    #   runtime parameters in the macro.\n    class_ast = get_only_selection_from_ast(ast)\n    class_name = get_ast_field_name(class_ast)\n    _validate_class_selection_ast(class_ast, macro_defn_ast)\n    macro_edge_name = macro_defn_directive.arguments['name'].value\n    _validate_macro_edge_name_for_class_name(schema, class_name, macro_edge_name)\n    _make_macro_edge_descriptor()",
+        "old_comment_raw": "Return a tuple with the three parts of information that uniquely describe a macro edge.",
+        "new_code_raw": "def get_and_validate_macro_edge_info(schema, ast, macro_directives, macro_edge_args,\n                                     type_equivalence_hints=None):\n    _validate_macro_ast_with_macro_directives(schema, ast, macro_directives)\n\n    macro_defn_ast, macro_defn_directive = macro_directives[MacroEdgeDefinitionDirective.name][0]\n    # macro_target_ast, _ = macro_directives[MacroEdgeTargetDirective.name][0]\n\n    # TODO(predrag): Required further validation:\n    # - the macro definition directive AST contains only @filter/@fold directives together with\n    #   the target directive;\n    # - after adding an output, the macro compiles successfully, the macro args and necessary and\n    #   sufficient for the macro, and the macro args' types match the inferred types of the\n    #   runtime parameters in the macro.\n    class_ast = get_only_selection_from_ast(ast)\n    class_name = get_ast_field_name(class_ast)\n    _validate_class_selection_ast(class_ast, macro_defn_ast)\n    macro_edge_name = macro_defn_directive.arguments['name'].value\n    _validate_macro_edge_name_for_class_name(schema, class_name, macro_edge_name)\n    _make_macro_edge_descriptor()",
+        "new_comment_raw": "Return a tuple with the three parts of information that uniquely describe a macro edge.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/proteneer/timemachine/pull/640#discussion_r808454189#old",
+        "old_code_raw": "def compute_or_load_bond_smirks_matches(mol, smirks_list):\n    if not mol.HasProp(BOND_SMIRK_MATCH_CACHE):\n        oemol = convert_to_oe(mol)\n        AromaticityModel.assign(oemol)\n\n        bond_idxs = []  # [B, 2]\n        type_idxs = []  # [B]\n\n        for type_idx, smirks in enumerate(smirks_list):\n            matches = oe_match_smirks(smirks, oemol)\n\n            for matched_indices in matches:\n                a, b = matched_indices[0], matched_indices[1]\n                forward_matched_bond = [a, b]\n                reverse_matched_bond = [b, a]\n\n                already_assigned = forward_matched_bond in bond_idxs or reverse_matched_bond in bond_idxs\n\n                if not already_assigned:\n                    bond_idxs.append(forward_matched_bond)\n                    type_idxs.append(type_idx)\n        mol.SetProp(BOND_SMIRK_MATCH_CACHE, base64.b64encode(pickle.dumps((bond_idxs, type_idxs))))\n    else:\n        bond_idxs, type_idxs = pickle.loads(base64.b64decode(mol.GetProp(BOND_SMIRK_MATCH_CACHE)))\n    return np.array(bond_idxs), np.array(type_idxs)",
+        "old_comment_raw": "Return an array of ordered bonds and an array of their assigned types Notes ----- * Uses OpenEye for substructure searches * Order within smirks_list matters     \"First match wins.\"     For example, if bond (a,b) can be matched by smirks_list[2], smirks_list[5], ..., assign type 2 * Order within each smirks pattern matters",
+        "new_code_raw": "def compute_or_load_bond_smirks_matches(mol, smirks_list):\n    if not mol.HasProp(BOND_SMIRK_MATCH_CACHE):\n        oemol = convert_to_oe(mol)\n        AromaticityModel.assign(oemol)\n\n        bond_idxs = []  # [B, 2]\n        type_idxs = []  # [B]\n\n        for type_idx, smirks in enumerate(smirks_list):\n            matches = oe_match_smirks(smirks, oemol)\n\n            for matched_indices in matches:\n                a, b = matched_indices[0], matched_indices[1]\n                forward_matched_bond = [a, b]\n                reverse_matched_bond = [b, a]\n\n                already_assigned = forward_matched_bond in bond_idxs or reverse_matched_bond in bond_idxs\n\n                if not already_assigned:\n                    bond_idxs.append(forward_matched_bond)\n                    type_idxs.append(type_idx)\n        mol.SetProp(BOND_SMIRK_MATCH_CACHE, base64.b64encode(pickle.dumps((bond_idxs, type_idxs))))\n    else:\n        bond_idxs, type_idxs = pickle.loads(base64.b64decode(mol.GetProp(BOND_SMIRK_MATCH_CACHE)))\n    return np.array(bond_idxs), np.array(type_idxs)",
+        "new_comment_raw": "Return an array of ordered bonds and an array of their assigned types Notes ----- * Uses OpenEye for substructure searches * Order within smirks_list matters     \"First match wins.\"     For example, if bond (a,b) can be matched by smirks_list[2], smirks_list[5], ..., assign type 2 * Order within each smirks pattern matters",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/proteneer/timemachine/pull/640#discussion_r808454189#new",
+        "old_code_raw": "def compute_or_load_bond_smirks_matches(mol, smirks_list):\n    if not mol.HasProp(BOND_SMIRK_MATCH_CACHE):\n        oemol = convert_to_oe(mol)\n        AromaticityModel.assign(oemol)\n\n        bond_idxs = []  # [B, 2]\n        type_idxs = []  # [B]\n\n        for type_idx, smirks in enumerate(smirks_list):\n            matches = oe_match_smirks(smirks, oemol)\n\n            for matched_indices in matches:\n                a, b = matched_indices[0], matched_indices[1]\n                forward_matched_bond = [a, b]\n                reverse_matched_bond = [b, a]\n\n                already_assigned = forward_matched_bond in bond_idxs or reverse_matched_bond in bond_idxs\n\n                if not already_assigned:\n                    bond_idxs.append(forward_matched_bond)\n                    type_idxs.append(type_idx)\n        mol.SetProp(BOND_SMIRK_MATCH_CACHE, base64.b64encode(pickle.dumps((bond_idxs, type_idxs))))\n    else:\n        bond_idxs, type_idxs = pickle.loads(base64.b64decode(mol.GetProp(BOND_SMIRK_MATCH_CACHE)))\n    return np.array(bond_idxs), np.array(type_idxs)",
+        "old_comment_raw": "Unless already cached in mol's \"BondSmirkMatchCache\" property, uses OpenEye to compute arrays of ordered bonds and their assigned types.",
+        "new_code_raw": "def compute_or_load_bond_smirks_matches(mol, smirks_list):\n    if not mol.HasProp(BOND_SMIRK_MATCH_CACHE):\n        oemol = convert_to_oe(mol)\n        AromaticityModel.assign(oemol)\n\n        bond_idxs = []  # [B, 2]\n        type_idxs = []  # [B]\n\n        for type_idx, smirks in enumerate(smirks_list):\n            matches = oe_match_smirks(smirks, oemol)\n\n            for matched_indices in matches:\n                a, b = matched_indices[0], matched_indices[1]\n                forward_matched_bond = [a, b]\n                reverse_matched_bond = [b, a]\n\n                already_assigned = forward_matched_bond in bond_idxs or reverse_matched_bond in bond_idxs\n\n                if not already_assigned:\n                    bond_idxs.append(forward_matched_bond)\n                    type_idxs.append(type_idx)\n        mol.SetProp(BOND_SMIRK_MATCH_CACHE, base64.b64encode(pickle.dumps((bond_idxs, type_idxs))))\n    else:\n        bond_idxs, type_idxs = pickle.loads(base64.b64decode(mol.GetProp(BOND_SMIRK_MATCH_CACHE)))\n    return np.array(bond_idxs), np.array(type_idxs)",
+        "new_comment_raw": "Unless already cached in mol's \"BondSmirkMatchCache\" property, uses OpenEye to compute arrays of ordered bonds and their assigned types.",
+        "label": 0
+    }
+]

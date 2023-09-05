@@ -1,0 +1,452 @@
+[
+    {
+        "type": "summary",
+        "id": "https://github.com/confluentinc/confluent-kafka-go/pull/937#discussion_r1095529182#old",
+        "old_code_raw": "func testconfRead() bool {\n        cf, err := os.Open(\"testconf.json\")\n        if err != nil && !testconf.Docker {\n                fmt.Fprintf(os.Stderr, \"%% testconf.json not found and docker compose not setup - ignoring test\\n\")\n                return false\n        }\n\n        // Default values\n        testconf.PerfMsgCount = defaulttestconfPerfMsgCount\n        testconf.PerfMsgSize = defaulttestconfPerfMsgSize\n        testconf.GroupID = defaulttestconfGroupID\n        testconf.Topic = defaulttestconfTopic\n        testconf.Brokers = \"\"\n\n        jp := json.NewDecoder(cf)\n        err = jp.Decode(&testconf)\n        if err != nil {\n                panic(fmt.Sprintf(\"Failed to parse testconf: %s\", err))\n        }\n\n        cf.Close()\n\n        if testconf.Docker {\n                testconf.Brokers = defaulttestconfBrokers\n        }\n\n        if !testconf.Docker && testconf.Brokers == \"\" {\n                fmt.Fprintf(os.Stderr, \"No Brokers provided in testconf\")\n                return false\n        }\n\n        if testconf.Brokers[0] == '$' {\n                testconf.Brokers = os.Getenv(testconf.Brokers[1:])\n        }\n\n        return true\n}",
+        "old_comment_raw": "testconf_read reads the test suite config file testconf.json which must contain at least Brokers and Topic string properties.",
+        "new_code_raw": "func testconfRead() bool {\n        cf, err := os.Open(\"testconf.json\")\n        if err != nil && !testconf.Docker {\n                fmt.Fprintf(os.Stderr, \"%% testconf.json not found and docker compose not setup - ignoring test\\n\")\n                return false\n        }\n\n        // Default values\n        testconf.PerfMsgCount = defaulttestconfPerfMsgCount\n        testconf.PerfMsgSize = defaulttestconfPerfMsgSize\n        testconf.GroupID = defaulttestconfGroupID\n        testconf.Topic = defaulttestconfTopic\n        testconf.Brokers = \"\"\n\n        jp := json.NewDecoder(cf)\n        err = jp.Decode(&testconf)\n        if err != nil {\n                panic(fmt.Sprintf(\"Failed to parse testconf: %s\", err))\n        }\n\n        cf.Close()\n\n        if testconf.Docker {\n                testconf.Brokers = defaulttestconfBrokers\n        }\n\n        if !testconf.Docker && testconf.Brokers == \"\" {\n                fmt.Fprintf(os.Stderr, \"No Brokers provided in testconf\")\n                return false\n        }\n\n        if testconf.Brokers[0] == '$' {\n                testconf.Brokers = os.Getenv(testconf.Brokers[1:])\n        }\n\n        return true\n}",
+        "new_comment_raw": "testconf_read reads the test suite config file testconf.json which must contain at least Brokers and Topic string properties.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/confluentinc/confluent-kafka-go/pull/937#discussion_r1095529182#new",
+        "old_code_raw": "func testconfRead() bool {\n        cf, err := os.Open(\"testconf.json\")\n        if err != nil && !testconf.Docker {\n                fmt.Fprintf(os.Stderr, \"%% testconf.json not found and docker compose not setup - ignoring test\\n\")\n                return false\n        }\n\n        // Default values\n        testconf.PerfMsgCount = defaulttestconfPerfMsgCount\n        testconf.PerfMsgSize = defaulttestconfPerfMsgSize\n        testconf.GroupID = defaulttestconfGroupID\n        testconf.Topic = defaulttestconfTopic\n        testconf.Brokers = \"\"\n\n        jp := json.NewDecoder(cf)\n        err = jp.Decode(&testconf)\n        if err != nil {\n                panic(fmt.Sprintf(\"Failed to parse testconf: %s\", err))\n        }\n\n        cf.Close()\n\n        if testconf.Docker {\n                testconf.Brokers = defaulttestconfBrokers\n        }\n\n        if !testconf.Docker && testconf.Brokers == \"\" {\n                fmt.Fprintf(os.Stderr, \"No Brokers provided in testconf\")\n                return false\n        }\n\n        if testconf.Brokers[0] == '$' {\n                testconf.Brokers = os.Getenv(testconf.Brokers[1:])\n        }\n\n        return true\n}",
+        "old_comment_raw": "testconf_read reads the test suite config file testconf.json which must contain at least Brokers and Topic string properties or the defaults will be used.",
+        "new_code_raw": "func testconfRead() bool {\n        cf, err := os.Open(\"testconf.json\")\n        if err != nil && !testconf.Docker {\n                fmt.Fprintf(os.Stderr, \"%% testconf.json not found and docker compose not setup - ignoring test\\n\")\n                return false\n        }\n\n        // Default values\n        testconf.PerfMsgCount = defaulttestconfPerfMsgCount\n        testconf.PerfMsgSize = defaulttestconfPerfMsgSize\n        testconf.GroupID = defaulttestconfGroupID\n        testconf.Topic = defaulttestconfTopic\n        testconf.Brokers = \"\"\n\n        jp := json.NewDecoder(cf)\n        err = jp.Decode(&testconf)\n        if err != nil {\n                panic(fmt.Sprintf(\"Failed to parse testconf: %s\", err))\n        }\n\n        cf.Close()\n\n        if testconf.Docker {\n                testconf.Brokers = defaulttestconfBrokers\n        }\n\n        if !testconf.Docker && testconf.Brokers == \"\" {\n                fmt.Fprintf(os.Stderr, \"No Brokers provided in testconf\")\n                return false\n        }\n\n        if testconf.Brokers[0] == '$' {\n                testconf.Brokers = os.Getenv(testconf.Brokers[1:])\n        }\n\n        return true\n}",
+        "new_comment_raw": "testconf_read reads the test suite config file testconf.json which must contain at least Brokers and Topic string properties or the defaults will be used.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/cilium/cilium/pull/2684#discussion_r165204442#old",
+        "old_code_raw": "func (e *Endpoint) IngressOrEgressIsEnforced() bool {\n        return policy.GetPolicyEnabled() == AlwaysEnforce ||\n                e.Opts.IsEnabled(OptionIngressPolicy) ||\n                e.Opts.IsEnabled(OptionEgressPolicy)\n}",
+        "old_comment_raw": "IngressOrEgressIsEnforced returns true if either ingress or egress is in enforcement mode",
+        "new_code_raw": "func (e *Endpoint) IngressOrEgressIsEnforced() bool {\n        return policy.GetPolicyEnabled() == AlwaysEnforce ||\n                e.Opts.IsEnabled(OptionIngressPolicy) ||\n                e.Opts.IsEnabled(OptionEgressPolicy)\n}",
+        "new_comment_raw": "IngressOrEgressIsEnforced returns true if either ingress or egress is in enforcement mode",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/cilium/cilium/pull/2684#discussion_r165204442#new",
+        "old_code_raw": "func (e *Endpoint) IngressOrEgressIsEnforced() bool {\n        return policy.GetPolicyEnabled() == AlwaysEnforce ||\n                e.Opts.IsEnabled(OptionIngressPolicy) ||\n                e.Opts.IsEnabled(OptionEgressPolicy)\n}",
+        "old_comment_raw": "IngressOrEgressIsEnforced returns true if either ingress or egress is in enforcement mode or if the global policy enforcement is enabled.",
+        "new_code_raw": "func (e *Endpoint) IngressOrEgressIsEnforced() bool {\n        return policy.GetPolicyEnabled() == AlwaysEnforce ||\n                e.Opts.IsEnabled(OptionIngressPolicy) ||\n                e.Opts.IsEnabled(OptionEgressPolicy)\n}",
+        "new_comment_raw": "IngressOrEgressIsEnforced returns true if either ingress or egress is in enforcement mode or if the global policy enforcement is enabled.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/viamrobotics/rdk/pull/498#discussion_r805000185#old",
+        "old_code_raw": "func (server *subtypeServer) GetPosition(\n        ctx context.Context,\n        req *pb.MotorServiceGetPositionRequest,\n) (*pb.MotorServiceGetPositionResponse, error) {\n        motorName := req.GetName()\n        motor, err := server.getMotor(motorName)\n        if err != nil {\n                return nil, errors.Errorf(\"no motor (%s) found\", motorName)\n        }\n\n        pos, err := motor.GetPosition(ctx)\n        if err != nil {\n                return nil, err\n        }\n        return &pb.MotorServiceGetPositionResponse{Position: pos}, nil\n}",
+        "old_comment_raw": "Position reports the position of the motor of the underlying robot based on its encoder.",
+        "new_code_raw": "func (server *subtypeServer) GetPosition(\n        ctx context.Context,\n        req *pb.MotorServiceGetPositionRequest,\n) (*pb.MotorServiceGetPositionResponse, error) {\n        motorName := req.GetName()\n        motor, err := server.getMotor(motorName)\n        if err != nil {\n                return nil, errors.Errorf(\"no motor (%s) found\", motorName)\n        }\n\n        pos, err := motor.GetPosition(ctx)\n        if err != nil {\n                return nil, err\n        }\n        return &pb.MotorServiceGetPositionResponse{Position: pos}, nil\n}",
+        "new_comment_raw": "Position reports the position of the motor of the underlying robot based on its encoder.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/viamrobotics/rdk/pull/498#discussion_r805000185#new",
+        "old_code_raw": "func (server *subtypeServer) GetPosition(\n        ctx context.Context,\n        req *pb.MotorServiceGetPositionRequest,\n) (*pb.MotorServiceGetPositionResponse, error) {\n        motorName := req.GetName()\n        motor, err := server.getMotor(motorName)\n        if err != nil {\n                return nil, errors.Errorf(\"no motor (%s) found\", motorName)\n        }\n\n        pos, err := motor.GetPosition(ctx)\n        if err != nil {\n                return nil, err\n        }\n        return &pb.MotorServiceGetPositionResponse{Position: pos}, nil\n}",
+        "old_comment_raw": "GetPosition reports the position of the motor of the underlying robot based on its encoder.",
+        "new_code_raw": "func (server *subtypeServer) GetPosition(\n        ctx context.Context,\n        req *pb.MotorServiceGetPositionRequest,\n) (*pb.MotorServiceGetPositionResponse, error) {\n        motorName := req.GetName()\n        motor, err := server.getMotor(motorName)\n        if err != nil {\n                return nil, errors.Errorf(\"no motor (%s) found\", motorName)\n        }\n\n        pos, err := motor.GetPosition(ctx)\n        if err != nil {\n                return nil, err\n        }\n        return &pb.MotorServiceGetPositionResponse{Position: pos}, nil\n}",
+        "new_comment_raw": "GetPosition reports the position of the motor of the underlying robot based on its encoder.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/ipfs/go-mfs/pull/53#discussion_r246846256#old",
+        "old_code_raw": "func (rp *Republisher) Run(lastPublished cid.Cid) {\n        quick := time.NewTimer(0)\n        if !quick.Stop() {\n                <-quick.C\n        }\n        longer := time.NewTimer(0)\n        if !longer.Stop() {\n                <-longer.C\n        }\n\n        var toPublish cid.Cid\n        for rp.ctx.Err() == nil {\n                var waiter chan struct{}\n\n                select {\n                case <-rp.ctx.Done():\n                        return\n                case newValue := <-rp.update:\n                        // Skip already published values.\n                        if lastPublished.Equals(newValue) {\n                                // Break to the end of the switch to cleanup any\n                                // timers.\n                                toPublish = cid.Undef\n                                break\n                        }\n\n                        // If we aren't already waiting to publish something,\n                        // reset the long timeout.\n                        if !toPublish.Defined() {\n                                longer.Reset(rp.TimeoutLong)\n                        }\n\n                        // Always reset the short timeout.\n                        quick.Reset(rp.TimeoutShort)\n\n                        // Finally, set the new value to publish.\n                        toPublish = newValue\n                        continue\n                case waiter = <-rp.immediatePublish:\n                        // Make sure to grab the *latest* value to publish.\n                        select {\n                        case toPublish = <-rp.update:\n                        default:\n                        }\n\n                        // Avoid publishing duplicate values\n                        if !lastPublished.Equals(toPublish) {\n                                toPublish = cid.Undef\n                        }\n                case <-quick.C:\n                case <-longer.C:\n                }\n\n                // Cleanup, publish, and close waiters.\n\n                // 1. Stop any timers. Don't use the `if !t.Stop() { ... }`\n                //    idiom as these timers may not be running.\n\n                quick.Stop()\n                select {\n                case <-quick.C:\n                default:\n                }\n\n                longer.Stop()\n                select {\n                case <-longer.C:\n                default:\n                }\n\n                // 2. If we have a value to publish, publish it now.\n                if toPublish.Defined() {\n                        for {\n                                err := rp.pubfunc(rp.ctx, toPublish)\n                                if err == nil {\n                                        break\n                                }\n                                // Keep retrying until we succeed or we abort.\n                                // TODO(steb): We could try pulling new values\n                                // off `update` but that's not critical (and\n                                // complicates this code a bit). We'll pull off\n                                // a new value on the next loop through.\n                                select {\n                                case <-time.After(rp.RetryTimeout):\n                                case <-rp.ctx.Done():\n                                        return\n                                }\n                        }\n                        lastPublished = toPublish\n                        toPublish = cid.Undef\n                }\n\n                // 3. Trigger anything waiting in `WaitPub`.\n                if waiter != nil {\n                        close(waiter)\n                }\n        }\n}",
+        "old_comment_raw": "Run contains the core logic of the `Republisher`.",
+        "new_code_raw": "func (rp *Republisher) Run(lastPublished cid.Cid) {\n        quick := time.NewTimer(0)\n        if !quick.Stop() {\n                <-quick.C\n        }\n        longer := time.NewTimer(0)\n        if !longer.Stop() {\n                <-longer.C\n        }\n\n        var toPublish cid.Cid\n        for rp.ctx.Err() == nil {\n                var waiter chan struct{}\n\n                select {\n                case <-rp.ctx.Done():\n                        return\n                case newValue := <-rp.update:\n                        // Skip already published values.\n                        if lastPublished.Equals(newValue) {\n                                // Break to the end of the switch to cleanup any\n                                // timers.\n                                toPublish = cid.Undef\n                                break\n                        }\n\n                        // If we aren't already waiting to publish something,\n                        // reset the long timeout.\n                        if !toPublish.Defined() {\n                                longer.Reset(rp.TimeoutLong)\n                        }\n\n                        // Always reset the short timeout.\n                        quick.Reset(rp.TimeoutShort)\n\n                        // Finally, set the new value to publish.\n                        toPublish = newValue\n                        continue\n                case waiter = <-rp.immediatePublish:\n                        // Make sure to grab the *latest* value to publish.\n                        select {\n                        case toPublish = <-rp.update:\n                        default:\n                        }\n\n                        // Avoid publishing duplicate values\n                        if !lastPublished.Equals(toPublish) {\n                                toPublish = cid.Undef\n                        }\n                case <-quick.C:\n                case <-longer.C:\n                }\n\n                // Cleanup, publish, and close waiters.\n\n                // 1. Stop any timers. Don't use the `if !t.Stop() { ... }`\n                //    idiom as these timers may not be running.\n\n                quick.Stop()\n                select {\n                case <-quick.C:\n                default:\n                }\n\n                longer.Stop()\n                select {\n                case <-longer.C:\n                default:\n                }\n\n                // 2. If we have a value to publish, publish it now.\n                if toPublish.Defined() {\n                        for {\n                                err := rp.pubfunc(rp.ctx, toPublish)\n                                if err == nil {\n                                        break\n                                }\n                                // Keep retrying until we succeed or we abort.\n                                // TODO(steb): We could try pulling new values\n                                // off `update` but that's not critical (and\n                                // complicates this code a bit). We'll pull off\n                                // a new value on the next loop through.\n                                select {\n                                case <-time.After(rp.RetryTimeout):\n                                case <-rp.ctx.Done():\n                                        return\n                                }\n                        }\n                        lastPublished = toPublish\n                        toPublish = cid.Undef\n                }\n\n                // 3. Trigger anything waiting in `WaitPub`.\n                if waiter != nil {\n                        close(waiter)\n                }\n        }\n}",
+        "new_comment_raw": "Run contains the core logic of the `Republisher`.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/ipfs/go-mfs/pull/53#discussion_r246846256#new",
+        "old_code_raw": "func (rp *Republisher) Run(lastPublished cid.Cid) {\n        quick := time.NewTimer(0)\n        if !quick.Stop() {\n                <-quick.C\n        }\n        longer := time.NewTimer(0)\n        if !longer.Stop() {\n                <-longer.C\n        }\n\n        var toPublish cid.Cid\n        for rp.ctx.Err() == nil {\n                var waiter chan struct{}\n\n                select {\n                case <-rp.ctx.Done():\n                        return\n                case newValue := <-rp.update:\n                        // Skip already published values.\n                        if lastPublished.Equals(newValue) {\n                                // Break to the end of the switch to cleanup any\n                                // timers.\n                                toPublish = cid.Undef\n                                break\n                        }\n\n                        // If we aren't already waiting to publish something,\n                        // reset the long timeout.\n                        if !toPublish.Defined() {\n                                longer.Reset(rp.TimeoutLong)\n                        }\n\n                        // Always reset the short timeout.\n                        quick.Reset(rp.TimeoutShort)\n\n                        // Finally, set the new value to publish.\n                        toPublish = newValue\n                        continue\n                case waiter = <-rp.immediatePublish:\n                        // Make sure to grab the *latest* value to publish.\n                        select {\n                        case toPublish = <-rp.update:\n                        default:\n                        }\n\n                        // Avoid publishing duplicate values\n                        if !lastPublished.Equals(toPublish) {\n                                toPublish = cid.Undef\n                        }\n                case <-quick.C:\n                case <-longer.C:\n                }\n\n                // Cleanup, publish, and close waiters.\n\n                // 1. Stop any timers. Don't use the `if !t.Stop() { ... }`\n                //    idiom as these timers may not be running.\n\n                quick.Stop()\n                select {\n                case <-quick.C:\n                default:\n                }\n\n                longer.Stop()\n                select {\n                case <-longer.C:\n                default:\n                }\n\n                // 2. If we have a value to publish, publish it now.\n                if toPublish.Defined() {\n                        for {\n                                err := rp.pubfunc(rp.ctx, toPublish)\n                                if err == nil {\n                                        break\n                                }\n                                // Keep retrying until we succeed or we abort.\n                                // TODO(steb): We could try pulling new values\n                                // off `update` but that's not critical (and\n                                // complicates this code a bit). We'll pull off\n                                // a new value on the next loop through.\n                                select {\n                                case <-time.After(rp.RetryTimeout):\n                                case <-rp.ctx.Done():\n                                        return\n                                }\n                        }\n                        lastPublished = toPublish\n                        toPublish = cid.Undef\n                }\n\n                // 3. Trigger anything waiting in `WaitPub`.\n                if waiter != nil {\n                        close(waiter)\n                }\n        }\n}",
+        "old_comment_raw": "Run contains the core logic of the `Republisher`.",
+        "new_code_raw": "func (rp *Republisher) Run(lastPublished cid.Cid) {\n        quick := time.NewTimer(0)\n        if !quick.Stop() {\n                <-quick.C\n        }\n        longer := time.NewTimer(0)\n        if !longer.Stop() {\n                <-longer.C\n        }\n\n        var toPublish cid.Cid\n        for rp.ctx.Err() == nil {\n                var waiter chan struct{}\n\n                select {\n                case <-rp.ctx.Done():\n                        return\n                case newValue := <-rp.update:\n                        // Skip already published values.\n                        if lastPublished.Equals(newValue) {\n                                // Break to the end of the switch to cleanup any\n                                // timers.\n                                toPublish = cid.Undef\n                                break\n                        }\n\n                        // If we aren't already waiting to publish something,\n                        // reset the long timeout.\n                        if !toPublish.Defined() {\n                                longer.Reset(rp.TimeoutLong)\n                        }\n\n                        // Always reset the short timeout.\n                        quick.Reset(rp.TimeoutShort)\n\n                        // Finally, set the new value to publish.\n                        toPublish = newValue\n                        continue\n                case waiter = <-rp.immediatePublish:\n                        // Make sure to grab the *latest* value to publish.\n                        select {\n                        case toPublish = <-rp.update:\n                        default:\n                        }\n\n                        // Avoid publishing duplicate values\n                        if !lastPublished.Equals(toPublish) {\n                                toPublish = cid.Undef\n                        }\n                case <-quick.C:\n                case <-longer.C:\n                }\n\n                // Cleanup, publish, and close waiters.\n\n                // 1. Stop any timers. Don't use the `if !t.Stop() { ... }`\n                //    idiom as these timers may not be running.\n\n                quick.Stop()\n                select {\n                case <-quick.C:\n                default:\n                }\n\n                longer.Stop()\n                select {\n                case <-longer.C:\n                default:\n                }\n\n                // 2. If we have a value to publish, publish it now.\n                if toPublish.Defined() {\n                        for {\n                                err := rp.pubfunc(rp.ctx, toPublish)\n                                if err == nil {\n                                        break\n                                }\n                                // Keep retrying until we succeed or we abort.\n                                // TODO(steb): We could try pulling new values\n                                // off `update` but that's not critical (and\n                                // complicates this code a bit). We'll pull off\n                                // a new value on the next loop through.\n                                select {\n                                case <-time.After(rp.RetryTimeout):\n                                case <-rp.ctx.Done():\n                                        return\n                                }\n                        }\n                        lastPublished = toPublish\n                        toPublish = cid.Undef\n                }\n\n                // 3. Trigger anything waiting in `WaitPub`.\n                if waiter != nil {\n                        close(waiter)\n                }\n        }\n}",
+        "new_comment_raw": "Run contains the core logic of the `Republisher`.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "#old",
+        "old_code_raw": "func EncodeError(ctx context.Context, err error, w http.ResponseWriter) {\n        if err == nil {\n                return\n        }\n\n        code := platform.ErrorCode(err)\n        httpCode, ok := statusCodePlatformError[code]\n        if !ok {\n                httpCode = http.StatusBadRequest\n        }\n        w.Header().Set(PlatformErrorCodeHeader, code)\n        w.Header().Set(\"Content-Type\", \"application/json; charset=utf-8\")\n        w.WriteHeader(httpCode)\n        var e error\n        if pe, ok := err.(*platform.Error); ok {\n                e = &platform.Error{\n                        Code: code,\n                        Op:   platform.ErrorOp(err),\n                        Msg:  platform.ErrorMessage(err),\n                        Err:  pe.Err,\n                }\n        } else {\n                e = &platform.Error{\n                        Code: platform.EInternal,\n                        Err:  err,\n                }\n        }\n        b, _ := json.Marshal(e)\n        _, _ = w.Write(b)\n}",
+        "old_comment_raw": "EncodeError encodes err with the appropriate status code and format, sets the X-Influx-Error and X-Influx-Reference headers on the response, and sets the response status to the corresponding status code.",
+        "new_code_raw": "func EncodeError(ctx context.Context, err error, w http.ResponseWriter) {\n        if err == nil {\n                return\n        }\n\n        code := platform.ErrorCode(err)\n        httpCode, ok := statusCodePlatformError[code]\n        if !ok {\n                httpCode = http.StatusBadRequest\n        }\n        w.Header().Set(PlatformErrorCodeHeader, code)\n        w.Header().Set(\"Content-Type\", \"application/json; charset=utf-8\")\n        w.WriteHeader(httpCode)\n        var e error\n        if pe, ok := err.(*platform.Error); ok {\n                e = &platform.Error{\n                        Code: code,\n                        Op:   platform.ErrorOp(err),\n                        Msg:  platform.ErrorMessage(err),\n                        Err:  pe.Err,\n                }\n        } else {\n                e = &platform.Error{\n                        Code: platform.EInternal,\n                        Err:  err,\n                }\n        }\n        b, _ := json.Marshal(e)\n        _, _ = w.Write(b)\n}",
+        "new_comment_raw": "EncodeError encodes err with the appropriate status code and format, sets the X-Influx-Error and X-Influx-Reference headers on the response, and sets the response status to the corresponding status code.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "#new",
+        "old_code_raw": "func EncodeError(ctx context.Context, err error, w http.ResponseWriter) {\n        if err == nil {\n                return\n        }\n\n        code := platform.ErrorCode(err)\n        httpCode, ok := statusCodePlatformError[code]\n        if !ok {\n                httpCode = http.StatusBadRequest\n        }\n        w.Header().Set(PlatformErrorCodeHeader, code)\n        w.Header().Set(\"Content-Type\", \"application/json; charset=utf-8\")\n        w.WriteHeader(httpCode)\n        var e error\n        if pe, ok := err.(*platform.Error); ok {\n                e = &platform.Error{\n                        Code: code,\n                        Op:   platform.ErrorOp(err),\n                        Msg:  platform.ErrorMessage(err),\n                        Err:  pe.Err,\n                }\n        } else {\n                e = &platform.Error{\n                        Code: platform.EInternal,\n                        Err:  err,\n                }\n        }\n        b, _ := json.Marshal(e)\n        _, _ = w.Write(b)\n}",
+        "old_comment_raw": "EncodeError encodes err with the appropriate status code and format, sets the X-Platform-Error-Code headers on the response.",
+        "new_code_raw": "func EncodeError(ctx context.Context, err error, w http.ResponseWriter) {\n        if err == nil {\n                return\n        }\n\n        code := platform.ErrorCode(err)\n        httpCode, ok := statusCodePlatformError[code]\n        if !ok {\n                httpCode = http.StatusBadRequest\n        }\n        w.Header().Set(PlatformErrorCodeHeader, code)\n        w.Header().Set(\"Content-Type\", \"application/json; charset=utf-8\")\n        w.WriteHeader(httpCode)\n        var e error\n        if pe, ok := err.(*platform.Error); ok {\n                e = &platform.Error{\n                        Code: code,\n                        Op:   platform.ErrorOp(err),\n                        Msg:  platform.ErrorMessage(err),\n                        Err:  pe.Err,\n                }\n        } else {\n                e = &platform.Error{\n                        Code: platform.EInternal,\n                        Err:  err,\n                }\n        }\n        b, _ := json.Marshal(e)\n        _, _ = w.Write(b)\n}",
+        "new_comment_raw": "EncodeError encodes err with the appropriate status code and format, sets the X-Platform-Error-Code headers on the response.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/grpc/grpc-go/pull/2681#discussion_r268913198#old",
+        "old_code_raw": "func (lb *lbBalancer) refreshSubConns(backendAddrs []resolver.Address, fromGRPCLBServer bool) {\n        defer func() {\n                // Regenerate and update picker after refreshing subconns because with\n                // cache, even if SubConn was newed/removed, there might be no state\n                // changes (the subconn will be kept in cache, not actually\n                // newed/removed).\n                lb.updateStateAndPicker(true, true)\n        }()\n\n        lb.inFallback = !fromGRPCLBServer\n\n        opts := balancer.NewSubConnOptions{}\n        if fromGRPCLBServer {\n                opts.CredsBundle = lb.grpclbBackendCreds\n        }\n        lb.backendAddrs = nil\n        if lb.usePickFirst {\n                var sc balancer.SubConn\n                for _, sc = range lb.subConns {\n                        break\n                }\n                if sc != nil {\n                        sc.UpdateAddresses(backendAddrs)\n                        sc.Connect()\n                        return\n                }\n                // This bypasses the cc wrapper with SubConn cache.\n                sc, err := lb.cc.cc.NewSubConn(backendAddrs, opts)\n                if err != nil {\n                        grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                        return\n                }\n                sc.Connect()\n                lb.subConns[backendAddrs[0]] = sc\n                lb.scStates[sc] = connectivity.Idle\n                return\n        }\n        // addrsSet is the set converted from backendAddrs, it's used to quick\n        // lookup for an address.\n        addrsSet := make(map[resolver.Address]struct{})\n        // Create new SubConns.\n        for _, addr := range backendAddrs {\n                addrWithoutMD := addr\n                addrWithoutMD.Metadata = nil\n                addrsSet[addrWithoutMD] = struct{}{}\n                lb.backendAddrs = append(lb.backendAddrs, addrWithoutMD)\n                if _, ok := lb.subConns[addrWithoutMD]; !ok {\n                        // Use addrWithMD to create the SubConn.\n                        sc, err := lb.cc.NewSubConn([]resolver.Address{addr}, opts)\n                        if err != nil {\n                                grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                                continue\n                        }\n                        lb.subConns[addrWithoutMD] = sc // Use the addr without MD as key for the map.\n                        if _, ok := lb.scStates[sc]; !ok {\n                                // Only set state of new sc to IDLE. The state could already be\n                                // READY for cached SubConns.\n                                lb.scStates[sc] = connectivity.Idle\n                        }\n                        sc.Connect()\n                }\n        }\n        for a, sc := range lb.subConns {\n                // a was removed by resolver.\n                if _, ok := addrsSet[a]; !ok {\n                        lb.cc.RemoveSubConn(sc)\n                        delete(lb.subConns, a)\n                        // Keep the state of this sc in b.scStates until sc's state becomes Shutdown.\n                        // The entry will be deleted in HandleSubConnStateChange.\n                }\n        }\n}",
+        "old_comment_raw": "refreshSubConns creates/removes SubConns with backendAddrs.",
+        "new_code_raw": "func (lb *lbBalancer) refreshSubConns(backendAddrs []resolver.Address, fromGRPCLBServer bool) {\n        defer func() {\n                // Regenerate and update picker after refreshing subconns because with\n                // cache, even if SubConn was newed/removed, there might be no state\n                // changes (the subconn will be kept in cache, not actually\n                // newed/removed).\n                lb.updateStateAndPicker(true, true)\n        }()\n\n        lb.inFallback = !fromGRPCLBServer\n\n        opts := balancer.NewSubConnOptions{}\n        if fromGRPCLBServer {\n                opts.CredsBundle = lb.grpclbBackendCreds\n        }\n        lb.backendAddrs = nil\n        if lb.usePickFirst {\n                var sc balancer.SubConn\n                for _, sc = range lb.subConns {\n                        break\n                }\n                if sc != nil {\n                        sc.UpdateAddresses(backendAddrs)\n                        sc.Connect()\n                        return\n                }\n                // This bypasses the cc wrapper with SubConn cache.\n                sc, err := lb.cc.cc.NewSubConn(backendAddrs, opts)\n                if err != nil {\n                        grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                        return\n                }\n                sc.Connect()\n                lb.subConns[backendAddrs[0]] = sc\n                lb.scStates[sc] = connectivity.Idle\n                return\n        }\n        // addrsSet is the set converted from backendAddrs, it's used to quick\n        // lookup for an address.\n        addrsSet := make(map[resolver.Address]struct{})\n        // Create new SubConns.\n        for _, addr := range backendAddrs {\n                addrWithoutMD := addr\n                addrWithoutMD.Metadata = nil\n                addrsSet[addrWithoutMD] = struct{}{}\n                lb.backendAddrs = append(lb.backendAddrs, addrWithoutMD)\n                if _, ok := lb.subConns[addrWithoutMD]; !ok {\n                        // Use addrWithMD to create the SubConn.\n                        sc, err := lb.cc.NewSubConn([]resolver.Address{addr}, opts)\n                        if err != nil {\n                                grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                                continue\n                        }\n                        lb.subConns[addrWithoutMD] = sc // Use the addr without MD as key for the map.\n                        if _, ok := lb.scStates[sc]; !ok {\n                                // Only set state of new sc to IDLE. The state could already be\n                                // READY for cached SubConns.\n                                lb.scStates[sc] = connectivity.Idle\n                        }\n                        sc.Connect()\n                }\n        }\n        for a, sc := range lb.subConns {\n                // a was removed by resolver.\n                if _, ok := addrsSet[a]; !ok {\n                        lb.cc.RemoveSubConn(sc)\n                        delete(lb.subConns, a)\n                        // Keep the state of this sc in b.scStates until sc's state becomes Shutdown.\n                        // The entry will be deleted in HandleSubConnStateChange.\n                }\n        }\n}",
+        "new_comment_raw": "refreshSubConns creates/removes SubConns with backendAddrs.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/grpc/grpc-go/pull/2681#discussion_r268913198#new",
+        "old_code_raw": "func (lb *lbBalancer) refreshSubConns(backendAddrs []resolver.Address, fromGRPCLBServer bool) {\n        defer func() {\n                // Regenerate and update picker after refreshing subconns because with\n                // cache, even if SubConn was newed/removed, there might be no state\n                // changes (the subconn will be kept in cache, not actually\n                // newed/removed).\n                lb.updateStateAndPicker(true, true)\n        }()\n\n        lb.inFallback = !fromGRPCLBServer\n\n        opts := balancer.NewSubConnOptions{}\n        if fromGRPCLBServer {\n                opts.CredsBundle = lb.grpclbBackendCreds\n        }\n        lb.backendAddrs = nil\n        if lb.usePickFirst {\n                var sc balancer.SubConn\n                for _, sc = range lb.subConns {\n                        break\n                }\n                if sc != nil {\n                        sc.UpdateAddresses(backendAddrs)\n                        sc.Connect()\n                        return\n                }\n                // This bypasses the cc wrapper with SubConn cache.\n                sc, err := lb.cc.cc.NewSubConn(backendAddrs, opts)\n                if err != nil {\n                        grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                        return\n                }\n                sc.Connect()\n                lb.subConns[backendAddrs[0]] = sc\n                lb.scStates[sc] = connectivity.Idle\n                return\n        }\n        // addrsSet is the set converted from backendAddrs, it's used to quick\n        // lookup for an address.\n        addrsSet := make(map[resolver.Address]struct{})\n        // Create new SubConns.\n        for _, addr := range backendAddrs {\n                addrWithoutMD := addr\n                addrWithoutMD.Metadata = nil\n                addrsSet[addrWithoutMD] = struct{}{}\n                lb.backendAddrs = append(lb.backendAddrs, addrWithoutMD)\n                if _, ok := lb.subConns[addrWithoutMD]; !ok {\n                        // Use addrWithMD to create the SubConn.\n                        sc, err := lb.cc.NewSubConn([]resolver.Address{addr}, opts)\n                        if err != nil {\n                                grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                                continue\n                        }\n                        lb.subConns[addrWithoutMD] = sc // Use the addr without MD as key for the map.\n                        if _, ok := lb.scStates[sc]; !ok {\n                                // Only set state of new sc to IDLE. The state could already be\n                                // READY for cached SubConns.\n                                lb.scStates[sc] = connectivity.Idle\n                        }\n                        sc.Connect()\n                }\n        }\n        for a, sc := range lb.subConns {\n                // a was removed by resolver.\n                if _, ok := addrsSet[a]; !ok {\n                        lb.cc.RemoveSubConn(sc)\n                        delete(lb.subConns, a)\n                        // Keep the state of this sc in b.scStates until sc's state becomes Shutdown.\n                        // The entry will be deleted in HandleSubConnStateChange.\n                }\n        }\n}",
+        "old_comment_raw": "refreshSubConns creates/removes SubConns with backendAddrs, and refreshes balancer state and picker.",
+        "new_code_raw": "func (lb *lbBalancer) refreshSubConns(backendAddrs []resolver.Address, fromGRPCLBServer bool) {\n        defer func() {\n                // Regenerate and update picker after refreshing subconns because with\n                // cache, even if SubConn was newed/removed, there might be no state\n                // changes (the subconn will be kept in cache, not actually\n                // newed/removed).\n                lb.updateStateAndPicker(true, true)\n        }()\n\n        lb.inFallback = !fromGRPCLBServer\n\n        opts := balancer.NewSubConnOptions{}\n        if fromGRPCLBServer {\n                opts.CredsBundle = lb.grpclbBackendCreds\n        }\n        lb.backendAddrs = nil\n        if lb.usePickFirst {\n                var sc balancer.SubConn\n                for _, sc = range lb.subConns {\n                        break\n                }\n                if sc != nil {\n                        sc.UpdateAddresses(backendAddrs)\n                        sc.Connect()\n                        return\n                }\n                // This bypasses the cc wrapper with SubConn cache.\n                sc, err := lb.cc.cc.NewSubConn(backendAddrs, opts)\n                if err != nil {\n                        grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                        return\n                }\n                sc.Connect()\n                lb.subConns[backendAddrs[0]] = sc\n                lb.scStates[sc] = connectivity.Idle\n                return\n        }\n        // addrsSet is the set converted from backendAddrs, it's used to quick\n        // lookup for an address.\n        addrsSet := make(map[resolver.Address]struct{})\n        // Create new SubConns.\n        for _, addr := range backendAddrs {\n                addrWithoutMD := addr\n                addrWithoutMD.Metadata = nil\n                addrsSet[addrWithoutMD] = struct{}{}\n                lb.backendAddrs = append(lb.backendAddrs, addrWithoutMD)\n                if _, ok := lb.subConns[addrWithoutMD]; !ok {\n                        // Use addrWithMD to create the SubConn.\n                        sc, err := lb.cc.NewSubConn([]resolver.Address{addr}, opts)\n                        if err != nil {\n                                grpclog.Warningf(\"grpclb: failed to create new SubConn: %v\", err)\n                                continue\n                        }\n                        lb.subConns[addrWithoutMD] = sc // Use the addr without MD as key for the map.\n                        if _, ok := lb.scStates[sc]; !ok {\n                                // Only set state of new sc to IDLE. The state could already be\n                                // READY for cached SubConns.\n                                lb.scStates[sc] = connectivity.Idle\n                        }\n                        sc.Connect()\n                }\n        }\n        for a, sc := range lb.subConns {\n                // a was removed by resolver.\n                if _, ok := addrsSet[a]; !ok {\n                        lb.cc.RemoveSubConn(sc)\n                        delete(lb.subConns, a)\n                        // Keep the state of this sc in b.scStates until sc's state becomes Shutdown.\n                        // The entry will be deleted in HandleSubConnStateChange.\n                }\n        }\n}",
+        "new_comment_raw": "refreshSubConns creates/removes SubConns with backendAddrs, and refreshes balancer state and picker.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/livepeer/go-livepeer/pull/657#discussion_r244421875#old",
+        "old_code_raw": "func (r *recipient) RedeemWinningTickets(sessionIDs []string) error {\n        tickets, sigs, recipientRands, err := r.store.LoadWinningTickets(sessionIDs)\n        if err != nil {\n                return err\n        }\n        for i := 0; i < len(tickets); i++ {\n                if err := r.redeemWinningTicket(tickets[i], sigs[i], recipientRands[i]); err != nil {\n                        return err\n                }\n        }\n        return nil\n}",
+        "old_comment_raw": "RedeemWinningTicket redeems all winning tickets with the broker for a session ID",
+        "new_code_raw": "func (r *recipient) RedeemWinningTickets(sessionIDs []string) error {\n        tickets, sigs, recipientRands, err := r.store.LoadWinningTickets(sessionIDs)\n        if err != nil {\n                return err\n        }\n        for i := 0; i < len(tickets); i++ {\n                if err := r.redeemWinningTicket(tickets[i], sigs[i], recipientRands[i]); err != nil {\n                        return err\n                }\n        }\n        return nil\n}",
+        "new_comment_raw": "RedeemWinningTicket redeems all winning tickets with the broker for a session ID",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/livepeer/go-livepeer/pull/657#discussion_r244421875#new",
+        "old_code_raw": "func (r *recipient) RedeemWinningTickets(sessionIDs []string) error {\n        tickets, sigs, recipientRands, err := r.store.LoadWinningTickets(sessionIDs)\n        if err != nil {\n                return err\n        }\n        for i := 0; i < len(tickets); i++ {\n                if err := r.redeemWinningTicket(tickets[i], sigs[i], recipientRands[i]); err != nil {\n                        return err\n                }\n        }\n        return nil\n}",
+        "old_comment_raw": "RedeemWinningTicket redeems all winning tickets with the broker for a all sessionIDs",
+        "new_code_raw": "func (r *recipient) RedeemWinningTickets(sessionIDs []string) error {\n        tickets, sigs, recipientRands, err := r.store.LoadWinningTickets(sessionIDs)\n        if err != nil {\n                return err\n        }\n        for i := 0; i < len(tickets); i++ {\n                if err := r.redeemWinningTicket(tickets[i], sigs[i], recipientRands[i]); err != nil {\n                        return err\n                }\n        }\n        return nil\n}",
+        "new_comment_raw": "RedeemWinningTicket redeems all winning tickets with the broker for a all sessionIDs",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/i-love-flamingo/flamingo/commit/d678d9318a2e#old",
+        "old_code_raw": "func (m *Identifier) Authenticate(ctx context.Context, request *web.Request) web.Result {\n        if m.authenticateMethod != nil {\n                return m.authenticateMethod(m, ctx, request)\n        }\n        return nil\n}",
+        "old_comment_raw": "Identify an incoming request",
+        "new_code_raw": "func (m *Identifier) Authenticate(ctx context.Context, request *web.Request) web.Result {\n        if m.authenticateMethod != nil {\n                return m.authenticateMethod(m, ctx, request)\n        }\n        return nil\n}",
+        "new_comment_raw": "Identify an incoming request",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/i-love-flamingo/flamingo/commit/d678d9318a2e#new",
+        "old_code_raw": "func (m *Identifier) Authenticate(ctx context.Context, request *web.Request) web.Result {\n        if m.authenticateMethod != nil {\n                return m.authenticateMethod(m, ctx, request)\n        }\n        return nil\n}",
+        "old_comment_raw": "Authenticate an incoming request",
+        "new_code_raw": "func (m *Identifier) Authenticate(ctx context.Context, request *web.Request) web.Result {\n        if m.authenticateMethod != nil {\n                return m.authenticateMethod(m, ctx, request)\n        }\n        return nil\n}",
+        "new_comment_raw": "Authenticate an incoming request",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/mailgun/mailgun-go/commit/ac471bcc1eba#old",
+        "old_code_raw": "func (mg *MailgunImpl) GetStoredMessageRaw(id string) (StoredMessageRaw, error) {\n        url := generateStoredMessageUrl(mg, messagesEndpoint, id)\n        r := simplehttp.NewHTTPRequest(url)\n        r.SetBasicAuth(basicAuthUser, mg.ApiKey())\n        r.AddHeader(\"Accept\", \"message/rfc2822\")\n\n        var response StoredMessageRaw\n        err := getResponseFromJSON(r, &response)\n        return response, err\n\n}",
+        "old_comment_raw": "GetStoredMessage retrieves information about a received e-mail message.",
+        "new_code_raw": "func (mg *MailgunImpl) GetStoredMessageRaw(id string) (StoredMessageRaw, error) {\n        url := generateStoredMessageUrl(mg, messagesEndpoint, id)\n        r := simplehttp.NewHTTPRequest(url)\n        r.SetBasicAuth(basicAuthUser, mg.ApiKey())\n        r.AddHeader(\"Accept\", \"message/rfc2822\")\n\n        var response StoredMessageRaw\n        err := getResponseFromJSON(r, &response)\n        return response, err\n\n}",
+        "new_comment_raw": "GetStoredMessage retrieves information about a received e-mail message.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/mailgun/mailgun-go/commit/ac471bcc1eba#new",
+        "old_code_raw": "func (mg *MailgunImpl) GetStoredMessageRaw(id string) (StoredMessageRaw, error) {\n        url := generateStoredMessageUrl(mg, messagesEndpoint, id)\n        r := simplehttp.NewHTTPRequest(url)\n        r.SetBasicAuth(basicAuthUser, mg.ApiKey())\n        r.AddHeader(\"Accept\", \"message/rfc2822\")\n\n        var response StoredMessageRaw\n        err := getResponseFromJSON(r, &response)\n        return response, err\n\n}",
+        "old_comment_raw": "GetStoredMessageRaw retrieves the raw MIME body of a received e-mail message.",
+        "new_code_raw": "func (mg *MailgunImpl) GetStoredMessageRaw(id string) (StoredMessageRaw, error) {\n        url := generateStoredMessageUrl(mg, messagesEndpoint, id)\n        r := simplehttp.NewHTTPRequest(url)\n        r.SetBasicAuth(basicAuthUser, mg.ApiKey())\n        r.AddHeader(\"Accept\", \"message/rfc2822\")\n\n        var response StoredMessageRaw\n        err := getResponseFromJSON(r, &response)\n        return response, err\n\n}",
+        "new_comment_raw": "GetStoredMessageRaw retrieves the raw MIME body of a received e-mail message.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/gopcua/opcua/commit/22307d80b73e#old",
+        "old_code_raw": "func NewNodeMonitor(client *opcua.Client) (*NodeMonitor, error) {\n        m := &NodeMonitor{\n                client:           client,\n                nextClientHandle: 100,\n        }\n\n        return m, nil\n}",
+        "old_comment_raw": "New creates a new NodeMonitor",
+        "new_code_raw": "func NewNodeMonitor(client *opcua.Client) (*NodeMonitor, error) {\n        m := &NodeMonitor{\n                client:           client,\n                nextClientHandle: 100,\n        }\n\n        return m, nil\n}",
+        "new_comment_raw": "New creates a new NodeMonitor",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/gopcua/opcua/commit/22307d80b73e#new",
+        "old_code_raw": "func NewNodeMonitor(client *opcua.Client) (*NodeMonitor, error) {\n        m := &NodeMonitor{\n                client:           client,\n                nextClientHandle: 100,\n        }\n\n        return m, nil\n}",
+        "old_comment_raw": "NewNodeMonitor creates a new NodeMonitor",
+        "new_code_raw": "func NewNodeMonitor(client *opcua.Client) (*NodeMonitor, error) {\n        m := &NodeMonitor{\n                client:           client,\n                nextClientHandle: 100,\n        }\n\n        return m, nil\n}",
+        "new_comment_raw": "NewNodeMonitor creates a new NodeMonitor",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/larien/aprenda-go-com-testes/commit/60e25c9acc92#old",
+        "old_code_raw": "func (i *InMemoryPlayerStore) GetLeague() []Player {\n        var league []Player\n        for name, wins := range i.store {\n                league = append(league, Player{name, wins})\n        }\n        return league\n}",
+        "old_comment_raw": "GetLeague currently doesn't work, but it should return the player league",
+        "new_code_raw": "func (i *InMemoryPlayerStore) GetLeague() []Player {\n        var league []Player\n        for name, wins := range i.store {\n                league = append(league, Player{name, wins})\n        }\n        return league\n}",
+        "new_comment_raw": "GetLeague currently doesn't work, but it should return the player league",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/larien/aprenda-go-com-testes/commit/60e25c9acc92#new",
+        "old_code_raw": "func (i *InMemoryPlayerStore) GetLeague() []Player {\n        var league []Player\n        for name, wins := range i.store {\n                league = append(league, Player{name, wins})\n        }\n        return league\n}",
+        "old_comment_raw": "GetLeague returns a collection of Players",
+        "new_code_raw": "func (i *InMemoryPlayerStore) GetLeague() []Player {\n        var league []Player\n        for name, wins := range i.store {\n                league = append(league, Player{name, wins})\n        }\n        return league\n}",
+        "new_comment_raw": "GetLeague returns a collection of Players",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/opencost/opencost/commit/23ee52889394#old",
+        "old_code_raw": "func (ai *AtomicInt32) Set(value int32) {\n        atomic.StoreInt32((*int32)(ai), value)\n}",
+        "old_comment_raw": "Sets the bool value atomically",
+        "new_code_raw": "func (ai *AtomicInt32) Set(value int32) {\n        atomic.StoreInt32((*int32)(ai), value)\n}",
+        "new_comment_raw": "Sets the bool value atomically",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/opencost/opencost/commit/23ee52889394#new",
+        "old_code_raw": "func (ai *AtomicInt32) Set(value int32) {\n        atomic.StoreInt32((*int32)(ai), value)\n}",
+        "old_comment_raw": "Sets the int32 value atomically",
+        "new_code_raw": "func (ai *AtomicInt32) Set(value int32) {\n        atomic.StoreInt32((*int32)(ai), value)\n}",
+        "new_comment_raw": "Sets the int32 value atomically",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/smallstep/cli/commit/6ad024e90e54#old",
+        "old_code_raw": "func CreateAttestor(kms, name string) (Attestor, error) {\n        return newKMSSigner(kms, name)\n}",
+        "old_comment_raw": "CreateAttestor creates an attestor that will use `step-kms-plugin` with the given kms and uri.",
+        "new_code_raw": "func CreateAttestor(kms, name string) (Attestor, error) {\n        return newKMSSigner(kms, name)\n}",
+        "new_comment_raw": "CreateAttestor creates an attestor that will use `step-kms-plugin` with the given kms and uri.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/smallstep/cli/commit/6ad024e90e54#new",
+        "old_code_raw": "func CreateAttestor(kms, name string) (Attestor, error) {\n        return newKMSSigner(kms, name)\n}",
+        "old_comment_raw": "CreateAttestor creates an attestor that will use `step-kms-plugin` with the given kms and name.",
+        "new_code_raw": "func CreateAttestor(kms, name string) (Attestor, error) {\n        return newKMSSigner(kms, name)\n}",
+        "new_comment_raw": "CreateAttestor creates an attestor that will use `step-kms-plugin` with the given kms and name.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/FeatureBaseDB/featurebase/commit/4013cccb303a#old",
+        "old_code_raw": "func (g *memberSet) Close() error {\n        leaveErr := g.memberlist.Leave(5 * time.Second)\n        shutdownErr := g.memberlist.Shutdown()\n        if leaveErr != nil || shutdownErr != nil {\n                return fmt.Errorf(\"leaving: '%v', shutting down: '%v'\", leaveErr, shutdownErr)\n        }\n        return nil\n}",
+        "old_comment_raw": "Close implements the Closer interface.",
+        "new_code_raw": "func (g *memberSet) Close() error {\n        leaveErr := g.memberlist.Leave(5 * time.Second)\n        shutdownErr := g.memberlist.Shutdown()\n        if leaveErr != nil || shutdownErr != nil {\n                return fmt.Errorf(\"leaving: '%v', shutting down: '%v'\", leaveErr, shutdownErr)\n        }\n        return nil\n}",
+        "new_comment_raw": "Close implements the Closer interface.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/FeatureBaseDB/featurebase/commit/4013cccb303a#new",
+        "old_code_raw": "func (g *memberSet) Close() error {\n        leaveErr := g.memberlist.Leave(5 * time.Second)\n        shutdownErr := g.memberlist.Shutdown()\n        if leaveErr != nil || shutdownErr != nil {\n                return fmt.Errorf(\"leaving: '%v', shutting down: '%v'\", leaveErr, shutdownErr)\n        }\n        return nil\n}",
+        "old_comment_raw": "Close attempts to gracefully leaves the cluster, and finally calls shutdown after (at most) a timeout period.",
+        "new_code_raw": "func (g *memberSet) Close() error {\n        leaveErr := g.memberlist.Leave(5 * time.Second)\n        shutdownErr := g.memberlist.Shutdown()\n        if leaveErr != nil || shutdownErr != nil {\n                return fmt.Errorf(\"leaving: '%v', shutting down: '%v'\", leaveErr, shutdownErr)\n        }\n        return nil\n}",
+        "new_comment_raw": "Close attempts to gracefully leaves the cluster, and finally calls shutdown after (at most) a timeout period.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/OffchainLabs/arbitrum-classic/commit/7b1112509fb4#old",
+        "old_code_raw": "func (m *RPCServer) PendingCall(\n        _ *http.Request,\n        args *validatorserver.CallMessageArgs,\n        reply *validatorserver.CallMessageReply,\n) error {\n        ret, err := m.Server.PendingCall(context.Background(), args)\n        if err != nil || ret == nil {\n                return err\n        }\n        reply.RawVal = ret.RawVal\n        return nil\n}",
+        "old_comment_raw": "CallMessage takes a request from a client to process in a temporary context and return the result",
+        "new_code_raw": "func (m *RPCServer) PendingCall(\n        _ *http.Request,\n        args *validatorserver.CallMessageArgs,\n        reply *validatorserver.CallMessageReply,\n) error {\n        ret, err := m.Server.PendingCall(context.Background(), args)\n        if err != nil || ret == nil {\n                return err\n        }\n        reply.RawVal = ret.RawVal\n        return nil\n}",
+        "new_comment_raw": "CallMessage takes a request from a client to process in a temporary context and return the result",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/OffchainLabs/arbitrum-classic/commit/7b1112509fb4#new",
+        "old_code_raw": "func (m *RPCServer) PendingCall(\n        _ *http.Request,\n        args *validatorserver.CallMessageArgs,\n        reply *validatorserver.CallMessageReply,\n) error {\n        ret, err := m.Server.PendingCall(context.Background(), args)\n        if err != nil || ret == nil {\n                return err\n        }\n        reply.RawVal = ret.RawVal\n        return nil\n}",
+        "old_comment_raw": "PendingCall takes a request from a client to process in a temporary context and return the result",
+        "new_code_raw": "func (m *RPCServer) PendingCall(\n        _ *http.Request,\n        args *validatorserver.CallMessageArgs,\n        reply *validatorserver.CallMessageReply,\n) error {\n        ret, err := m.Server.PendingCall(context.Background(), args)\n        if err != nil || ret == nil {\n                return err\n        }\n        reply.RawVal = ret.RawVal\n        return nil\n}",
+        "new_comment_raw": "PendingCall takes a request from a client to process in a temporary context and return the result",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/helm/helm/commit/c55defe15b3f#old",
+        "old_code_raw": "func (m *manager) GetRepo(repoName string) (repo.IRepo, error) {\n        repoURL, err := m.service.GetRepoURLByName(repoName)\n        if err != nil {\n                return nil, err\n        }\n\n        return m.service.GetRepoByURL(repoURL)\n}",
+        "old_comment_raw": "GetRepo returns the repository with the given URL",
+        "new_code_raw": "func (m *manager) GetRepo(repoName string) (repo.IRepo, error) {\n        repoURL, err := m.service.GetRepoURLByName(repoName)\n        if err != nil {\n                return nil, err\n        }\n\n        return m.service.GetRepoByURL(repoURL)\n}",
+        "new_comment_raw": "GetRepo returns the repository with the given URL",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/helm/helm/commit/c55defe15b3f#new",
+        "old_code_raw": "func (m *manager) GetRepo(repoName string) (repo.IRepo, error) {\n        repoURL, err := m.service.GetRepoURLByName(repoName)\n        if err != nil {\n                return nil, err\n        }\n\n        return m.service.GetRepoByURL(repoURL)\n}",
+        "old_comment_raw": "GetRepo returns the repository with the given name",
+        "new_code_raw": "func (m *manager) GetRepo(repoName string) (repo.IRepo, error) {\n        repoURL, err := m.service.GetRepoURLByName(repoName)\n        if err != nil {\n                return nil, err\n        }\n\n        return m.service.GetRepoByURL(repoURL)\n}",
+        "new_comment_raw": "GetRepo returns the repository with the given name",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/weaveworks/scope/commit/4444a405e0f8#old",
+        "old_code_raw": "func Get() string {\n        if hostname := os.Getenv(\"SCOPE_HOSTNAME\"); hostname != \"\" {\n                return hostname\n        }\n        hostname, err := os.Hostname()\n        if err != nil {\n                return \"(unknown)\"\n        }\n        return hostname\n}",
+        "old_comment_raw": "Hostname returns the hostname of this host.",
+        "new_code_raw": "func Get() string {\n        if hostname := os.Getenv(\"SCOPE_HOSTNAME\"); hostname != \"\" {\n                return hostname\n        }\n        hostname, err := os.Hostname()\n        if err != nil {\n                return \"(unknown)\"\n        }\n        return hostname\n}",
+        "new_comment_raw": "Hostname returns the hostname of this host.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/weaveworks/scope/commit/4444a405e0f8#new",
+        "old_code_raw": "func Get() string {\n        if hostname := os.Getenv(\"SCOPE_HOSTNAME\"); hostname != \"\" {\n                return hostname\n        }\n        hostname, err := os.Hostname()\n        if err != nil {\n                return \"(unknown)\"\n        }\n        return hostname\n}",
+        "old_comment_raw": "Get returns the hostname of this host.",
+        "new_code_raw": "func Get() string {\n        if hostname := os.Getenv(\"SCOPE_HOSTNAME\"); hostname != \"\" {\n                return hostname\n        }\n        hostname, err := os.Hostname()\n        if err != nil {\n                return \"(unknown)\"\n        }\n        return hostname\n}",
+        "new_comment_raw": "Get returns the hostname of this host.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/FairwindsOps/nova/commit/74a025afef68#old",
+        "old_code_raw": "func (output Output) ToFile(filename string) error {\n        data, err := json.Marshal(output)\n        if err != nil {\n                klog.Errorf(\"Error marshaling json: %v\", err)\n                return err\n        }\n\n        err = ioutil.WriteFile(filename, data, 0644)\n        if err != nil {\n                klog.Errorf(\"Error writing to file %s: %v\", filename, err)\n        }\n        return nil\n}",
+        "old_comment_raw": "Send dispatches a message to file",
+        "new_code_raw": "func (output Output) ToFile(filename string) error {\n        data, err := json.Marshal(output)\n        if err != nil {\n                klog.Errorf(\"Error marshaling json: %v\", err)\n                return err\n        }\n\n        err = ioutil.WriteFile(filename, data, 0644)\n        if err != nil {\n                klog.Errorf(\"Error writing to file %s: %v\", filename, err)\n        }\n        return nil\n}",
+        "new_comment_raw": "Send dispatches a message to file",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/FairwindsOps/nova/commit/74a025afef68#new",
+        "old_code_raw": "func (output Output) ToFile(filename string) error {\n        data, err := json.Marshal(output)\n        if err != nil {\n                klog.Errorf(\"Error marshaling json: %v\", err)\n                return err\n        }\n\n        err = ioutil.WriteFile(filename, data, 0644)\n        if err != nil {\n                klog.Errorf(\"Error writing to file %s: %v\", filename, err)\n        }\n        return nil\n}",
+        "old_comment_raw": "ToFile dispatches a message to file",
+        "new_code_raw": "func (output Output) ToFile(filename string) error {\n        data, err := json.Marshal(output)\n        if err != nil {\n                klog.Errorf(\"Error marshaling json: %v\", err)\n                return err\n        }\n\n        err = ioutil.WriteFile(filename, data, 0644)\n        if err != nil {\n                klog.Errorf(\"Error writing to file %s: %v\", filename, err)\n        }\n        return nil\n}",
+        "new_comment_raw": "ToFile dispatches a message to file",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/target/goalert/commit/4a2918f41ee0#old",
+        "old_code_raw": "func (d *datagen) NewAlertLogs(alert alert.Alert) {\n\n        // Add 'created' event log\n        d.AlertLogs = append(d.AlertLogs, AlertLog{\n                AlertID:   alert.ID,\n                Timestamp: alert.CreatedAt,\n                Event:     \"created\",\n                Message:   \"\",\n        })\n\n        // Add 'closed' event log\n        if alert.Status == \"closed\" {\n                d.AlertLogs = append(d.AlertLogs, AlertLog{\n                        AlertID:   alert.ID,\n                        Timestamp: gofakeit.DateRange(alert.CreatedAt, alert.CreatedAt.Add(30*time.Minute)),\n                        Event:     \"closed\",\n                        Message:   \"\",\n                })\n        }\n}",
+        "old_comment_raw": "NewAlertLog will generate an alert log with the provided status.",
+        "new_code_raw": "func (d *datagen) NewAlertLogs(alert alert.Alert) {\n\n        // Add 'created' event log\n        d.AlertLogs = append(d.AlertLogs, AlertLog{\n                AlertID:   alert.ID,\n                Timestamp: alert.CreatedAt,\n                Event:     \"created\",\n                Message:   \"\",\n        })\n\n        // Add 'closed' event log\n        if alert.Status == \"closed\" {\n                d.AlertLogs = append(d.AlertLogs, AlertLog{\n                        AlertID:   alert.ID,\n                        Timestamp: gofakeit.DateRange(alert.CreatedAt, alert.CreatedAt.Add(30*time.Minute)),\n                        Event:     \"closed\",\n                        Message:   \"\",\n                })\n        }\n}",
+        "new_comment_raw": "NewAlertLog will generate an alert log with the provided status.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/target/goalert/commit/4a2918f41ee0#new",
+        "old_code_raw": "func (d *datagen) NewAlertLogs(alert alert.Alert) {\n\n        // Add 'created' event log\n        d.AlertLogs = append(d.AlertLogs, AlertLog{\n                AlertID:   alert.ID,\n                Timestamp: alert.CreatedAt,\n                Event:     \"created\",\n                Message:   \"\",\n        })\n\n        // Add 'closed' event log\n        if alert.Status == \"closed\" {\n                d.AlertLogs = append(d.AlertLogs, AlertLog{\n                        AlertID:   alert.ID,\n                        Timestamp: gofakeit.DateRange(alert.CreatedAt, alert.CreatedAt.Add(30*time.Minute)),\n                        Event:     \"closed\",\n                        Message:   \"\",\n                })\n        }\n}",
+        "old_comment_raw": "NewAlertLog will generate an alert log for the provided alert.",
+        "new_code_raw": "func (d *datagen) NewAlertLogs(alert alert.Alert) {\n\n        // Add 'created' event log\n        d.AlertLogs = append(d.AlertLogs, AlertLog{\n                AlertID:   alert.ID,\n                Timestamp: alert.CreatedAt,\n                Event:     \"created\",\n                Message:   \"\",\n        })\n\n        // Add 'closed' event log\n        if alert.Status == \"closed\" {\n                d.AlertLogs = append(d.AlertLogs, AlertLog{\n                        AlertID:   alert.ID,\n                        Timestamp: gofakeit.DateRange(alert.CreatedAt, alert.CreatedAt.Add(30*time.Minute)),\n                        Event:     \"closed\",\n                        Message:   \"\",\n                })\n        }\n}",
+        "new_comment_raw": "NewAlertLog will generate an alert log for the provided alert.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/go-mysql-org/go-mysql/commit/cc2bb58b8898#old",
+        "old_code_raw": "func (c *Canal) SetTableCache(db []byte, table []byte, schema *schema.Table) {\n        key := fmt.Sprintf(\"%s.%s\", db, table)\n        c.tableLock.Lock()\n        c.tables[key] = schema\n        if c.cfg.DiscardNoMetaRowEvent {\n                // if get table info success, delete this key from errorTablesGetTime\n                delete(c.errorTablesGetTime, key)\n        }\n        c.tableLock.Unlock()\n}",
+        "old_comment_raw": "SetTableCache sets table cache value for the given key",
+        "new_code_raw": "func (c *Canal) SetTableCache(db []byte, table []byte, schema *schema.Table) {\n        key := fmt.Sprintf(\"%s.%s\", db, table)\n        c.tableLock.Lock()\n        c.tables[key] = schema\n        if c.cfg.DiscardNoMetaRowEvent {\n                // if get table info success, delete this key from errorTablesGetTime\n                delete(c.errorTablesGetTime, key)\n        }\n        c.tableLock.Unlock()\n}",
+        "new_comment_raw": "SetTableCache sets table cache value for the given key",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/go-mysql-org/go-mysql/commit/cc2bb58b8898#new",
+        "old_code_raw": "func (c *Canal) SetTableCache(db []byte, table []byte, schema *schema.Table) {\n        key := fmt.Sprintf(\"%s.%s\", db, table)\n        c.tableLock.Lock()\n        c.tables[key] = schema\n        if c.cfg.DiscardNoMetaRowEvent {\n                // if get table info success, delete this key from errorTablesGetTime\n                delete(c.errorTablesGetTime, key)\n        }\n        c.tableLock.Unlock()\n}",
+        "old_comment_raw": "SetTableCache sets table cache value for the given table",
+        "new_code_raw": "func (c *Canal) SetTableCache(db []byte, table []byte, schema *schema.Table) {\n        key := fmt.Sprintf(\"%s.%s\", db, table)\n        c.tableLock.Lock()\n        c.tables[key] = schema\n        if c.cfg.DiscardNoMetaRowEvent {\n                // if get table info success, delete this key from errorTablesGetTime\n                delete(c.errorTablesGetTime, key)\n        }\n        c.tableLock.Unlock()\n}",
+        "new_comment_raw": "SetTableCache sets table cache value for the given table",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/thanos-io/thanos/commit/b3d81ec8254b#old",
+        "old_code_raw": "func (p *Prometheus) Start() error {\n        p.running = true\n        if err := p.db.Close(); err != nil {\n                return err\n        }\n\n        p.cmd = exec.Command(\n                \"prometheus\",\n                \"--storage.tsdb.path=\"+p.dir,\n                \"--web.listen-address=\"+p.addr,\n                \"--config.file=\"+filepath.Join(p.dir, \"prometheus.yml\"),\n        )\n        go func() {\n                if b, err := p.cmd.CombinedOutput(); err != nil {\n                        fmt.Fprintln(os.Stderr, \"running Prometheus failed\", err)\n                        fmt.Fprintln(os.Stderr, string(b))\n                }\n        }()\n        time.Sleep(time.Second)\n\n        return nil\n}",
+        "old_comment_raw": "Start runs the Prometheus instance until the context is canceled.",
+        "new_code_raw": "func (p *Prometheus) Start() error {\n        p.running = true\n        if err := p.db.Close(); err != nil {\n                return err\n        }\n\n        p.cmd = exec.Command(\n                \"prometheus\",\n                \"--storage.tsdb.path=\"+p.dir,\n                \"--web.listen-address=\"+p.addr,\n                \"--config.file=\"+filepath.Join(p.dir, \"prometheus.yml\"),\n        )\n        go func() {\n                if b, err := p.cmd.CombinedOutput(); err != nil {\n                        fmt.Fprintln(os.Stderr, \"running Prometheus failed\", err)\n                        fmt.Fprintln(os.Stderr, string(b))\n                }\n        }()\n        time.Sleep(time.Second)\n\n        return nil\n}",
+        "new_comment_raw": "Start runs the Prometheus instance until the context is canceled.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/thanos-io/thanos/commit/b3d81ec8254b#new",
+        "old_code_raw": "func (p *Prometheus) Start() error {\n        p.running = true\n        if err := p.db.Close(); err != nil {\n                return err\n        }\n\n        p.cmd = exec.Command(\n                \"prometheus\",\n                \"--storage.tsdb.path=\"+p.dir,\n                \"--web.listen-address=\"+p.addr,\n                \"--config.file=\"+filepath.Join(p.dir, \"prometheus.yml\"),\n        )\n        go func() {\n                if b, err := p.cmd.CombinedOutput(); err != nil {\n                        fmt.Fprintln(os.Stderr, \"running Prometheus failed\", err)\n                        fmt.Fprintln(os.Stderr, string(b))\n                }\n        }()\n        time.Sleep(time.Second)\n\n        return nil\n}",
+        "old_comment_raw": "Start running the Prometheus instance and return.",
+        "new_code_raw": "func (p *Prometheus) Start() error {\n        p.running = true\n        if err := p.db.Close(); err != nil {\n                return err\n        }\n\n        p.cmd = exec.Command(\n                \"prometheus\",\n                \"--storage.tsdb.path=\"+p.dir,\n                \"--web.listen-address=\"+p.addr,\n                \"--config.file=\"+filepath.Join(p.dir, \"prometheus.yml\"),\n        )\n        go func() {\n                if b, err := p.cmd.CombinedOutput(); err != nil {\n                        fmt.Fprintln(os.Stderr, \"running Prometheus failed\", err)\n                        fmt.Fprintln(os.Stderr, string(b))\n                }\n        }()\n        time.Sleep(time.Second)\n\n        return nil\n}",
+        "new_comment_raw": "Start running the Prometheus instance and return.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/okteto/okteto/commit/a4897660a3e5#old",
+        "old_code_raw": "func MinimumNArgsAccepted(n int, url string) cobra.PositionalArgs {\n        return func(cmd *cobra.Command, args []string) error {\n                var hint string\n                if url != \"\" {\n                        hint = fmt.Sprintf(\"Visit %s for more information.\", url)\n                }\n                if len(args) < n {\n                        return oktetoErrors.UserError{\n                                E:    fmt.Errorf(\"%q requires at least %d arg(s), but only received %d\", cmd.CommandPath(), n, len(args)),\n                                Hint: hint,\n                        }\n                }\n                return nil\n        }\n}",
+        "old_comment_raw": "MinimumNArgsAccepted returns an error if there are more than N args.",
+        "new_code_raw": "func MinimumNArgsAccepted(n int, url string) cobra.PositionalArgs {\n        return func(cmd *cobra.Command, args []string) error {\n                var hint string\n                if url != \"\" {\n                        hint = fmt.Sprintf(\"Visit %s for more information.\", url)\n                }\n                if len(args) < n {\n                        return oktetoErrors.UserError{\n                                E:    fmt.Errorf(\"%q requires at least %d arg(s), but only received %d\", cmd.CommandPath(), n, len(args)),\n                                Hint: hint,\n                        }\n                }\n                return nil\n        }\n}",
+        "new_comment_raw": "MinimumNArgsAccepted returns an error if there are more than N args.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/okteto/okteto/commit/a4897660a3e5#new",
+        "old_code_raw": "func MinimumNArgsAccepted(n int, url string) cobra.PositionalArgs {\n        return func(cmd *cobra.Command, args []string) error {\n                var hint string\n                if url != \"\" {\n                        hint = fmt.Sprintf(\"Visit %s for more information.\", url)\n                }\n                if len(args) < n {\n                        return oktetoErrors.UserError{\n                                E:    fmt.Errorf(\"%q requires at least %d arg(s), but only received %d\", cmd.CommandPath(), n, len(args)),\n                                Hint: hint,\n                        }\n                }\n                return nil\n        }\n}",
+        "old_comment_raw": "MinimumNArgsAccepted returns an error if there are less than N args.",
+        "new_code_raw": "func MinimumNArgsAccepted(n int, url string) cobra.PositionalArgs {\n        return func(cmd *cobra.Command, args []string) error {\n                var hint string\n                if url != \"\" {\n                        hint = fmt.Sprintf(\"Visit %s for more information.\", url)\n                }\n                if len(args) < n {\n                        return oktetoErrors.UserError{\n                                E:    fmt.Errorf(\"%q requires at least %d arg(s), but only received %d\", cmd.CommandPath(), n, len(args)),\n                                Hint: hint,\n                        }\n                }\n                return nil\n        }\n}",
+        "new_comment_raw": "MinimumNArgsAccepted returns an error if there are less than N args.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/gonum/plot/commit/12787dd210cb#old",
+        "old_code_raw": "func LogScale(min, max, x float64) float64 {\n        logMin := log(min)\n        return (log(x) - logMin) / (log(max) - logMin)\n}",
+        "old_comment_raw": "LocScale is a scale function for a log-scale axis.",
+        "new_code_raw": "func LogScale(min, max, x float64) float64 {\n        logMin := log(min)\n        return (log(x) - logMin) / (log(max) - logMin)\n}",
+        "new_comment_raw": "LocScale is a scale function for a log-scale axis.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/gonum/plot/commit/12787dd210cb#new",
+        "old_code_raw": "func LogScale(min, max, x float64) float64 {\n        logMin := log(min)\n        return (log(x) - logMin) / (log(max) - logMin)\n}",
+        "old_comment_raw": "LocScale can be used as the value of an Axis.Scale function to set the axis to a log scale.",
+        "new_code_raw": "func LogScale(min, max, x float64) float64 {\n        logMin := log(min)\n        return (log(x) - logMin) / (log(max) - logMin)\n}",
+        "new_comment_raw": "LocScale can be used as the value of an Axis.Scale function to set the axis to a log scale.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/nutsdb/nutsdb/commit/f413465f063e#old",
+        "old_code_raw": "func (tx *Tx) ZPeekMax(bucket string) (*zset.SortedSetNode, error) {\n        if err := tx.checkTxIsClosed(); err != nil {\n                return nil, err\n        }\n\n        if _, ok := tx.db.SortedSetIdx[bucket]; !ok {\n                return nil, ErrBucket\n        }\n\n        return tx.db.SortedSetIdx[bucket].PeekMax(), nil\n}",
+        "old_comment_raw": "ZPeekMax returns up to count members with the highest scores in the sorted set stored at key.",
+        "new_code_raw": "func (tx *Tx) ZPeekMax(bucket string) (*zset.SortedSetNode, error) {\n        if err := tx.checkTxIsClosed(); err != nil {\n                return nil, err\n        }\n\n        if _, ok := tx.db.SortedSetIdx[bucket]; !ok {\n                return nil, ErrBucket\n        }\n\n        return tx.db.SortedSetIdx[bucket].PeekMax(), nil\n}",
+        "new_comment_raw": "ZPeekMax returns up to count members with the highest scores in the sorted set stored at key.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/nutsdb/nutsdb/commit/f413465f063e#new",
+        "old_code_raw": "func (tx *Tx) ZPeekMax(bucket string) (*zset.SortedSetNode, error) {\n        if err := tx.checkTxIsClosed(); err != nil {\n                return nil, err\n        }\n\n        if _, ok := tx.db.SortedSetIdx[bucket]; !ok {\n                return nil, ErrBucket\n        }\n\n        return tx.db.SortedSetIdx[bucket].PeekMax(), nil\n}",
+        "old_comment_raw": "ZPeekMax returns up to count members with the highest scores in the sorted set stored at bucket.",
+        "new_code_raw": "func (tx *Tx) ZPeekMax(bucket string) (*zset.SortedSetNode, error) {\n        if err := tx.checkTxIsClosed(); err != nil {\n                return nil, err\n        }\n\n        if _, ok := tx.db.SortedSetIdx[bucket]; !ok {\n                return nil, ErrBucket\n        }\n\n        return tx.db.SortedSetIdx[bucket].PeekMax(), nil\n}",
+        "new_comment_raw": "ZPeekMax returns up to count members with the highest scores in the sorted set stored at bucket.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/GoogleContainerTools/kpt/commit/e41decf62d90#old",
+        "old_code_raw": "func findEntry(tree *object.Tree, name string) *object.TreeEntry {\n        for i := range tree.Entries {\n                e := &tree.Entries[i]\n                if e.Name == name {\n                        return e\n                }\n        }\n        return nil\n}",
+        "old_comment_raw": "Returns index of the entry if found (by name); nil if not found",
+        "new_code_raw": "func findEntry(tree *object.Tree, name string) *object.TreeEntry {\n        for i := range tree.Entries {\n                e := &tree.Entries[i]\n                if e.Name == name {\n                        return e\n                }\n        }\n        return nil\n}",
+        "new_comment_raw": "Returns index of the entry if found (by name); nil if not found",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/GoogleContainerTools/kpt/commit/e41decf62d90#new",
+        "old_code_raw": "func findEntry(tree *object.Tree, name string) *object.TreeEntry {\n        for i := range tree.Entries {\n                e := &tree.Entries[i]\n                if e.Name == name {\n                        return e\n                }\n        }\n        return nil\n}",
+        "old_comment_raw": "Returns a pointer to the entry if found (by name); nil if not found",
+        "new_code_raw": "func findEntry(tree *object.Tree, name string) *object.TreeEntry {\n        for i := range tree.Entries {\n                e := &tree.Entries[i]\n                if e.Name == name {\n                        return e\n                }\n        }\n        return nil\n}",
+        "new_comment_raw": "Returns a pointer to the entry if found (by name); nil if not found",
+        "label": 0
+    }
+]

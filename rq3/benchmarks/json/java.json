@@ -1,0 +1,452 @@
+[
+    {
+        "type": "summary",
+        "id": "https://github.com/microsoft/gctoolkit/pull/204/files/ea10831a1d3a5b0ed42d7a523aa249df9f6c9992#r797024552#old",
+        "old_code_raw": "@Override\npublic DateTimeStamp getEstimatedJVMStartTime() {\n    DateTimeStamp startTime = getTimeOfFirstEvent();\n    // Initial entries in GC log happen within seconds. Lets allow for 60 before considering the log\n    // to be a fragment.\n    if (startTime.getTimeStamp() < LOG_FRAGMENT_THRESHOLD) {\n        return startTime.minus(startTime.getTimeStamp());\n    } else {\n        return startTime;\n    }\n}",
+        "old_comment_raw": "of the first event is significantly away from zero in relation to the time intervals between the of the next N events, where N maybe 1.",
+        "new_code_raw": "@Override\npublic DateTimeStamp getEstimatedJVMStartTime() {\n    DateTimeStamp startTime = getTimeOfFirstEvent();\n    // Initial entries in GC log happen within seconds. Lets allow for 60 before considering the log\n    // to be a fragment.\n    if (startTime.getTimeStamp() < LOG_FRAGMENT_THRESHOLD) {\n        return startTime.minus(startTime.getTimeStamp());\n    } else {\n        return startTime;\n    }\n}",
+        "new_comment_raw": "of the first event is significantly away from zero in relation to the time intervals between the of the next N events, where N maybe 1.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/microsoft/gctoolkit/pull/204/files/ea10831a1d3a5b0ed42d7a523aa249df9f6c9992#r797024552#new",
+        "old_code_raw": "@Override\npublic DateTimeStamp getEstimatedJVMStartTime() {\n    DateTimeStamp startTime = getTimeOfFirstEvent();\n    // Initial entries in GC log happen within seconds. Lets allow for 60 before considering the log\n    // to be a fragment.\n    if (startTime.getTimeStamp() < LOG_FRAGMENT_THRESHOLD_SECONDS) {\n        return startTime.minus(startTime.getTimeStamp());\n    } else {\n        return startTime;\n    }\n}",
+        "old_comment_raw": "If the first event is significantly distant from zero in relation to the time intervals between the of the next N events, where N maybe 1, then this is likely a log fragment and not the start of the run.",
+        "new_code_raw": "@Override\npublic DateTimeStamp getEstimatedJVMStartTime() {\n    DateTimeStamp startTime = getTimeOfFirstEvent();\n    // Initial entries in GC log happen within seconds. Lets allow for 60 before considering the log\n    // to be a fragment.\n    if (startTime.getTimeStamp() < LOG_FRAGMENT_THRESHOLD_SECONDS) {\n        return startTime.minus(startTime.getTimeStamp());\n    } else {\n        return startTime;\n    }\n}",
+        "new_comment_raw": "If the first event is significantly distant from zero in relation to the time intervals between the of the next N events, where N maybe 1, then this is likely a log fragment and not the start of the run.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/Azure/azure-sdk-for-android/pull/244/files/feb0690a4e64d58dea4b38cba26a2968820cb75d#r441213254#old",
+        "old_code_raw": "ServiceCall delete(String containerName,\n                   String blobName,\n                   Callback<Void> callback) {\n    return storageBlobServiceClient.delete(containerName,\n        blobName,\n        callback);\n}",
+        "old_comment_raw": "Reads the blob's metadata & properties.",
+        "new_code_raw": "ServiceCall delete(String containerName,\n                   String blobName,\n                   Callback<Void> callback) {\n    return storageBlobServiceClient.delete(containerName,\n        blobName,\n        callback);\n}",
+        "new_comment_raw": "Reads the blob's metadata & properties.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/Azure/azure-sdk-for-android/pull/244/files/feb0690a4e64d58dea4b38cba26a2968820cb75d#r441213254#new",
+        "old_code_raw": "ServiceCall delete(String containerName,\n                   String blobName,\n                   Callback<Void> callback) {\n    return storageBlobServiceClient.delete(containerName,\n        blobName,\n        callback);\n}",
+        "old_comment_raw": "Deletes the specified blob or snapshot.",
+        "new_code_raw": "ServiceCall delete(String containerName,\n                   String blobName,\n                   Callback<Void> callback) {\n    return storageBlobServiceClient.delete(containerName,\n        blobName,\n        callback);\n}",
+        "new_comment_raw": "Deletes the specified blob or snapshot.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-projects/spring-amqp/pull/318#discussion_r36679052#old",
+        "old_code_raw": "public String removeQueueOrTagToMethodName(String queueOrTag) {\n        return this.queueOrTagToMethodName.remove(queueOrTag);\n}",
+        "old_comment_raw": "Add the mapping of a queue name or consumer tag to a method name.",
+        "new_code_raw": "public String removeQueueOrTagToMethodName(String queueOrTag) {\n        return this.queueOrTagToMethodName.remove(queueOrTag);\n}",
+        "new_comment_raw": "Add the mapping of a queue name or consumer tag to a method name.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-projects/spring-amqp/pull/318#discussion_r36679052#new",
+        "old_code_raw": "public String removeQueueOrTagToMethodName(String queueOrTag) {\n        return this.queueOrTagToMethodName.remove(queueOrTag);\n}",
+        "old_comment_raw": "Remove the mapping of a queue name or consumer tag to a method name.",
+        "new_code_raw": "public String removeQueueOrTagToMethodName(String queueOrTag) {\n        return this.queueOrTagToMethodName.remove(queueOrTag);\n}",
+        "new_comment_raw": "Remove the mapping of a queue name or consumer tag to a method name.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/AdoptOpenJDK/IcedTea-Web/pull/228#discussion_r283750540#old",
+        "old_code_raw": "public static boolean hasPrefixMatch(final String prefixString, final String[] available) {\n    Assert.requireNonBlank(prefixString, \"prefixString\");\n\n    if (available == null || available.length == 0){\n        return true;\n    }\n\n    for (final String candidate : available) {\n        final String trimmedPrefix = prefixString.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n        String trimmedCandidate = null;\n        if (candidate != null) {\n            trimmedCandidate = candidate.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n        }\n        if (trimmedCandidate != null && trimmedCandidate.startsWith(trimmedPrefix)) {\n            return true;\n        }\n    }\n\n    return false;\n}",
+        "old_comment_raw": "Checks whether the first part of the given prefixString is a prefix for any of the strings in the specified array.",
+        "new_code_raw": "public static boolean hasPrefixMatch(final String prefixString, final String[] available) {\n    Assert.requireNonBlank(prefixString, \"prefixString\");\n\n    if (available == null || available.length == 0){\n        return true;\n    }\n\n    for (final String candidate : available) {\n        final String trimmedPrefix = prefixString.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n        String trimmedCandidate = null;\n        if (candidate != null) {\n            trimmedCandidate = candidate.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n        }\n        if (trimmedCandidate != null && trimmedCandidate.startsWith(trimmedPrefix)) {\n            return true;\n        }\n    }\n\n    return false;\n}",
+        "new_comment_raw": "Checks whether the first part of the given prefixString is a prefix for any of the strings in the specified array.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/AdoptOpenJDK/IcedTea-Web/pull/228#discussion_r283750540#new",
+        "old_code_raw": "public static boolean hasPrefixMatch(final String prefixString, final String[] available) {\n    Assert.requireNonBlank(prefixString, \"prefixString\");\n\n    if (available == null || available.length == 0){\n        return true;\n    }\n\n    final String trimmedPrefix = prefixString.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n\n    for (final String candidate : available) {\n        String trimmedCandidate = null;\n        if (candidate != null) {\n            trimmedCandidate = candidate.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n        }\n        if (trimmedCandidate != null && trimmedCandidate.startsWith(trimmedPrefix)) {\n            return true;\n        }\n    }\n\n    return false;\n}",
+        "old_comment_raw": "Checks whether the first part of the given prefixString is a prefix for any of the strings in the specified array.",
+        "new_code_raw": "public static boolean hasPrefixMatch(final String prefixString, final String[] available) {\n    Assert.requireNonBlank(prefixString, \"prefixString\");\n\n    if (available == null || available.length == 0){\n        return true;\n    }\n\n    final String trimmedPrefix = prefixString.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n\n    for (final String candidate : available) {\n        String trimmedCandidate = null;\n        if (candidate != null) {\n            trimmedCandidate = candidate.split(WHITESPACE_CHARACTER_SEQUENCE)[0];\n        }\n        if (trimmedCandidate != null && trimmedCandidate.startsWith(trimmedPrefix)) {\n            return true;\n        }\n    }\n\n    return false;\n}",
+        "new_comment_raw": "Checks whether the first part of the given prefixString is a prefix for any of the strings in the specified array.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/eclipse/reddeer/pull/2006#discussion_r277978536#old",
+        "old_code_raw": "public NewInterfaceCreationWizardPage setPublicModifier() {\n        new RadioButton(this, \"public\").toggle(true);\n        return this;\n}",
+        "old_comment_raw": "Sets a given modifier.",
+        "new_code_raw": "public NewInterfaceCreationWizardPage setPublicModifier() {\n        new RadioButton(this, \"public\").toggle(true);\n        return this;\n}",
+        "new_comment_raw": "Sets a given modifier.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/eclipse/reddeer/pull/2006#discussion_r277978536#new",
+        "old_code_raw": "public NewInterfaceCreationWizardPage setPublicModifier() {\n        new RadioButton(this, \"public\").toggle(true);\n        return this;\n}",
+        "old_comment_raw": "Sets modifier to public.",
+        "new_code_raw": "public NewInterfaceCreationWizardPage setPublicModifier() {\n        new RadioButton(this, \"public\").toggle(true);\n        return this;\n}",
+        "new_comment_raw": "Sets modifier to public.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/gridgain/gridgain/pull/1107#discussion_r428773531#old",
+        "old_code_raw": "public String indexesRegEx() {\n    return indexesRegEx;\n}",
+        "old_comment_raw": "",
+        "new_code_raw": "public String indexesRegEx() {\n    return indexesRegEx;\n}",
+        "new_comment_raw": "",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/gridgain/gridgain/pull/1107#discussion_r428773531#new",
+        "old_code_raw": "public String indexesRegEx() {\n    return indexesRegEx;\n}",
+        "old_comment_raw": "",
+        "new_code_raw": "public String indexesRegEx() {\n    return indexesRegEx;\n}",
+        "new_comment_raw": "",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/onthegomap/planetiler/pull/463#discussion_r1105596308#old",
+        "old_code_raw": "default byte[] getTile(TileCoord coord) {\n  return getTile(coord.x(), coord.y(), coord.z());\n}",
+        "old_comment_raw": "Returns the raw tile data associated with the tile at  coord.",
+        "new_code_raw": "default byte[] getTile(TileCoord coord) {\n  return getTile(coord.x(), coord.y(), coord.z());\n}",
+        "new_comment_raw": "Returns the raw tile data associated with the tile at  coord.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/onthegomap/planetiler/pull/463#discussion_r1105596308#new",
+        "old_code_raw": "default byte[] getTile(TileCoord coord) {\n  return getTile(coord.x(), coord.y(), coord.z());\n}",
+        "old_comment_raw": "Returns the raw tile data at  coord or  null if not found.",
+        "new_code_raw": "default byte[] getTile(TileCoord coord) {\n  return getTile(coord.x(), coord.y(), coord.z());\n}",
+        "new_comment_raw": "Returns the raw tile data at  coord or  null if not found.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/mesosphere/dcos-commons/pull/470#discussion_r97919940#old",
+        "old_code_raw": "public static String toEnvName(String str) {\n        return ENVVAR_INVALID_CHARS.matcher(str.toUpperCase()).replaceAll(\"_\");\n}",
+        "old_comment_raw": "Converts the provided string to a valid environment variable name.",
+        "new_code_raw": "public static String toEnvName(String str) {\n        return ENVVAR_INVALID_CHARS.matcher(str.toUpperCase()).replaceAll(\"_\");\n}",
+        "new_comment_raw": "Converts the provided string to a valid environment variable name.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/mesosphere/dcos-commons/pull/470#discussion_r97919940#new",
+        "old_code_raw": "public static String toEnvName(String str) {\n        return ENVVAR_INVALID_CHARS.matcher(str.toUpperCase()).replaceAll(\"_\");\n}",
+        "old_comment_raw": "Converts the provided string to a conventional environment variable name, consisting of numbers, uppercase letters, and underscores.",
+        "new_code_raw": "public static String toEnvName(String str) {\n        return ENVVAR_INVALID_CHARS.matcher(str.toUpperCase()).replaceAll(\"_\");\n}",
+        "new_comment_raw": "Converts the provided string to a conventional environment variable name, consisting of numbers, uppercase letters, and underscores.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-projects/spring-integration/pull/189#discussion_r244962#old",
+        "old_code_raw": "private String addPrefixIfNecessary(String prefix, String propertyName) {\n        String headerName = propertyName;\n        if (StringUtils.hasText(prefix) && !headerName.startsWith(prefix)) {\n                headerName = prefix + propertyName;\n        }\n        return headerName;\n}",
+        "old_comment_raw": "Adds the outbound or inbound prefix if necessary.",
+        "new_code_raw": "private String addPrefixIfNecessary(String prefix, String propertyName) {\n        String headerName = propertyName;\n        if (StringUtils.hasText(prefix) && !headerName.startsWith(prefix)) {\n                headerName = prefix + propertyName;\n        }\n        return headerName;\n}",
+        "new_comment_raw": "Adds the outbound or inbound prefix if necessary.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-projects/spring-integration/pull/189#discussion_r244962#new",
+        "old_code_raw": "private String addPrefixIfNecessary(String prefix, String propertyName) {\n        String headerName = propertyName;\n        if (StringUtils.hasText(prefix) && !headerName.startsWith(prefix)) {\n                headerName = prefix + propertyName;\n        }\n        return headerName;\n}",
+        "old_comment_raw": "Adds the prefix to the header name",
+        "new_code_raw": "private String addPrefixIfNecessary(String prefix, String propertyName) {\n        String headerName = propertyName;\n        if (StringUtils.hasText(prefix) && !headerName.startsWith(prefix)) {\n                headerName = prefix + propertyName;\n        }\n        return headerName;\n}",
+        "new_comment_raw": "Adds the prefix to the header name",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/line/armeria/pull/1797#discussion_r288409404#old",
+        "old_code_raw": "static AggregatedHttpRequest of(HttpMethod method, String path, MediaType mediaType, byte[] content) {\n    requireNonNull(method, \"method\");\n    requireNonNull(path, \"path\");\n    requireNonNull(mediaType, \"mediaType\");\n    requireNonNull(content, \"content\");\n    return of(method, path, mediaType, HttpData.wrap(content));\n}",
+        "old_comment_raw": "Creates a new HTTP request.",
+        "new_code_raw": "static AggregatedHttpRequest of(HttpMethod method, String path, MediaType mediaType, byte[] content) {\n    requireNonNull(method, \"method\");\n    requireNonNull(path, \"path\");\n    requireNonNull(mediaType, \"mediaType\");\n    requireNonNull(content, \"content\");\n    return of(method, path, mediaType, HttpData.wrap(content));\n}",
+        "new_comment_raw": "Creates a new HTTP request.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/line/armeria/pull/1797#discussion_r288409404#new",
+        "old_code_raw": "static AggregatedHttpRequest of(HttpMethod method, String path, MediaType mediaType, byte[] content) {\n    requireNonNull(method, \"method\");\n    requireNonNull(path, \"path\");\n    requireNonNull(mediaType, \"mediaType\");\n    requireNonNull(content, \"content\");\n    return of(method, path, mediaType, HttpData.wrap(content));\n}",
+        "old_comment_raw": "Creates a new HTTP request.",
+        "new_code_raw": "static AggregatedHttpRequest of(HttpMethod method, String path, MediaType mediaType, byte[] content) {\n    requireNonNull(method, \"method\");\n    requireNonNull(path, \"path\");\n    requireNonNull(mediaType, \"mediaType\");\n    requireNonNull(content, \"content\");\n    return of(method, path, mediaType, HttpData.wrap(content));\n}",
+        "new_comment_raw": "Creates a new HTTP request.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/dhis2/dhis2-core/pull/12392#discussion_r1048303118#old",
+        "old_code_raw": "public boolean hasPotentialDuplicate()\n{\n    return potentialDuplicate != null;\n}",
+        "old_comment_raw": "Indicates whether this parameters specifies if tei is a potential duplicate.",
+        "new_code_raw": "public boolean hasPotentialDuplicate()\n{\n    return potentialDuplicate != null;\n}",
+        "new_comment_raw": "Indicates whether this parameters specifies if tei is a potential duplicate.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/dhis2/dhis2-core/pull/12392#discussion_r1048303118#new",
+        "old_code_raw": "public boolean hasPotentialDuplicate()\n{\n    return potentialDuplicate != null;\n}",
+        "old_comment_raw": "Indicates whether we are filtering for potential duplicate.",
+        "new_code_raw": "public boolean hasPotentialDuplicate()\n{\n    return potentialDuplicate != null;\n}",
+        "new_comment_raw": "Indicates whether we are filtering for potential duplicate.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/f2prateek/dart/pull/39#discussion_r34426632#old",
+        "old_code_raw": "public static Bundler of(Bundle source) {\n  return new Bundler(source);\n}",
+        "old_comment_raw": "Returns a bundler that delegates to the source bundle.",
+        "new_code_raw": "public static Bundler of(Bundle source) {\n  return new Bundler(source);\n}",
+        "new_comment_raw": "Returns a bundler that delegates to the source bundle.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/f2prateek/dart/pull/39#discussion_r34426632#new",
+        "old_code_raw": "public static Bundler of(Bundle source) {\n  return new Bundler(source);\n}",
+        "old_comment_raw": "Returns a bundler that wraps a new Bundle, all data of  source bundle is copied into the new bundle.",
+        "new_code_raw": "public static Bundler of(Bundle source) {\n  return new Bundler(source);\n}",
+        "new_comment_raw": "Returns a bundler that wraps a new Bundle, all data of  source bundle is copied into the new bundle.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/linkedin/avro-util/pull/428/files#r1049077891#old",
+        "old_code_raw": "public static boolean schemaContainsString(Schema schema) {\n  if (schema == null) {\n    return false;\n  }\n  boolean hasString = false;\n  switch (schema.getType()) {\n    case STRING:\n    case MAP: //map keys are always strings, regardless of values\n      return true;\n    case UNION:\n      // Any member can have string?\n      for(Schema branch : schema.getTypes()) {\n        if (schemaContainsString(branch)) {\n          return true;\n        }\n      }\n      return false;\n    case ARRAY:\n      return schemaContainsString(schema.getElementType());\n  }\n\n  return false;\n}",
+        "old_comment_raw": "checks if the value for a given schema can possibly contain strings.",
+        "new_code_raw": "public static boolean schemaContainsString(Schema schema) {\n  if (schema == null) {\n    return false;\n  }\n  boolean hasString = false;\n  switch (schema.getType()) {\n    case STRING:\n    case MAP: //map keys are always strings, regardless of values\n      return true;\n    case UNION:\n      // Any member can have string?\n      for(Schema branch : schema.getTypes()) {\n        if (schemaContainsString(branch)) {\n          return true;\n        }\n      }\n      return false;\n    case ARRAY:\n      return schemaContainsString(schema.getElementType());\n  }\n\n  return false;\n}",
+        "new_comment_raw": "checks if the value for a given schema can possibly contain strings.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/linkedin/avro-util/pull/428/files#r1049077891#new",
+        "old_code_raw": "public static boolean schemaContainsString(Schema schema) {\n  if (schema == null) {\n    return false;\n  }\n  boolean hasString = false;\n  switch (schema.getType()) {\n    case STRING:\n    case MAP: //map keys are always strings, regardless of values\n      return true;\n    case UNION:\n      // Any member can have string?\n      for(Schema branch : schema.getTypes()) {\n        if (schemaContainsString(branch)) {\n          return true;\n        }\n      }\n      return false;\n    case ARRAY:\n      return schemaContainsString(schema.getElementType());\n  }\n\n  return false;\n}",
+        "old_comment_raw": "checks if the value for a given schema can possibly contain strings (meaning is a string, union containing string, or collections containing any of the above).",
+        "new_code_raw": "public static boolean schemaContainsString(Schema schema) {\n  if (schema == null) {\n    return false;\n  }\n  boolean hasString = false;\n  switch (schema.getType()) {\n    case STRING:\n    case MAP: //map keys are always strings, regardless of values\n      return true;\n    case UNION:\n      // Any member can have string?\n      for(Schema branch : schema.getTypes()) {\n        if (schemaContainsString(branch)) {\n          return true;\n        }\n      }\n      return false;\n    case ARRAY:\n      return schemaContainsString(schema.getElementType());\n  }\n\n  return false;\n}",
+        "new_comment_raw": "checks if the value for a given schema can possibly contain strings (meaning is a string, union containing string, or collections containing any of the above).",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-projects/spring-authorization-server/pull/1056#discussion_r1116862441#old",
+        "old_code_raw": "public void setPasswordEncoder(PasswordEncoder passwordEncoder) {\n        Assert.notNull(passwordEncoder, \"passwordEncoder cannot be null\");\n        this.passwordEncoder = passwordEncoder;\n}",
+        "old_comment_raw": "Sets the  PasswordEncoder used to validate the the  RegisteredClient#getClientSecret() client secret.",
+        "new_code_raw": "public void setPasswordEncoder(PasswordEncoder passwordEncoder) {\n        Assert.notNull(passwordEncoder, \"passwordEncoder cannot be null\");\n        this.passwordEncoder = passwordEncoder;\n}",
+        "new_comment_raw": "Sets the  PasswordEncoder used to validate the the  RegisteredClient#getClientSecret() client secret.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-projects/spring-authorization-server/pull/1056#discussion_r1116862441#new",
+        "old_code_raw": "public void setPasswordEncoder(PasswordEncoder passwordEncoder) {\n        Assert.notNull(passwordEncoder, \"passwordEncoder cannot be null\");\n        this.passwordEncoder = passwordEncoder;\n}",
+        "old_comment_raw": "Sets the  PasswordEncoder used to encode the clientSecret the  RegisteredClient#getClientSecret() client secret.",
+        "new_code_raw": "public void setPasswordEncoder(PasswordEncoder passwordEncoder) {\n        Assert.notNull(passwordEncoder, \"passwordEncoder cannot be null\");\n        this.passwordEncoder = passwordEncoder;\n}",
+        "new_comment_raw": "Sets the  PasswordEncoder used to encode the clientSecret the  RegisteredClient#getClientSecret() client secret.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/apple/servicetalk/pull/1515#discussion_r619538821#old",
+        "old_code_raw": "public final <T2, R> Single<R> zipWithDelayError(Single<? extends T2> other,\n                                                 BiFunction<? super T, ? super T2, ? extends R> zipper) {\n    return zipDelayError(this, other, zipper);\n}",
+        "old_comment_raw": "Create a new  Single that emits the results of a specified zipper  BiFunction to items emitted by singles.",
+        "new_code_raw": "public final <T2, R> Single<R> zipWithDelayError(Single<? extends T2> other,\n                                                 BiFunction<? super T, ? super T2, ? extends R> zipper) {\n    return zipDelayError(this, other, zipper);\n}",
+        "new_comment_raw": "Create a new  Single that emits the results of a specified zipper  BiFunction to items emitted by singles.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/apple/servicetalk/pull/1515#discussion_r619538821#new",
+        "old_code_raw": "public final <T2, R> Single<R> zipWithDelayError(Single<? extends T2> other,\n                                                 BiFunction<? super T, ? super T2, ? extends R> zipper) {\n    return zipDelayError(this, other, zipper);\n}",
+        "old_comment_raw": "Create a new  Single that emits the results of a specified zipper  BiFunction to items emitted by this and  other.",
+        "new_code_raw": "public final <T2, R> Single<R> zipWithDelayError(Single<? extends T2> other,\n                                                 BiFunction<? super T, ? super T2, ? extends R> zipper) {\n    return zipDelayError(this, other, zipper);\n}",
+        "new_comment_raw": "Create a new  Single that emits the results of a specified zipper  BiFunction to items emitted by this and  other.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/nordic-institute/X-Road/pull/481#discussion_r419916273#old",
+        "old_code_raw": "@Override\npublic CsrfToken loadToken(HttpServletRequest request) {\n    HttpSession session = request.getSession(false);\n    if (session != null) {\n        return (CsrfToken) session.getAttribute(this.sessionAttributeName);\n    }\n    return null;\n}",
+        "old_comment_raw": "The de facto token that gets loaded from the session",
+        "new_code_raw": "@Override\npublic CsrfToken loadToken(HttpServletRequest request) {\n    HttpSession session = request.getSession(false);\n    if (session != null) {\n        return (CsrfToken) session.getAttribute(this.sessionAttributeName);\n    }\n    return null;\n}",
+        "new_comment_raw": "The de facto token that gets loaded from the session",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/nordic-institute/X-Road/pull/481#discussion_r419916273#new",
+        "old_code_raw": "@Override\npublic CsrfToken loadToken(HttpServletRequest request) {\n    HttpSession session = request.getSession(false);\n    // validate csrf only if a session exists\n    if (session != null) {\n        return validateAndLoadToken(request);\n    }\n    return null;\n}",
+        "old_comment_raw": "Validate and load the token if there is a session.",
+        "new_code_raw": "@Override\npublic CsrfToken loadToken(HttpServletRequest request) {\n    HttpSession session = request.getSession(false);\n    // validate csrf only if a session exists\n    if (session != null) {\n        return validateAndLoadToken(request);\n    }\n    return null;\n}",
+        "new_comment_raw": "Validate and load the token if there is a session.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/dnsjava/dnsjava/pull/56#discussion_r290069343#old",
+        "old_code_raw": "public List<T>\nrrs(boolean cycle) {\n        if (!cycle || rrs.size() <= 1) {\n                return Collections.unmodifiableList(rrs);\n        }\n\n        List<T> l = new ArrayList<>(rrs.size());\n        int start = position++ % rrs.size();\n        l.addAll(rrs.subList(start, rrs.size()));\n        l.addAll(rrs.subList(0, start));\n        return l;\n}",
+        "old_comment_raw": "Returns an Iterator listing all (data) records.",
+        "new_code_raw": "public List<T>\nrrs(boolean cycle) {\n        if (!cycle || rrs.size() <= 1) {\n                return Collections.unmodifiableList(rrs);\n        }\n\n        List<T> l = new ArrayList<>(rrs.size());\n        int start = position++ % rrs.size();\n        l.addAll(rrs.subList(start, rrs.size()));\n        l.addAll(rrs.subList(0, start));\n        return l;\n}",
+        "new_comment_raw": "Returns an Iterator listing all (data) records.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/dnsjava/dnsjava/pull/56#discussion_r290069343#new",
+        "old_code_raw": "public List<T>\nrrs(boolean cycle) {\n        if (!cycle || rrs.size() <= 1) {\n                return Collections.unmodifiableList(rrs);\n        }\n\n        List<T> l = new ArrayList<>(rrs.size());\n        int start = position++ % rrs.size();\n        l.addAll(rrs.subList(start, rrs.size()));\n        l.addAll(rrs.subList(0, start));\n        return l;\n}",
+        "old_comment_raw": "Returns a list of all data records.",
+        "new_code_raw": "public List<T>\nrrs(boolean cycle) {\n        if (!cycle || rrs.size() <= 1) {\n                return Collections.unmodifiableList(rrs);\n        }\n\n        List<T> l = new ArrayList<>(rrs.size());\n        int start = position++ % rrs.size();\n        l.addAll(rrs.subList(start, rrs.size()));\n        l.addAll(rrs.subList(0, start));\n        return l;\n}",
+        "new_comment_raw": "Returns a list of all data records.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/openjdk/jdk/pull/2109#discussion_r559007774#old",
+        "old_code_raw": "synchronized InetAddress getHostAddress() {\n    if (hostAddress != null) {\n        return hostAddress;\n    }\n\n    if (host == null || host.isEmpty()) {\n        return null;\n    }\n    try {\n        hostAddress = InetAddress.getByName(host);\n    } catch (UnknownHostException | SecurityException ex) {\n        return null;\n    }\n    return hostAddress;\n}",
+        "old_comment_raw": "",
+        "new_code_raw": "synchronized InetAddress getHostAddress() {\n    if (hostAddress != null) {\n        return hostAddress;\n    }\n\n    if (host == null || host.isEmpty()) {\n        return null;\n    }\n    try {\n        hostAddress = InetAddress.getByName(host);\n    } catch (UnknownHostException | SecurityException ex) {\n        return null;\n    }\n    return hostAddress;\n}",
+        "new_comment_raw": "",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/openjdk/jdk/pull/2109#discussion_r559007774#new",
+        "old_code_raw": "synchronized InetAddress getHostAddress() {\n        if (hostAddress != null) {\n            return hostAddress;\n        }\n        if (host == null || host.isEmpty()) {\n            return null;\n        }\n        try {\n            hostAddress = InetAddress.getByName(host);\n        } catch (UnknownHostException | SecurityException ex) {\n            return null;\n        }\n        return hostAddress;\n}",
+        "old_comment_raw": "Returns the address of the host represented by this URL.",
+        "new_code_raw": "synchronized InetAddress getHostAddress() {\n        if (hostAddress != null) {\n            return hostAddress;\n        }\n        if (host == null || host.isEmpty()) {\n            return null;\n        }\n        try {\n            hostAddress = InetAddress.getByName(host);\n        } catch (UnknownHostException | SecurityException ex) {\n            return null;\n        }\n        return hostAddress;\n}",
+        "new_comment_raw": "Returns the address of the host represented by this URL.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/apache/ignite/pull/5656/files/a548b914eb64bb9914af7964a368791338d273ca#r302021407#old",
+        "old_code_raw": "public Map<UUID, Map<Object, Object>> getEntries() {\n    return locEntries;\n}",
+        "old_comment_raw": "Original distribution.",
+        "new_code_raw": "public Map<UUID, Map<Object, Object>> getEntries() {\n    return locEntries;\n}",
+        "new_comment_raw": "Original distribution.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/apache/ignite/pull/5656/files/a548b914eb64bb9914af7964a368791338d273ca#r302021407#new",
+        "old_code_raw": "public Map<UUID, Map<K, V>> getEntries() {\n    return originalEntries;\n}",
+        "old_comment_raw": "Returns a mapping node ids to a collection of original entries affected by a cache operation.",
+        "new_code_raw": "public Map<UUID, Map<K, V>> getEntries() {\n    return originalEntries;\n}",
+        "new_comment_raw": "Returns a mapping node ids to a collection of original entries affected by a cache operation.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/oracle/weblogic-kubernetes-operator/pull/923#discussion_r267435140#old",
+        "old_code_raw": "@Test\npublic void testServerPodsRestartByChangingEnvProperty() throws Exception {\n  Assume.assumeFalse(QUICKTEST);\n  String testMethodName = new Object() {}.getClass().getEnclosingMethod().getName();\n  logTestBegin(testMethodName);\n\n  boolean testCompletedSuccessfully = false;\n  logger.info(\n      \"About to testDomainServerPodRestart for Domain: \"\n          + domain.getDomainUid()\n          + \"  env property: StdoutDebugEnabled=false to StdoutDebugEnabled=true\");\n  domain.testDomainServerPodRestart(\n      \"\\\"-Dweblogic.StdoutDebugEnabled=false\\\"\", \"\\\"-Dweblogic.StdoutDebugEnabled=true\\\"\");\n\n  logger.info(\"SUCCESS - \" + testMethodName);\n}",
+        "old_comment_raw": "The property tested is: env: \"-Dweblogic.StdoutDebugEnabled=false\"--> \"-Dweblogic.StdoutDebugEnabled=true\"",
+        "new_code_raw": "@Test\npublic void testServerPodsRestartByChangingEnvProperty() throws Exception {\n  Assume.assumeFalse(QUICKTEST);\n  String testMethodName = new Object() {}.getClass().getEnclosingMethod().getName();\n  logTestBegin(testMethodName);\n\n  boolean testCompletedSuccessfully = false;\n  logger.info(\n      \"About to testDomainServerPodRestart for Domain: \"\n          + domain.getDomainUid()\n          + \"  env property: StdoutDebugEnabled=false to StdoutDebugEnabled=true\");\n  domain.testDomainServerPodRestart(\n      \"\\\"-Dweblogic.StdoutDebugEnabled=false\\\"\", \"\\\"-Dweblogic.StdoutDebugEnabled=true\\\"\");\n\n  logger.info(\"SUCCESS - \" + testMethodName);\n}",
+        "new_comment_raw": "The property tested is: env: \"-Dweblogic.StdoutDebugEnabled=false\"--> \"-Dweblogic.StdoutDebugEnabled=true\"",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/oracle/weblogic-kubernetes-operator/pull/923#discussion_r267435140#new",
+        "old_code_raw": "@Test\npublic void testServerPodsRestartByChangingEnvProperty() throws Exception {\n  Assume.assumeFalse(QUICKTEST);\n  String testMethodName = new Object() {}.getClass().getEnclosingMethod().getName();\n  logTestBegin(testMethodName);\n\n  logger.info(\n      \"About to testDomainServerPodRestart for Domain: \"\n          + domain.getDomainUid()\n          + \"  env property: StdoutDebugEnabled=false to StdoutDebugEnabled=true\");\n  domain.testDomainServerPodRestart(\n      \"\\\"-Dweblogic.StdoutDebugEnabled=false\\\"\", \"\\\"-Dweblogic.StdoutDebugEnabled=true\\\"\");\n\n  logger.info(\"SUCCESS - \" + testMethodName);\n}",
+        "old_comment_raw": "Modify the domain scope env property on the domain resource using kubectl apply -f domain.yaml Verify that all the server pods in the domain got re-started.",
+        "new_code_raw": "@Test\npublic void testServerPodsRestartByChangingEnvProperty() throws Exception {\n  Assume.assumeFalse(QUICKTEST);\n  String testMethodName = new Object() {}.getClass().getEnclosingMethod().getName();\n  logTestBegin(testMethodName);\n\n  logger.info(\n      \"About to testDomainServerPodRestart for Domain: \"\n          + domain.getDomainUid()\n          + \"  env property: StdoutDebugEnabled=false to StdoutDebugEnabled=true\");\n  domain.testDomainServerPodRestart(\n      \"\\\"-Dweblogic.StdoutDebugEnabled=false\\\"\", \"\\\"-Dweblogic.StdoutDebugEnabled=true\\\"\");\n\n  logger.info(\"SUCCESS - \" + testMethodName);\n}",
+        "new_comment_raw": "Modify the domain scope env property on the domain resource using kubectl apply -f domain.yaml Verify that all the server pods in the domain got re-started.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/msemys/esjc/pull/44#discussion_r262459266#old",
+        "old_code_raw": "public EventStoreBuilder disconnectOnTcpChannelError(boolean disconnectOnTcpChannelError) {\n    settingsBuilder.disconnectOnTcpChannelError(disconnectOnTcpChannelError);\n    return this;\n}",
+        "old_comment_raw": "Sets whether or not to disconnect the client on detecting a channel error.",
+        "new_code_raw": "public EventStoreBuilder disconnectOnTcpChannelError(boolean disconnectOnTcpChannelError) {\n    settingsBuilder.disconnectOnTcpChannelError(disconnectOnTcpChannelError);\n    return this;\n}",
+        "new_comment_raw": "Sets whether or not to disconnect the client on detecting a channel error.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/msemys/esjc/pull/44#discussion_r262459266#new",
+        "old_code_raw": "public EventStoreBuilder disconnectOnTcpChannelError(boolean disconnectOnTcpChannelError) {\n    settingsBuilder.disconnectOnTcpChannelError(disconnectOnTcpChannelError);\n    return this;\n}",
+        "old_comment_raw": "Sets whether or not to disconnect the client on detecting a channel error.",
+        "new_code_raw": "public EventStoreBuilder disconnectOnTcpChannelError(boolean disconnectOnTcpChannelError) {\n    settingsBuilder.disconnectOnTcpChannelError(disconnectOnTcpChannelError);\n    return this;\n}",
+        "new_comment_raw": "Sets whether or not to disconnect the client on detecting a channel error.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/elastic/apm-agent-java/pull/1206/files/332e1fb2bd497411d6dbb32d5fdace4ee89d6e20#r439964581#old",
+        "old_code_raw": "@Nullable\npublic static <T> Callable<T> withContext(@Nullable Callable<T> callable, @Nullable ElasticApmTracer tracer) {\n    if (callable instanceof CallableLambdaWrapper || callable == null || tracer == null  || needsContext.get() == Boolean.FALSE) {\n        return callable;\n    }\n    needsContext.set(Boolean.FALSE);\n    AbstractSpan<?> active = tracer.getActive();\n    if (active == null) {\n        return callable;\n    }\n    if (isLambda(callable)) {\n        callable = new CallableLambdaWrapper<>(callable);\n    }\n    ElasticApmAgent.ensureInstrumented(callable.getClass(), RUNNABLE_CALLABLE_FJTASK_INSTRUMENTATION);\n    contextMap.put(callable, active);\n    active.incrementReferences();\n    return callable;\n}",
+        "old_comment_raw": "Wraps the provided runnable and makes this  AbstractSpan active in the  Runnable#run() method.",
+        "new_code_raw": "@Nullable\npublic static <T> Callable<T> withContext(@Nullable Callable<T> callable, @Nullable ElasticApmTracer tracer) {\n    if (callable instanceof CallableLambdaWrapper || callable == null || tracer == null  || needsContext.get() == Boolean.FALSE) {\n        return callable;\n    }\n    needsContext.set(Boolean.FALSE);\n    AbstractSpan<?> active = tracer.getActive();\n    if (active == null) {\n        return callable;\n    }\n    if (isLambda(callable)) {\n        callable = new CallableLambdaWrapper<>(callable);\n    }\n    ElasticApmAgent.ensureInstrumented(callable.getClass(), RUNNABLE_CALLABLE_FJTASK_INSTRUMENTATION);\n    contextMap.put(callable, active);\n    active.incrementReferences();\n    return callable;\n}",
+        "new_comment_raw": "Wraps the provided runnable and makes this  AbstractSpan active in the  Runnable#run() method.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/elastic/apm-agent-java/pull/1206/files/332e1fb2bd497411d6dbb32d5fdace4ee89d6e20#r439964581#new",
+        "old_code_raw": "@Nullable\npublic static <T> Callable<T> withContext(@Nullable Callable<T> callable, @Nullable ElasticApmTracer tracer) {\n    if (callable instanceof CallableLambdaWrapper || callable == null || tracer == null  || needsContext.get() == Boolean.FALSE) {\n        return callable;\n    }\n    needsContext.set(Boolean.FALSE);\n    AbstractSpan<?> active = tracer.getActive();\n    if (active == null) {\n        return callable;\n    }\n    if (isLambda(callable)) {\n        callable = new CallableLambdaWrapper<>(callable);\n    }\n    ElasticApmAgent.ensureInstrumented(callable.getClass(), RUNNABLE_CALLABLE_FJTASK_INSTRUMENTATION);\n    contextMap.put(callable, active);\n    active.incrementReferences();\n    return callable;\n}",
+        "old_comment_raw": "Instruments or wraps the provided runnable and makes this  AbstractSpan active in the  Runnable#run() method.",
+        "new_code_raw": "@Nullable\npublic static <T> Callable<T> withContext(@Nullable Callable<T> callable, @Nullable ElasticApmTracer tracer) {\n    if (callable instanceof CallableLambdaWrapper || callable == null || tracer == null  || needsContext.get() == Boolean.FALSE) {\n        return callable;\n    }\n    needsContext.set(Boolean.FALSE);\n    AbstractSpan<?> active = tracer.getActive();\n    if (active == null) {\n        return callable;\n    }\n    if (isLambda(callable)) {\n        callable = new CallableLambdaWrapper<>(callable);\n    }\n    ElasticApmAgent.ensureInstrumented(callable.getClass(), RUNNABLE_CALLABLE_FJTASK_INSTRUMENTATION);\n    contextMap.put(callable, active);\n    active.incrementReferences();\n    return callable;\n}",
+        "new_comment_raw": "Instruments or wraps the provided runnable and makes this  AbstractSpan active in the  Runnable#run() method.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/apache/hbase/pull/493#discussion_r314153523#old",
+        "old_code_raw": "  public MultiRowRangeFilter(byte[][] rowKeyPrefixes) {\n this(createRangeListFromRowKeyPrefixes(rowKeyPrefixes));\n } ",
+        "old_comment_raw": "@param rowKeyPrefixes the array of byte array",
+        "new_code_raw": "public MultiRowRangeFilter(byte[][] rowKeyPrefixes) {\nthis(createRangeListFromRowKeyPrefixes(rowKeyPrefixes));\n}",
+        "new_comment_raw": "@param rowKeyPrefixes the array of byte array",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/apache/hbase/pull/493#discussion_r314153523#new",
+        "old_code_raw": "  public MultiRowRangeFilter(byte[][] rowKeyPrefixes) {\n this(createRangeListFromRowKeyPrefixes(rowKeyPrefixes));\n }",
+        "old_comment_raw": "Constructor for creating a MultiRowRangeFilter from multiple rowkey prefixes.",
+        "new_code_raw": "  public MultiRowRangeFilter(byte[][] rowKeyPrefixes) {\n this(createRangeListFromRowKeyPrefixes(rowKeyPrefixes));\n }",
+        "new_comment_raw": "Constructor for creating a MultiRowRangeFilter from multiple rowkey prefixes.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/fozziethebeat/S-Space/pull/1#discussion_r91364#old",
+        "old_code_raw": "    public DependencyVectorSpace(Properties properties, int pathLength) {\nif (pathLength < 0)\nthrow new IllegalArgumentException(\n\"path length must be non-negative\")\n\ntermToVector = new HashMap<String,SparseDoubleVector>()\n\nString basisMappingProp = \nroperties.getProperty(BASIS_MAPPING_PROPERTY);\nbasisMapping = (basisMappingProp == null)\n? new WordBasedBasisMapping()\n: ReflectionUtil.<DependencyPathBasisMapping>\ngetObjectInstance(basisMappingProp);\nString pathWeightProp = \nroperties.getProperty(PATH_WEIGHTING_PROPERTY);\nweighter = (pathWeightProp == null)\n? new FlatPathWeight()\n: ReflectionUtil.<DependencyPathWeight>\ngetObjectInstance(pathWeightProp);\nString acceptorProp = \nroperties.getProperty(PATH_ACCEPTOR_PROPERTY);\nacceptor = (acceptorProp == null)\n? new MinimumPennTemplateAcceptor()\n: ReflectionUtil.<DependencyPathAcceptor>\ngetObjectInstance(acceptorProp)\n\nthis.pathLength = (pathLength == 0)\n? acceptor.maxPathLength()\n: pathLength\n\nextractor = DependencyExtractorManager.getDefaultExtractor();\n}",
+        "old_comment_raw": "Creates and configures this DependencyVectorSpace with the according to the provided properties.",
+        "new_code_raw": "    public DependencyVectorSpace(Properties properties, int pathLength) {\nif (pathLength < 0)\nthrow new IllegalArgumentException(\n\"path length must be non-negative\")\n\ntermToVector = new HashMap<String,SparseDoubleVector>()\n\nString basisMappingProp = \nroperties.getProperty(BASIS_MAPPING_PROPERTY);\nbasisMapping = (basisMappingProp == null)\n? new WordBasedBasisMapping()\n: ReflectionUtil.<DependencyPathBasisMapping>\ngetObjectInstance(basisMappingProp);\nString pathWeightProp = \nroperties.getProperty(PATH_WEIGHTING_PROPERTY);\nweighter = (pathWeightProp == null)\n? new FlatPathWeight()\n: ReflectionUtil.<DependencyPathWeight>\ngetObjectInstance(pathWeightProp);\nString acceptorProp = \nroperties.getProperty(PATH_ACCEPTOR_PROPERTY);\nacceptor = (acceptorProp == null)\n? new MinimumPennTemplateAcceptor()\n: ReflectionUtil.<DependencyPathAcceptor>\ngetObjectInstance(acceptorProp)\n\nthis.pathLength = (pathLength == 0)\n? acceptor.maxPathLength()\n: pathLength\n\nextractor = DependencyExtractorManager.getDefaultExtractor();\n}",
+        "new_comment_raw": "Creates and configures this DependencyVectorSpace with the according to the provided properties.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/fozziethebeat/S-Space/pull/1#discussion_r91364#new",
+        "old_code_raw": "    public DependencyVectorSpace(Properties properties, int pathLength) {\nif (pathLength < 0)\nthrow new IllegalArgumentException(\n\"path length must be non-negative\")\n\ntermToVector = new HashMap<String,SparseDoubleVector>()\n\nString basisMappingProp = \nroperties.getProperty(BASIS_MAPPING_PROPERTY);\nbasisMapping = (basisMappingProp == null)\n? new WordBasedBasisMapping()\n: ReflectionUtil.<DependencyPathBasisMapping>\ngetObjectInstance(basisMappingProp);\nString pathWeightProp = \nroperties.getProperty(PATH_WEIGHTING_PROPERTY);\nweighter = (pathWeightProp == null)\n? new FlatPathWeight()\n: ReflectionUtil.<DependencyPathWeight>\ngetObjectInstance(pathWeightProp);\nString acceptorProp = \nroperties.getProperty(PATH_ACCEPTOR_PROPERTY);\nacceptor = (acceptorProp == null)\n? new MinimumPennTemplateAcceptor()\n: ReflectionUtil.<DependencyPathAcceptor>\ngetObjectInstance(acceptorProp)\n\nthis.pathLength = (pathLength == 0)\n? acceptor.maxPathLength()\n: pathLength\n\nextractor = DependencyExtractorManager.getDefaultExtractor();\n}",
+        "old_comment_raw": "Creates and configures this DependencyVectorSpace with the default set of parameters.",
+        "new_code_raw": "    public DependencyVectorSpace(Properties properties, int pathLength) {\nif (pathLength < 0)\nthrow new IllegalArgumentException(\n\"path length must be non-negative\")\n\ntermToVector = new HashMap<String,SparseDoubleVector>()\n\nString basisMappingProp = \nroperties.getProperty(BASIS_MAPPING_PROPERTY);\nbasisMapping = (basisMappingProp == null)\n? new WordBasedBasisMapping()\n: ReflectionUtil.<DependencyPathBasisMapping>\ngetObjectInstance(basisMappingProp);\nString pathWeightProp = \nroperties.getProperty(PATH_WEIGHTING_PROPERTY);\nweighter = (pathWeightProp == null)\n? new FlatPathWeight()\n: ReflectionUtil.<DependencyPathWeight>\ngetObjectInstance(pathWeightProp);\nString acceptorProp = \nroperties.getProperty(PATH_ACCEPTOR_PROPERTY);\nacceptor = (acceptorProp == null)\n? new MinimumPennTemplateAcceptor()\n: ReflectionUtil.<DependencyPathAcceptor>\ngetObjectInstance(acceptorProp)\n\nthis.pathLength = (pathLength == 0)\n? acceptor.maxPathLength()\n: pathLength\n\nextractor = DependencyExtractorManager.getDefaultExtractor();\n}",
+        "new_comment_raw": "Creates and configures this DependencyVectorSpace with the default set of parameters.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/greenplum-db/pxf/pull/542#discussion_r573486621#old",
+        "old_code_raw": "    public GPDBWritable() {\ninitializeEightByteAlignment();\n}",
+        "old_comment_raw": "Empty Constructor",
+        "new_code_raw": "    public GPDBWritable() {\ninitializeEightByteAlignment();\n}",
+        "new_comment_raw": "Empty Constructor",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/greenplum-db/pxf/pull/542#discussion_r573486621#new",
+        "old_code_raw": "    public GPDBWritable(Charset databaseEncoding) {\nthis.databaseEncoding = databaseEncoding;\ninitializeEightByteAlignment();\n}",
+        "old_comment_raw": "Constructs a GPDBWritable object with a given databaseEncoding",
+        "new_code_raw": "    public GPDBWritable(Charset databaseEncoding) {\nthis.databaseEncoding = databaseEncoding;\ninitializeEightByteAlignment();\n}",
+        "new_comment_raw": "Constructs a GPDBWritable object with a given databaseEncoding",
+        "label": 0
+    }
+]

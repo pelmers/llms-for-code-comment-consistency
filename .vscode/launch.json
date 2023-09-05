@@ -1,0 +1,150 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: parser py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/lib/parsers.py",
+            "args": [
+                "onicagroup/runway",
+                ".py"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: parser java",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/lib/parsers.py",
+            "args": [
+                "spring-projects/spring-framework",
+                ".java"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: parser js",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/lib/parsers.py",
+            "args": [
+                "pelmers/code-couplet",
+                ".ts"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: parser go",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/lib/parsers.py",
+            "args": [
+                "go-gorm/datatypes",
+                ".go"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: examples reader deepjit",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/example-reader.py",
+            "args": [
+                "${workspaceFolder}/data/deepjit_summary_data/train.json",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: examples reader custom py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/example-reader.py",
+            "args": [
+                "${workspaceFolder}/data/Python-2023-03-24-10k/train.json",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: examples reader custom all",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/example-reader.py",
+            "args": [
+                "${workspaceFolder}/data/Java-22k/train.json",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: create datasets",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/create_datasets.py",
+            "args": [],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: create datasets (resume)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/create_datasets.py",
+            "args": ["--resume", "data/repos-Go-2023-06-04-1432.pkl"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+
+        {
+            "name": "Python: resample py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/resample_dataset.py",
+            "args": ["${workspaceFolder}/data/repos-Python-2023-03-24-960.pkl", "/tmp"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: resample java",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq2/resample_dataset.py",
+            "args": ["${workspaceFolder}/data/repos-Java-2023-03-25-957.pkl", "/tmp"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: mine all pr comments",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rq3/mine-all-pr-comments.py",
+            "args": [],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "LANGUAGE": "Python"
+            }
+        },
+        {
+            "name": "Python: process benchmark",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/benchmarks/md_to_dataset.py",
+            "args": ["${workspaceFolder}/benchmarks/java_full.md"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "LANGUAGE": "Python"
+            }
+        }
+    ]
+}

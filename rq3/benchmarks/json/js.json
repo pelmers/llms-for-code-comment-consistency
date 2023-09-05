@@ -1,0 +1,452 @@
+[
+    {
+        "type": "summary",
+        "id": "https://github.com/mochajs/mocha/pull/3632#discussion_r244403642#old",
+        "old_code_raw": "function Suite(title, parentContext) {\n  if (!utils.isString(title)) {\n    throw createInvalidArgumentTypeError(\n      'Suite argument \"title\" must be a string. Received type \"' +\n        typeof title +\n        '\"',\n      'title',\n      'string'\n    );\n  }\n  this.title = title;\n  function Context() {}\n  Context.prototype = parentContext;\n  this.ctx = new Context();\n  this.suites = [];\n  this.tests = [];\n  this.pending = false;\n  this._beforeEach = [];\n  this._beforeAll = [];\n  this._afterEach = [];\n  this._afterAll = [];\n  this.root = !title;\n  this._timeout = 2000;\n  this._enableTimeouts = true;\n  this._slow = 75;\n  this._bail = false;\n  this._retries = -1;\n  this._onlyTests = [];\n  this._onlySuites = [];\n  this.delayed = false;\n}",
+        "old_comment_raw": "Initialize a new `Suite` with the given `title` and `ctx`.",
+        "new_code_raw": "function Suite(title, parentContext) {\n  if (!utils.isString(title)) {\n    throw createInvalidArgumentTypeError(\n      'Suite argument \"title\" must be a string. Received type \"' +\n        typeof title +\n        '\"',\n      'title',\n      'string'\n    );\n  }\n  this.title = title;\n  function Context() {}\n  Context.prototype = parentContext;\n  this.ctx = new Context();\n  this.suites = [];\n  this.tests = [];\n  this.pending = false;\n  this._beforeEach = [];\n  this._beforeAll = [];\n  this._afterEach = [];\n  this._afterAll = [];\n  this.root = !title;\n  this._timeout = 2000;\n  this._enableTimeouts = true;\n  this._slow = 75;\n  this._bail = false;\n  this._retries = -1;\n  this._onlyTests = [];\n  this._onlySuites = [];\n  this.delayed = false;\n}",
+        "new_comment_raw": "Initialize a new `Suite` with the given `title` and `ctx`.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/mochajs/mocha/pull/3632#discussion_r244403642#new",
+        "old_code_raw": "function Suite(title, parentContext, isRoot) {\n  if (!utils.isString(title)) {\n    throw createInvalidArgumentTypeError(\n      'Suite argument \"title\" must be a string. Received type \"' +\n        typeof title +\n        '\"',\n      'title',\n      'string'\n    );\n  }\n  this.title = title;\n  function Context() {}\n  Context.prototype = parentContext;\n  this.ctx = new Context();\n  this.suites = [];\n  this.tests = [];\n  this.pending = false;\n  this._beforeEach = [];\n  this._beforeAll = [];\n  this._afterEach = [];\n  this._afterAll = [];\n  this.root = isRoot === true;\n  this._timeout = 2000;\n  this._enableTimeouts = true;\n  this._slow = 75;\n  this._bail = false;\n  this._retries = -1;\n  this._onlyTests = [];\n  this._onlySuites = [];\n  this.delayed = false;\n}",
+        "old_comment_raw": "Constructs a new `Suite` instance with the given `title`, `ctx`, and `isRoot`.",
+        "new_code_raw": "function Suite(title, parentContext, isRoot) {\n  if (!utils.isString(title)) {\n    throw createInvalidArgumentTypeError(\n      'Suite argument \"title\" must be a string. Received type \"' +\n        typeof title +\n        '\"',\n      'title',\n      'string'\n    );\n  }\n  this.title = title;\n  function Context() {}\n  Context.prototype = parentContext;\n  this.ctx = new Context();\n  this.suites = [];\n  this.tests = [];\n  this.pending = false;\n  this._beforeEach = [];\n  this._beforeAll = [];\n  this._afterEach = [];\n  this._afterAll = [];\n  this.root = isRoot === true;\n  this._timeout = 2000;\n  this._enableTimeouts = true;\n  this._slow = 75;\n  this._bail = false;\n  this._retries = -1;\n  this._onlyTests = [];\n  this._onlySuites = [];\n  this.delayed = false;\n}",
+        "new_comment_raw": "Constructs a new `Suite` instance with the given `title`, `ctx`, and `isRoot`.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/webrtc/testrtc/commit/daa7509f35c4#old",
+        "old_code_raw": "function maybePreferCodec(sdp, type, dir, codec) {\n  var str = type + ' ' + dir + ' codec';\n  if (codec === '') {\n    trace('No preference on ' + str + '.');\n    return sdp;\n  }\n\n  trace('Prefer ' + str + ': ' + codec);\n\n  var sdpLines = sdp.split('\\r\\n');\n\n  // Search for m line.\n  var mLineIndex = findLine(sdpLines, 'm=', type);\n  if (mLineIndex === null) {\n    return sdp;\n  }\n\n  // If the codec is available, set it as the default in m line.\n  var codecIndex = findLine(sdpLines, 'a=rtpmap', codec);\n  if (codecIndex) {\n    var payload = getCodecPayloadType(sdpLines[codecIndex]);\n    if (payload) {\n      sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);\n    }\n  }\n\n  sdp = sdpLines.join('\\r\\n');\n  return sdp;\n}",
+        "old_comment_raw": "Sets |codec| as the default audio codec if it's present.",
+        "new_code_raw": "function maybePreferCodec(sdp, type, dir, codec) {\n  var str = type + ' ' + dir + ' codec';\n  if (codec === '') {\n    trace('No preference on ' + str + '.');\n    return sdp;\n  }\n\n  trace('Prefer ' + str + ': ' + codec);\n\n  var sdpLines = sdp.split('\\r\\n');\n\n  // Search for m line.\n  var mLineIndex = findLine(sdpLines, 'm=', type);\n  if (mLineIndex === null) {\n    return sdp;\n  }\n\n  // If the codec is available, set it as the default in m line.\n  var codecIndex = findLine(sdpLines, 'a=rtpmap', codec);\n  if (codecIndex) {\n    var payload = getCodecPayloadType(sdpLines[codecIndex]);\n    if (payload) {\n      sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);\n    }\n  }\n\n  sdp = sdpLines.join('\\r\\n');\n  return sdp;\n}",
+        "new_comment_raw": "Sets |codec| as the default audio codec if it's present.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/webrtc/testrtc/commit/daa7509f35c4#new",
+        "old_code_raw": "function maybePreferCodec(sdp, type, dir, codec) {\n  var str = type + ' ' + dir + ' codec';\n  if (codec === '') {\n    trace('No preference on ' + str + '.');\n    return sdp;\n  }\n\n  trace('Prefer ' + str + ': ' + codec);\n\n  var sdpLines = sdp.split('\\r\\n');\n\n  // Search for m line.\n  var mLineIndex = findLine(sdpLines, 'm=', type);\n  if (mLineIndex === null) {\n    return sdp;\n  }\n\n  // If the codec is available, set it as the default in m line.\n  var codecIndex = findLine(sdpLines, 'a=rtpmap', codec);\n  if (codecIndex) {\n    var payload = getCodecPayloadType(sdpLines[codecIndex]);\n    if (payload) {\n      sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);\n    }\n  }\n\n  sdp = sdpLines.join('\\r\\n');\n  return sdp;\n}",
+        "old_comment_raw": "Sets |codec| as the default |type| codec if it's present.",
+        "new_code_raw": "function maybePreferCodec(sdp, type, dir, codec) {\n  var str = type + ' ' + dir + ' codec';\n  if (codec === '') {\n    trace('No preference on ' + str + '.');\n    return sdp;\n  }\n\n  trace('Prefer ' + str + ': ' + codec);\n\n  var sdpLines = sdp.split('\\r\\n');\n\n  // Search for m line.\n  var mLineIndex = findLine(sdpLines, 'm=', type);\n  if (mLineIndex === null) {\n    return sdp;\n  }\n\n  // If the codec is available, set it as the default in m line.\n  var codecIndex = findLine(sdpLines, 'a=rtpmap', codec);\n  if (codecIndex) {\n    var payload = getCodecPayloadType(sdpLines[codecIndex]);\n    if (payload) {\n      sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);\n    }\n  }\n\n  sdp = sdpLines.join('\\r\\n');\n  return sdp;\n}",
+        "new_comment_raw": "Sets |codec| as the default |type| codec if it's present.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/tldr-pages/tldr-node-client/commit/e62978058849#old",
+        "old_code_raw": "function clearRuntimeIndex() {\n  shortIndex = null;\n}",
+        "old_comment_raw": "Set the variable to null",
+        "new_code_raw": "function clearRuntimeIndex() {\n  shortIndex = null;\n}",
+        "new_comment_raw": "Set the variable to null",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/tldr-pages/tldr-node-client/commit/e62978058849#new",
+        "old_code_raw": "function clearRuntimeIndex() {\n  shortIndex = null;\n}",
+        "old_comment_raw": "Set the shortIndex variable to null.",
+        "new_code_raw": "function clearRuntimeIndex() {\n  shortIndex = null;\n}",
+        "new_comment_raw": "Set the shortIndex variable to null.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/KaTeX/KaTeX/commit/f63af87f17fe#old",
+        "old_code_raw": "function LexResult(type, text, position) {\n    this.type = type;\n    this.text = text;\n    this.position = position;\n}",
+        "old_comment_raw": "The result of a single lex",
+        "new_code_raw": "function LexResult(type, text, position) {\n    this.type = type;\n    this.text = text;\n    this.position = position;\n}",
+        "new_comment_raw": "The result of a single lex",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/KaTeX/KaTeX/commit/f63af87f17fe#new",
+        "old_code_raw": "function LexResult(type, text, position) {\n    this.type = type;\n    this.text = text;\n    this.position = position;\n}",
+        "old_comment_raw": "The resulting token returned from `lex`.",
+        "new_code_raw": "function LexResult(type, text, position) {\n    this.type = type;\n    this.text = text;\n    this.position = position;\n}",
+        "new_comment_raw": "The resulting token returned from `lex`.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/vuex-orm/vuex-orm-next/commit/bf9b63b61e4c#old",
+        "old_code_raw": "function flush(state: State): void {\n  state.data = {}\n}",
+        "old_comment_raw": "Commit `deleteAll` change to the store.",
+        "new_code_raw": "function flush(state: State): void {\n  state.data = {}\n}",
+        "new_comment_raw": "Commit `deleteAll` change to the store.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/vuex-orm/vuex-orm-next/commit/bf9b63b61e4c#new",
+        "old_code_raw": "function flush(state: State): void {\n  state.data = {}\n}",
+        "old_comment_raw": "Commit `flush` change to the store.",
+        "new_code_raw": "function flush(state: State): void {\n  state.data = {}\n}",
+        "new_comment_raw": "Commit `flush` change to the store.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/marmelab/react-admin/pull/8057#discussion_r941544542#old",
+        "old_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n};",
+        "old_comment_raw": "This hook returns a boolean indicating whether the form is invalid.",
+        "new_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n};",
+        "new_comment_raw": "This hook returns a boolean indicating whether the form is invalid.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/marmelab/react-admin/pull/8057#discussion_r941544542#new",
+        "old_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n}; ",
+        "old_comment_raw": "This hook display an error message on submit in Form and SaveButton.",
+        "new_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n}; ",
+        "new_comment_raw": "This hook display an error message on submit in Form and SaveButton.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-cloud/spring-cloud-dataflow-ui/commit/a9619f5c5bdc#old",
+        "old_code_raw": "private getSingleCounter(counterName: string): Observable<Counter> {\nconst requestOptionsArgs: RequestOptionsArgs = HttpUtils.getDefaultRequestOptions();\nreturn this.http.get(this.metricsCountersUrl + '/' + counterName, requestOptionsArgs)\n.map(response => {\nconst body = response.json();\nconsole.log('body', body);\nreturn new Counter().deserialize(body);\n})\n.catch(this.errorHandler.handleError);\n} ",
+        "old_comment_raw": "Retrieves all counters.",
+        "new_code_raw": "private getSingleCounter(counterName: string): Observable<Counter> {\nconst requestOptionsArgs: RequestOptionsArgs = HttpUtils.getDefaultRequestOptions();\nreturn this.http.get(this.metricsCountersUrl + '/' + counterName, requestOptionsArgs)\n.map(response => {\nconst body = response.json();\nconsole.log('body', body);\nreturn new Counter().deserialize(body);\n})\n.catch(this.errorHandler.handleError);\n} ",
+        "new_comment_raw": "Retrieves all counters.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/spring-cloud/spring-cloud-dataflow-ui/commit/a9619f5c5bdc#new",
+        "old_code_raw": "private getSingleCounter(counterName: string): Observable<Counter> {\nconst requestOptionsArgs: RequestOptionsArgs = HttpUtils.getDefaultRequestOptions();\nreturn this.http.get(this.metricsCountersUrl + '/' + counterName, requestOptionsArgs)\n.map(response => {\nconst body = response.json();\nconsole.log('body', body);\nreturn new Counter().deserialize(body);\n})\n.catch(this.errorHandler.handleError);\n} ",
+        "old_comment_raw": "Retrieves a single counter",
+        "new_code_raw": "private getSingleCounter(counterName: string): Observable<Counter> {\nconst requestOptionsArgs: RequestOptionsArgs = HttpUtils.getDefaultRequestOptions();\nreturn this.http.get(this.metricsCountersUrl + '/' + counterName, requestOptionsArgs)\n.map(response => {\nconst body = response.json();\nconsole.log('body', body);\nreturn new Counter().deserialize(body);\n})\n.catch(this.errorHandler.handleError);\n} ",
+        "new_comment_raw": "Retrieves a single counter",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/vitejs/vite-plugin-react-pages/commit/8018ab00c246#old",
+        "old_code_raw": "createAPIForSourceFile(\nsourceFile: File,\nscheduleUpdate: ScheduleUpdate\n): HandlerAPI {\nconst getRuntimeData: HandlerAPI['getRuntimeData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'runtime', sourceFile, scheduleUpdate)\n\nconst getStaticData: HandlerAPI['getStaticData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'static', sourceFile, scheduleUpdate)\n\nconst addPageData: HandlerAPI['addPageData'] = (pageData) => {\nconst key = pageData.key ?? 'main'\nif (pageData.dataPath) {\nconst runtimeData = getRuntimeData(pageData.pageId)\nruntimeData[key] = pageData.dataPath\n}\nif (pageData.staticData) {\nconst staticData = getStaticData(pageData.pageId)\nstaticData[key] = pageData.staticData\n}\n}\n\nreturn {\ngetRuntimeData,\ngetStaticData,\naddPageData,\n}\n}",
+        "old_comment_raw": "If the page page does not come from local file, then we create this api to track the source of page data.",
+        "new_code_raw": "createAPIForSourceFile(\nsourceFile: File,\nscheduleUpdate: ScheduleUpdate\n): HandlerAPI {\nconst getRuntimeData: HandlerAPI['getRuntimeData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'runtime', sourceFile, scheduleUpdate)\n\nconst getStaticData: HandlerAPI['getStaticData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'static', sourceFile, scheduleUpdate)\n\nconst addPageData: HandlerAPI['addPageData'] = (pageData) => {\nconst key = pageData.key ?? 'main'\nif (pageData.dataPath) {\nconst runtimeData = getRuntimeData(pageData.pageId)\nruntimeData[key] = pageData.dataPath\n}\nif (pageData.staticData) {\nconst staticData = getStaticData(pageData.pageId)\nstaticData[key] = pageData.staticData\n}\n}\n\nreturn {\ngetRuntimeData,\ngetStaticData,\naddPageData,\n}\n}",
+        "new_comment_raw": "If the page page does not come from local file, then we create this api to track the source of page data.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/vitejs/vite-plugin-react-pages/commit/8018ab00c246#new",
+        "old_code_raw": "createAPIForSourceFile(\nsourceFile: File,\nscheduleUpdate: ScheduleUpdate\n): HandlerAPI {\nconst getRuntimeData: HandlerAPI['getRuntimeData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'runtime', sourceFile, scheduleUpdate)\n\nconst getStaticData: HandlerAPI['getStaticData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'static', sourceFile, scheduleUpdate)\n\nconst addPageData: HandlerAPI['addPageData'] = (pageData) => {\nconst key = pageData.key ?? 'main'\nif (pageData.dataPath) {\nconst runtimeData = getRuntimeData(pageData.pageId)\nruntimeData[key] = pageData.dataPath\n}\nif (pageData.staticData) {\nconst staticData = getStaticData(pageData.pageId)\nstaticData[key] = pageData.staticData\n}\n}\n\nreturn {\ngetRuntimeData,\ngetStaticData,\naddPageData,\n}\n}",
+        "old_comment_raw": "If the page comes from local file, then we create the api to track the source of page data.",
+        "new_code_raw": "createAPIForSourceFile(\nsourceFile: File,\nscheduleUpdate: ScheduleUpdate\n): HandlerAPI {\nconst getRuntimeData: HandlerAPI['getRuntimeData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'runtime', sourceFile, scheduleUpdate)\n\nconst getStaticData: HandlerAPI['getStaticData'] = (pageId) =>\nthis.createMutableProxy(pageId, 'static', sourceFile, scheduleUpdate)\n\nconst addPageData: HandlerAPI['addPageData'] = (pageData) => {\nconst key = pageData.key ?? 'main'\nif (pageData.dataPath) {\nconst runtimeData = getRuntimeData(pageData.pageId)\nruntimeData[key] = pageData.dataPath\n}\nif (pageData.staticData) {\nconst staticData = getStaticData(pageData.pageId)\nstaticData[key] = pageData.staticData\n}\n}\n\nreturn {\ngetRuntimeData,\ngetStaticData,\naddPageData,\n}\n}",
+        "new_comment_raw": "If the page comes from local file, then we create the api to track the source of page data.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/0xs34n/starknet.js/commit/34a977953c2b#old",
+        "old_code_raw": "public async verifyMessage(typedData: TypedData, signature: Signature): Promise<boolean> {\nconst hash = await this.hashMessage(typedData);\nreturn this.verifyMessageHash(hash, signature);\n}",
+        "old_comment_raw": "Verify a signature of a given hash",
+        "new_code_raw": "public async verifyMessage(typedData: TypedData, signature: Signature): Promise<boolean> {\nconst hash = await this.hashMessage(typedData);\nreturn this.verifyMessageHash(hash, signature);\n}",
+        "new_comment_raw": "Verify a signature of a given hash",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/0xs34n/starknet.js/commit/34a977953c2b#new",
+        "old_code_raw": "public async verifyMessage(typedData: TypedData, signature: Signature): Promise<boolean> {\nconst hash = await this.hashMessage(typedData);\nreturn this.verifyMessageHash(hash, signature);\n}",
+        "old_comment_raw": "Verify a signature of a JSON object",
+        "new_code_raw": "public async verifyMessage(typedData: TypedData, signature: Signature): Promise<boolean> {\nconst hash = await this.hashMessage(typedData);\nreturn this.verifyMessageHash(hash, signature);\n}",
+        "new_comment_raw": "Verify a signature of a JSON object",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/AudiusProject/audius-protocol/pull/2186#discussion_r779951401#old",
+        "old_code_raw": "async retrieveUserInfoFromReplicaSet(\nreplicasToWalletsMap,\nunhealthyPeers,\nmaxUserClockFetchAttempts = 10\n) {\nconst replicasToUserInfoMap = {}\n\n// TODO change to batched parallel requests\nconst replicas = Object.keys(replicasToWalletsMap)\nawait Promise.all(\nreplicas.map(async (replica) => {\nreplicasToUserInfoMap[replica] = {}\n\nconst walletsOnReplica = replicasToWalletsMap[replica]\n\nconst axiosReqParams = {\nbaseURL: replica,\nurl: '/users/batch_clock_status',\nmethod: 'post',\ndata: { walletPublicKeys: walletsOnReplica },\ntimeout: BATCH_CLOCK_STATUS_REQUEST_TIMEOUT\n}\n\n// Generate and attach SP signature to bypass route rate limits\nconst { timestamp, signature } = generateTimestampAndSignature(\n{ spID: this.spID },\nthis.delegatePrivateKey\n)\naxiosReqParams.params = { spID: this.spID, timestamp, signature }\n\n// Make axios request with retries\nlet userClockValuesResp = []\nlet userClockFetchAttempts = 0\nlet errorMsg\nwhile (userClockFetchAttempts++ < maxUserClockFetchAttempts) {\ntry {\nuserClockValuesResp = (await axios(axiosReqParams)).data.data.users\n} catch (e) {\nerrorMsg = e\n}\n}\n// If failed to get response after all attempts, add replica to `unhealthyPeers` list for reconfig\nif (userClockValuesResp.length === 0) {\nthis.logError(\n`[retrieveUserInfoFromReplicaSet] Could not fetch clock values for wallets=${walletsOnReplica} on replica node=${replica} ${\nerrorMsg ? ': ' + errorMsg.toString() : ''\n}`\n)\nunhealthyPeers.add(replica)\n}\n\n// Else, add response data to output aggregate map\nuserClockValuesResp.forEach((userClockValueResp) => {\n// If node is running behind version 0.3.50, `filesHash` value will be undefined\nconst { walletPublicKey, clock, filesHash } = userClockValueResp\nreplicasToUserInfoMap[replica][walletPublicKey] = { clock, filesHash }\n})\n})\n)\n\nreturn replicasToUserInfoMap\n}",
+        "old_comment_raw": "Given map(replica set node => userWallets[]), retrieves clock values for every (node, userWallet) pair",
+        "new_code_raw": "async retrieveUserInfoFromReplicaSet(\nreplicasToWalletsMap,\nunhealthyPeers,\nmaxUserClockFetchAttempts = 10\n) {\nconst replicasToUserInfoMap = {}\n\n// TODO change to batched parallel requests\nconst replicas = Object.keys(replicasToWalletsMap)\nawait Promise.all(\nreplicas.map(async (replica) => {\nreplicasToUserInfoMap[replica] = {}\n\nconst walletsOnReplica = replicasToWalletsMap[replica]\n\nconst axiosReqParams = {\nbaseURL: replica,\nurl: '/users/batch_clock_status',\nmethod: 'post',\ndata: { walletPublicKeys: walletsOnReplica },\ntimeout: BATCH_CLOCK_STATUS_REQUEST_TIMEOUT\n}\n\n// Generate and attach SP signature to bypass route rate limits\nconst { timestamp, signature } = generateTimestampAndSignature(\n{ spID: this.spID },\nthis.delegatePrivateKey\n)\naxiosReqParams.params = { spID: this.spID, timestamp, signature }\n\n// Make axios request with retries\nlet userClockValuesResp = []\nlet userClockFetchAttempts = 0\nlet errorMsg\nwhile (userClockFetchAttempts++ < maxUserClockFetchAttempts) {\ntry {\nuserClockValuesResp = (await axios(axiosReqParams)).data.data.users\n} catch (e) {\nerrorMsg = e\n}\n}\n// If failed to get response after all attempts, add replica to `unhealthyPeers` list for reconfig\nif (userClockValuesResp.length === 0) {\nthis.logError(\n`[retrieveUserInfoFromReplicaSet] Could not fetch clock values for wallets=${walletsOnReplica} on replica node=${replica} ${\nerrorMsg ? ': ' + errorMsg.toString() : ''\n}`\n)\nunhealthyPeers.add(replica)\n}\n\n// Else, add response data to output aggregate map\nuserClockValuesResp.forEach((userClockValueResp) => {\n// If node is running behind version 0.3.50, `filesHash` value will be undefined\nconst { walletPublicKey, clock, filesHash } = userClockValueResp\nreplicasToUserInfoMap[replica][walletPublicKey] = { clock, filesHash }\n})\n})\n)\n\nreturn replicasToUserInfoMap\n}",
+        "new_comment_raw": "Given map(replica set node => userWallets[]), retrieves clock values for every (node, userWallet) pair",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/AudiusProject/audius-protocol/pull/2186#discussion_r779951401#new",
+        "old_code_raw": "async retrieveUserInfoFromReplicaSet(\nreplicasToWalletsMap,\nunhealthyPeers,\nmaxUserClockFetchAttempts = 10\n) {\nconst replicasToUserInfoMap = {}\n\n// TODO change to batched parallel requests\nconst replicas = Object.keys(replicasToWalletsMap)\nawait Promise.all(\nreplicas.map(async (replica) => {\nreplicasToUserInfoMap[replica] = {}\n\nconst walletsOnReplica = replicasToWalletsMap[replica]\n\nconst axiosReqParams = {\nbaseURL: replica,\nurl: '/users/batch_clock_status',\nmethod: 'post',\ndata: { walletPublicKeys: walletsOnReplica },\ntimeout: BATCH_CLOCK_STATUS_REQUEST_TIMEOUT\n}\n\n// Generate and attach SP signature to bypass route rate limits\nconst { timestamp, signature } = generateTimestampAndSignature(\n{ spID: this.spID },\nthis.delegatePrivateKey\n)\naxiosReqParams.params = { spID: this.spID, timestamp, signature }\n\n// Make axios request with retries\nlet userClockValuesResp = []\nlet userClockFetchAttempts = 0\nlet errorMsg\nwhile (userClockFetchAttempts++ < maxUserClockFetchAttempts) {\ntry {\nuserClockValuesResp = (await axios(axiosReqParams)).data.data.users\n} catch (e) {\nerrorMsg = e\n}\n}\n// If failed to get response after all attempts, add replica to `unhealthyPeers` list for reconfig\nif (userClockValuesResp.length === 0) {\nthis.logError(\n`[retrieveUserInfoFromReplicaSet] Could not fetch clock values for wallets=${walletsOnReplica} on replica node=${replica} ${\nerrorMsg ? ': ' + errorMsg.toString() : ''\n}`\n)\nunhealthyPeers.add(replica)\n}\n\n// Else, add response data to output aggregate map\nuserClockValuesResp.forEach((userClockValueResp) => {\n// If node is running behind version 0.3.50, `filesHash` value will be undefined\nconst { walletPublicKey, clock, filesHash } = userClockValueResp\nreplicasToUserInfoMap[replica][walletPublicKey] = { clock, filesHash }\n})\n})\n)\n\nreturn replicasToUserInfoMap\n}",
+        "old_comment_raw": "Given map(replica set node => userWallets[]), retrieves user info for every (node, userWallet) pair",
+        "new_code_raw": "async retrieveUserInfoFromReplicaSet(\nreplicasToWalletsMap,\nunhealthyPeers,\nmaxUserClockFetchAttempts = 10\n) {\nconst replicasToUserInfoMap = {}\n\n// TODO change to batched parallel requests\nconst replicas = Object.keys(replicasToWalletsMap)\nawait Promise.all(\nreplicas.map(async (replica) => {\nreplicasToUserInfoMap[replica] = {}\n\nconst walletsOnReplica = replicasToWalletsMap[replica]\n\nconst axiosReqParams = {\nbaseURL: replica,\nurl: '/users/batch_clock_status',\nmethod: 'post',\ndata: { walletPublicKeys: walletsOnReplica },\ntimeout: BATCH_CLOCK_STATUS_REQUEST_TIMEOUT\n}\n\n// Generate and attach SP signature to bypass route rate limits\nconst { timestamp, signature } = generateTimestampAndSignature(\n{ spID: this.spID },\nthis.delegatePrivateKey\n)\naxiosReqParams.params = { spID: this.spID, timestamp, signature }\n\n// Make axios request with retries\nlet userClockValuesResp = []\nlet userClockFetchAttempts = 0\nlet errorMsg\nwhile (userClockFetchAttempts++ < maxUserClockFetchAttempts) {\ntry {\nuserClockValuesResp = (await axios(axiosReqParams)).data.data.users\n} catch (e) {\nerrorMsg = e\n}\n}\n// If failed to get response after all attempts, add replica to `unhealthyPeers` list for reconfig\nif (userClockValuesResp.length === 0) {\nthis.logError(\n`[retrieveUserInfoFromReplicaSet] Could not fetch clock values for wallets=${walletsOnReplica} on replica node=${replica} ${\nerrorMsg ? ': ' + errorMsg.toString() : ''\n}`\n)\nunhealthyPeers.add(replica)\n}\n\n// Else, add response data to output aggregate map\nuserClockValuesResp.forEach((userClockValueResp) => {\n// If node is running behind version 0.3.50, `filesHash` value will be undefined\nconst { walletPublicKey, clock, filesHash } = userClockValueResp\nreplicasToUserInfoMap[replica][walletPublicKey] = { clock, filesHash }\n})\n})\n)\n\nreturn replicasToUserInfoMap\n}",
+        "new_comment_raw": "Given map(replica set node => userWallets[]), retrieves user info for every (node, userWallet) pair",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/1Password/connect-sdk-js/commit/d7681a6094c6#old",
+        "old_code_raw": "public async getVaultById(vaultId: string): Promise<Vault> {\nconst { data } = await this.adapter.sendRequest(\n\"get\",\n`${this.basePath}/${vaultId}`,\n);\nreturn ObjectSerializer.deserialize(data, \"Vault\");\n}",
+        "old_comment_raw": "Get metadata about a single vault",
+        "new_code_raw": "public async getVaultById(vaultId: string): Promise<Vault> {\nconst { data } = await this.adapter.sendRequest(\n\"get\",\n`${this.basePath}/${vaultId}`,\n);\nreturn ObjectSerializer.deserialize(data, \"Vault\");\n}",
+        "new_comment_raw": "Get metadata about a single vault",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/1Password/connect-sdk-js/commit/d7681a6094c6#new",
+        "old_code_raw": "public async getVaultById(vaultId: string): Promise<Vault> {\nconst { data } = await this.adapter.sendRequest(\n\"get\",\n`${this.basePath}/${vaultId}`,\n);\nreturn ObjectSerializer.deserialize(data, \"Vault\");\n}",
+        "old_comment_raw": "Get metadata about a single vault with the provided ID.",
+        "new_code_raw": "public async getVaultById(vaultId: string): Promise<Vault> {\nconst { data } = await this.adapter.sendRequest(\n\"get\",\n`${this.basePath}/${vaultId}`,\n);\nreturn ObjectSerializer.deserialize(data, \"Vault\");\n}",
+        "new_comment_raw": "Get metadata about a single vault with the provided ID.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/marmelab/react-admin/pull/8057#discussion_r941544542#old",
+        "old_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n};",
+        "old_comment_raw": "This hook returns a boolean indicating whether the form is invalid.",
+        "new_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n};",
+        "new_comment_raw": "This hook returns a boolean indicating whether the form is invalid.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/marmelab/react-admin/pull/8057#discussion_r941544542#new",
+        "old_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n};",
+        "old_comment_raw": "This hook display an error message on submit in Form and SaveButton.",
+        "new_code_raw": "export const useNotifyIsFormInvalid = (control?: Control) => {\nconst { submitCount, errors } = useFormState(\ncontrol ? { control } : undefined\n);\nconst submitCountRef = useRef(submitCount);\nconst notify = useNotify();\n\nuseEffect(() => {\n// Checking the submit count allows us to only display the notification after users\n// tried to submit\nif (submitCount > submitCountRef.current) {\nsubmitCountRef.current = submitCount;\n\nif (Object.keys(errors).length > 0) {\nnotify('ra.message.invalid_form', { type: 'warning' });\n}\n}\n}, [errors, submitCount, notify]);\n};",
+        "new_comment_raw": "This hook display an error message on submit in Form and SaveButton.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/scratchfoundation/scratch-vm/pull/1947#discussion_r257304691#old",
+        "old_code_raw": "const parseScratchAssets = function (object, runtime, topLevel, zip) {\nif (!object.hasOwnProperty('objName')) {\n// Skip parsing monitors. Or any other objects missing objName.\nreturn null;\n}\n\nconst assets = {costumePromises: [], soundPromises: [], children: []};\n\n// Costumes from JSON.\nconst costumePromises = assets.costumePromises;\nif (object.hasOwnProperty('costumes')) {\nfor (let i = 0; i < object.costumes.length; i++) {\nconst costumeSource = object.costumes[i];\nconst bitmapResolution = costumeSource.bitmapResolution || 1;\nconst costume = {\nname: costumeSource.costumeName,\nbitmapResolution: bitmapResolution,\nrotationCenterX: topLevel ? 240 * bitmapResolution : costumeSource.rotationCenterX,\nrotationCenterY: topLevel ? 180 * bitmapResolution : costumeSource.rotationCenterY,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\nmd5: costumeSource.baseLayerMD5,\nskinId: null\n};\nconst md5ext = costumeSource.baseLayerMD5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nlet ext;\nif (idParts.length === 2 && idParts[1]) {\next = idParts[1];\n} else {\n// Default to 'png' if baseLayerMD5 is not formatted correctly\next = 'png';\n// Fix costume md5 for later\ncostume.md5 = `${costume.md5}.${ext}`;\n}\ncostume.dataFormat = ext;\ncostume.assetId = md5;\nif (costumeSource.textLayerMD5) {\ncostume.textLayerMD5 = StringUtil.splitFirst(costumeSource.textLayerMD5, '.')[0];\n}\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the costume should be the baseLayerID followed by the file ext\nconst assetFileName = `${costumeSource.baseLayerID}.${ext}`;\nconst textLayerFileName = costumeSource.textLayerID ? `${costumeSource.textLayerID}.png` : null;\ncostumePromises.push(deserializeCostume(costume, runtime, zip, assetFileName, textLayerFileName)\n.then(() => loadCostume(costume.md5, costume, runtime, 2 /* optVersion */))\n);\n}\n}\n// Sounds from JSON\nconst soundPromises = assets.soundPromises;\nif (object.hasOwnProperty('sounds')) {\nfor (let s = 0; s < object.sounds.length; s++) {\nconst soundSource = object.sounds[s];\nconst sound = {\nname: soundSource.soundName,\nformat: soundSource.format,\nrate: soundSource.rate,\nsampleCount: soundSource.sampleCount,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\n// (for example, the audio engine currently relies on this\n// property to be named 'md5')\nmd5: soundSource.md5,\ndata: null\n};\nconst md5ext = soundSource.md5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nconst ext = idParts[1].toLowerCase();\nsound.dataFormat = ext;\nsound.assetId = md5;\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the sound should be the soundID (provided from the project.json)\n// followed by the file ext\nconst assetFileName = `${soundSource.soundID}.${ext}`;\nsoundPromises.push(deserializeSound(sound, runtime, zip, assetFileName).then(() => sound));\n}\n}\n\n// The stage will have child objects; recursively process them.\nconst childrenAssets = assets.children;\nif (object.children) {\nfor (let m = 0; m < object.children.length; m++) {\nchildrenAssets.push(parseScratchAssets(object.children[m], runtime, false, zip));\n}\n}\n\nreturn assets;\n};",
+        "old_comment_raw": "Parse a single \"Scratch object\" and create all its in-memory VM objects.",
+        "new_code_raw": "const parseScratchAssets = function (object, runtime, topLevel, zip) {\nif (!object.hasOwnProperty('objName')) {\n// Skip parsing monitors. Or any other objects missing objName.\nreturn null;\n}\n\nconst assets = {costumePromises: [], soundPromises: [], children: []};\n\n// Costumes from JSON.\nconst costumePromises = assets.costumePromises;\nif (object.hasOwnProperty('costumes')) {\nfor (let i = 0; i < object.costumes.length; i++) {\nconst costumeSource = object.costumes[i];\nconst bitmapResolution = costumeSource.bitmapResolution || 1;\nconst costume = {\nname: costumeSource.costumeName,\nbitmapResolution: bitmapResolution,\nrotationCenterX: topLevel ? 240 * bitmapResolution : costumeSource.rotationCenterX,\nrotationCenterY: topLevel ? 180 * bitmapResolution : costumeSource.rotationCenterY,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\nmd5: costumeSource.baseLayerMD5,\nskinId: null\n};\nconst md5ext = costumeSource.baseLayerMD5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nlet ext;\nif (idParts.length === 2 && idParts[1]) {\next = idParts[1];\n} else {\n// Default to 'png' if baseLayerMD5 is not formatted correctly\next = 'png';\n// Fix costume md5 for later\ncostume.md5 = `${costume.md5}.${ext}`;\n}\ncostume.dataFormat = ext;\ncostume.assetId = md5;\nif (costumeSource.textLayerMD5) {\ncostume.textLayerMD5 = StringUtil.splitFirst(costumeSource.textLayerMD5, '.')[0];\n}\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the costume should be the baseLayerID followed by the file ext\nconst assetFileName = `${costumeSource.baseLayerID}.${ext}`;\nconst textLayerFileName = costumeSource.textLayerID ? `${costumeSource.textLayerID}.png` : null;\ncostumePromises.push(deserializeCostume(costume, runtime, zip, assetFileName, textLayerFileName)\n.then(() => loadCostume(costume.md5, costume, runtime, 2 /* optVersion */))\n);\n}\n}\n// Sounds from JSON\nconst soundPromises = assets.soundPromises;\nif (object.hasOwnProperty('sounds')) {\nfor (let s = 0; s < object.sounds.length; s++) {\nconst soundSource = object.sounds[s];\nconst sound = {\nname: soundSource.soundName,\nformat: soundSource.format,\nrate: soundSource.rate,\nsampleCount: soundSource.sampleCount,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\n// (for example, the audio engine currently relies on this\n// property to be named 'md5')\nmd5: soundSource.md5,\ndata: null\n};\nconst md5ext = soundSource.md5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nconst ext = idParts[1].toLowerCase();\nsound.dataFormat = ext;\nsound.assetId = md5;\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the sound should be the soundID (provided from the project.json)\n// followed by the file ext\nconst assetFileName = `${soundSource.soundID}.${ext}`;\nsoundPromises.push(deserializeSound(sound, runtime, zip, assetFileName).then(() => sound));\n}\n}\n\n// The stage will have child objects; recursively process them.\nconst childrenAssets = assets.children;\nif (object.children) {\nfor (let m = 0; m < object.children.length; m++) {\nchildrenAssets.push(parseScratchAssets(object.children[m], runtime, false, zip));\n}\n}\n\nreturn assets;\n};",
+        "new_comment_raw": "Parse a single \"Scratch object\" and create all its in-memory VM objects.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/scratchfoundation/scratch-vm/pull/1947#discussion_r257304691#new",
+        "old_code_raw": "const parseScratchAssets = function (object, runtime, topLevel, zip) {\nif (!object.hasOwnProperty('objName')) {\n// Skip parsing monitors. Or any other objects missing objName.\nreturn null;\n}\n\nconst assets = {costumePromises: [], soundPromises: [], children: []};\n\n// Costumes from JSON.\nconst costumePromises = assets.costumePromises;\nif (object.hasOwnProperty('costumes')) {\nfor (let i = 0; i < object.costumes.length; i++) {\nconst costumeSource = object.costumes[i];\nconst bitmapResolution = costumeSource.bitmapResolution || 1;\nconst costume = {\nname: costumeSource.costumeName,\nbitmapResolution: bitmapResolution,\nrotationCenterX: topLevel ? 240 * bitmapResolution : costumeSource.rotationCenterX,\nrotationCenterY: topLevel ? 180 * bitmapResolution : costumeSource.rotationCenterY,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\nmd5: costumeSource.baseLayerMD5,\nskinId: null\n};\nconst md5ext = costumeSource.baseLayerMD5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nlet ext;\nif (idParts.length === 2 && idParts[1]) {\next = idParts[1];\n} else {\n// Default to 'png' if baseLayerMD5 is not formatted correctly\next = 'png';\n// Fix costume md5 for later\ncostume.md5 = `${costume.md5}.${ext}`;\n}\ncostume.dataFormat = ext;\ncostume.assetId = md5;\nif (costumeSource.textLayerMD5) {\ncostume.textLayerMD5 = StringUtil.splitFirst(costumeSource.textLayerMD5, '.')[0];\n}\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the costume should be the baseLayerID followed by the file ext\nconst assetFileName = `${costumeSource.baseLayerID}.${ext}`;\nconst textLayerFileName = costumeSource.textLayerID ? `${costumeSource.textLayerID}.png` : null;\ncostumePromises.push(deserializeCostume(costume, runtime, zip, assetFileName, textLayerFileName)\n.then(() => loadCostume(costume.md5, costume, runtime, 2 /* optVersion */))\n);\n}\n}\n// Sounds from JSON\nconst soundPromises = assets.soundPromises;\nif (object.hasOwnProperty('sounds')) {\nfor (let s = 0; s < object.sounds.length; s++) {\nconst soundSource = object.sounds[s];\nconst sound = {\nname: soundSource.soundName,\nformat: soundSource.format,\nrate: soundSource.rate,\nsampleCount: soundSource.sampleCount,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\n// (for example, the audio engine currently relies on this\n// property to be named 'md5')\nmd5: soundSource.md5,\ndata: null\n};\nconst md5ext = soundSource.md5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nconst ext = idParts[1].toLowerCase();\nsound.dataFormat = ext;\nsound.assetId = md5;\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the sound should be the soundID (provided from the project.json)\n// followed by the file ext\nconst assetFileName = `${soundSource.soundID}.${ext}`;\nsoundPromises.push(deserializeSound(sound, runtime, zip, assetFileName).then(() => sound));\n}\n}\n\n// The stage will have child objects; recursively process them.\nconst childrenAssets = assets.children;\nif (object.children) {\nfor (let m = 0; m < object.children.length; m++) {\nchildrenAssets.push(parseScratchAssets(object.children[m], runtime, false, zip));\n}\n}\n\nreturn assets;\n};",
+        "old_comment_raw": "Parse a single \"Scratch object\" and create all its in-memory VM objects.",
+        "new_code_raw": "const parseScratchAssets = function (object, runtime, topLevel, zip) {\nif (!object.hasOwnProperty('objName')) {\n// Skip parsing monitors. Or any other objects missing objName.\nreturn null;\n}\n\nconst assets = {costumePromises: [], soundPromises: [], children: []};\n\n// Costumes from JSON.\nconst costumePromises = assets.costumePromises;\nif (object.hasOwnProperty('costumes')) {\nfor (let i = 0; i < object.costumes.length; i++) {\nconst costumeSource = object.costumes[i];\nconst bitmapResolution = costumeSource.bitmapResolution || 1;\nconst costume = {\nname: costumeSource.costumeName,\nbitmapResolution: bitmapResolution,\nrotationCenterX: topLevel ? 240 * bitmapResolution : costumeSource.rotationCenterX,\nrotationCenterY: topLevel ? 180 * bitmapResolution : costumeSource.rotationCenterY,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\nmd5: costumeSource.baseLayerMD5,\nskinId: null\n};\nconst md5ext = costumeSource.baseLayerMD5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nlet ext;\nif (idParts.length === 2 && idParts[1]) {\next = idParts[1];\n} else {\n// Default to 'png' if baseLayerMD5 is not formatted correctly\next = 'png';\n// Fix costume md5 for later\ncostume.md5 = `${costume.md5}.${ext}`;\n}\ncostume.dataFormat = ext;\ncostume.assetId = md5;\nif (costumeSource.textLayerMD5) {\ncostume.textLayerMD5 = StringUtil.splitFirst(costumeSource.textLayerMD5, '.')[0];\n}\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the costume should be the baseLayerID followed by the file ext\nconst assetFileName = `${costumeSource.baseLayerID}.${ext}`;\nconst textLayerFileName = costumeSource.textLayerID ? `${costumeSource.textLayerID}.png` : null;\ncostumePromises.push(deserializeCostume(costume, runtime, zip, assetFileName, textLayerFileName)\n.then(() => loadCostume(costume.md5, costume, runtime, 2 /* optVersion */))\n);\n}\n}\n// Sounds from JSON\nconst soundPromises = assets.soundPromises;\nif (object.hasOwnProperty('sounds')) {\nfor (let s = 0; s < object.sounds.length; s++) {\nconst soundSource = object.sounds[s];\nconst sound = {\nname: soundSource.soundName,\nformat: soundSource.format,\nrate: soundSource.rate,\nsampleCount: soundSource.sampleCount,\n// TODO we eventually want this next property to be called\n// md5ext to reflect what it actually contains, however this\n// will be a very extensive change across many repositories\n// and should be done carefully and altogether\n// (for example, the audio engine currently relies on this\n// property to be named 'md5')\nmd5: soundSource.md5,\ndata: null\n};\nconst md5ext = soundSource.md5;\nconst idParts = StringUtil.splitFirst(md5ext, '.');\nconst md5 = idParts[0];\nconst ext = idParts[1].toLowerCase();\nsound.dataFormat = ext;\nsound.assetId = md5;\n// If there is no internet connection, or if the asset is not in storage\n// for some reason, and we are doing a local .sb2 import, (e.g. zip is provided)\n// the file name of the sound should be the soundID (provided from the project.json)\n// followed by the file ext\nconst assetFileName = `${soundSource.soundID}.${ext}`;\nsoundPromises.push(deserializeSound(sound, runtime, zip, assetFileName).then(() => sound));\n}\n}\n\n// The stage will have child objects; recursively process them.\nconst childrenAssets = assets.children;\nif (object.children) {\nfor (let m = 0; m < object.children.length; m++) {\nchildrenAssets.push(parseScratchAssets(object.children[m], runtime, false, zip));\n}\n}\n\nreturn assets;\n};",
+        "new_comment_raw": "Parse a single \"Scratch object\" and create all its in-memory VM objects.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/ing-bank/lion/pull/281#discussion_r328484505#old",
+        "old_code_raw": "__clickDelegationHandler() {\nif (this.type === 'submit' && this._nativeButtonNode.form) {\nthis._nativeButtonNode.form.dispatchEvent(new Event('submit'));\nthis._nativeButtonNode.form.submit();\n}\n} ",
+        "old_comment_raw": "Prevent normal click and redispatch click on the native button unless already redispatched.",
+        "new_code_raw": "__clickDelegationHandler() {\nif (this.type === 'submit' && this._nativeButtonNode.form) {\nthis._nativeButtonNode.form.dispatchEvent(new Event('submit'));\nthis._nativeButtonNode.form.submit();\n}\n} ",
+        "new_comment_raw": "Prevent normal click and redispatch click on the native button unless already redispatched.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/ing-bank/lion/pull/281#discussion_r328484505#new",
+        "old_code_raw": "__clickDelegationHandler() {\nif (this.type === 'submit' && this._nativeButtonNode.form) {\nthis._nativeButtonNode.form.dispatchEvent(new Event('submit'));\nthis._nativeButtonNode.form.submit();\n}\n} ",
+        "old_comment_raw": "Dispatch submit event and invoke submit on the native form when clicked",
+        "new_code_raw": "__clickDelegationHandler() {\nif (this.type === 'submit' && this._nativeButtonNode.form) {\nthis._nativeButtonNode.form.dispatchEvent(new Event('submit'));\nthis._nativeButtonNode.form.submit();\n}\n} ",
+        "new_comment_raw": "Dispatch submit event and invoke submit on the native form when clicked",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/symbol/symbol-sdk-typescript-javascript/commit/654b1638ec36#old",
+        "old_code_raw": "public static create(deadline: Deadline,\nactionType: AliasActionType,\nnamespaceId: NamespaceId,\naddress: Address,\nnetworkType: NetworkType,\nmaxFee: UInt64 = new UInt64([0, 0])): AddressAliasTransaction {\nreturn new AddressAliasTransaction(networkType,\nTransactionVersion.ADDRESS_ALIAS,\ndeadline,\nmaxFee,\nactionType,\nnamespaceId,\naddress,\n);\n} ",
+        "old_comment_raw": "Create a mosaic supply change transaction object",
+        "new_code_raw": "public static create(deadline: Deadline,\nactionType: AliasActionType,\nnamespaceId: NamespaceId,\naddress: Address,\nnetworkType: NetworkType,\nmaxFee: UInt64 = new UInt64([0, 0])): AddressAliasTransaction {\nreturn new AddressAliasTransaction(networkType,\nTransactionVersion.ADDRESS_ALIAS,\ndeadline,\nmaxFee,\nactionType,\nnamespaceId,\naddress,\n);\n} ",
+        "new_comment_raw": "Create a mosaic supply change transaction object",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/symbol/symbol-sdk-typescript-javascript/commit/654b1638ec36#new",
+        "old_code_raw": "public static create(deadline: Deadline,\nactionType: AliasActionType,\nnamespaceId: NamespaceId,\naddress: Address,\nnetworkType: NetworkType,\nmaxFee: UInt64 = new UInt64([0, 0])): AddressAliasTransaction {\nreturn new AddressAliasTransaction(networkType,\nTransactionVersion.ADDRESS_ALIAS,\ndeadline,\nmaxFee,\nactionType,\nnamespaceId,\naddress,\n);\n} ",
+        "old_comment_raw": "Create a address alias transaction object",
+        "new_code_raw": "public static create(deadline: Deadline,\nactionType: AliasActionType,\nnamespaceId: NamespaceId,\naddress: Address,\nnetworkType: NetworkType,\nmaxFee: UInt64 = new UInt64([0, 0])): AddressAliasTransaction {\nreturn new AddressAliasTransaction(networkType,\nTransactionVersion.ADDRESS_ALIAS,\ndeadline,\nmaxFee,\nactionType,\nnamespaceId,\naddress,\n);\n} ",
+        "new_comment_raw": "Create a address alias transaction object",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/googleapis/nodejs-firestore/commit/9cc94f44e1b5#old",
+        "old_code_raw": "get id() {\nreturn this._referencePath.id;\n}\n",
+        "old_comment_raw": "The last path document of the referenced document.",
+        "new_code_raw": "get id() {\nreturn this._referencePath.id;\n}\n",
+        "new_comment_raw": "The last path document of the referenced document.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/googleapis/nodejs-firestore/commit/9cc94f44e1b5#new",
+        "old_code_raw": "get id() {\nreturn this._referencePath.id;\n}\n",
+        "old_comment_raw": "The last path element of the referenced document.",
+        "new_code_raw": "get id() {\nreturn this._referencePath.id;\n}\n",
+        "new_comment_raw": "The last path element of the referenced document.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/tronprotocol/tronweb/commit/f4f8bf8b461d#old",
+        "old_code_raw": "getAccountResources(address = false, callback = false) {\nif(!callback)\nreturn this.injectPromise(this.getAccountResources, address);\n\nif(!this.tronWeb.isAddress(address))\nreturn callback('Invalid address provided');\n\nthis.tronWeb.fullNode.request('wallet/getaccountresource', {\naddress: this.tronWeb.address.toHex(address),\n}, 'post').then(resources => {\ncallback(null, resources);\n}).catch(err => callback(err));\n}",
+        "old_comment_raw": "Lists all network modification proposals.",
+        "new_code_raw": "getAccountResources(address = false, callback = false) {\nif(!callback)\nreturn this.injectPromise(this.getAccountResources, address);\n\nif(!this.tronWeb.isAddress(address))\nreturn callback('Invalid address provided');\n\nthis.tronWeb.fullNode.request('wallet/getaccountresource', {\naddress: this.tronWeb.address.toHex(address),\n}, 'post').then(resources => {\ncallback(null, resources);\n}).catch(err => callback(err));\n}",
+        "new_comment_raw": "Lists all network modification proposals.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/tronprotocol/tronweb/commit/f4f8bf8b461d#new",
+        "old_code_raw": "getAccountResources(address = false, callback = false) {\nif(!callback)\nreturn this.injectPromise(this.getAccountResources, address);\n\nif(!this.tronWeb.isAddress(address))\nreturn callback('Invalid address provided');\n\nthis.tronWeb.fullNode.request('wallet/getaccountresource', {\naddress: this.tronWeb.address.toHex(address),\n}, 'post').then(resources => {\ncallback(null, resources);\n}).catch(err => callback(err));\n}",
+        "old_comment_raw": "Get the account resources",
+        "new_code_raw": "getAccountResources(address = false, callback = false) {\nif(!callback)\nreturn this.injectPromise(this.getAccountResources, address);\n\nif(!this.tronWeb.isAddress(address))\nreturn callback('Invalid address provided');\n\nthis.tronWeb.fullNode.request('wallet/getaccountresource', {\naddress: this.tronWeb.address.toHex(address),\n}, 'post').then(resources => {\ncallback(null, resources);\n}).catch(err => callback(err));\n}",
+        "new_comment_raw": "Get the account resources",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/harmonyland/harmony/commit/fe6930c06523#old",
+        "old_code_raw": "every(callback: (value: V, key: K) => boolean): boolean {\nfor (const key of this.keys()) {\nconst value = this.get(key) as V\nif (!callback(value, key)) return false\n}\nreturn true\n} ",
+        "old_comment_raw": "Check if every value/key in Collection satisfy callback ",
+        "new_code_raw": "every(callback: (value: V, key: K) => boolean): boolean {\nfor (const key of this.keys()) {\nconst value = this.get(key) as V\nif (!callback(value, key)) return false\n}\nreturn true\n} ",
+        "new_comment_raw": "Check if every value/key in Collection satisfy callback ",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/harmonyland/harmony/commit/fe6930c06523#new",
+        "old_code_raw": "every(callback: (value: V, key: K) => boolean): boolean {\nfor (const key of this.keys()) {\nconst value = this.get(key) as V\nif (!callback(value, key)) return false\n}\nreturn true\n} ",
+        "old_comment_raw": "Check if every value/key in Collection satisfies callback ",
+        "new_code_raw": "every(callback: (value: V, key: K) => boolean): boolean {\nfor (const key of this.keys()) {\nconst value = this.get(key) as V\nif (!callback(value, key)) return false\n}\nreturn true\n} ",
+        "new_comment_raw": "Check if every value/key in Collection satisfies callback ",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/tj/commander.js/commit/c3b419ac892f#old",
+        "old_code_raw": "argOptional() {\nthis.required = false;\nreturn this;\n} ",
+        "old_comment_raw": "Make option-argument optional.",
+        "new_code_raw": "argOptional() {\nthis.required = false;\nreturn this;\n} ",
+        "new_comment_raw": "Make option-argument optional.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/tj/commander.js/commit/c3b419ac892f#new",
+        "old_code_raw": "argOptional() {\nthis.required = false;\nreturn this;\n} ",
+        "old_comment_raw": "Make argument optional.",
+        "new_code_raw": "argOptional() {\nthis.required = false;\nreturn this;\n} ",
+        "new_comment_raw": "Make argument optional.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/wavesurfer-js/wavesurfer.js/commit/45144cf7d4a0#old",
+        "old_code_raw": "setSinkId(deviceId) {\nreturn this.backend.setSinkId(deviceId);\n} ",
+        "old_comment_raw": "Set the playback volume.",
+        "new_code_raw": "setSinkId(deviceId) {\nreturn this.backend.setSinkId(deviceId);\n} ",
+        "new_comment_raw": "Set the playback volume.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/wavesurfer-js/wavesurfer.js/commit/45144cf7d4a0#new",
+        "old_code_raw": "setSinkId(deviceId) {\nreturn this.backend.setSinkId(deviceId);\n} ",
+        "old_comment_raw": "Sets the ID of the audio device to use for output and returns a Promise.",
+        "new_code_raw": "setSinkId(deviceId) {\nreturn this.backend.setSinkId(deviceId);\n} ",
+        "new_comment_raw": "Sets the ID of the audio device to use for output and returns a Promise.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/vuex-orm/vuex-orm/commit/c3a1345277ca#old",
+        "old_code_raw": "static create (entities: Entity[]): Vuex.Module<any, any> {\nreturn {\nnamespaced: true,\nmodules: this.createTree(entities)\n}\n} ",
+        "old_comment_raw": "Creates module from given models.",
+        "new_code_raw": "static create (entities: Entity[]): Vuex.Module<any, any> {\nreturn {\nnamespaced: true,\nmodules: this.createTree(entities)\n}\n} ",
+        "new_comment_raw": "Creates module from given models.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/vuex-orm/vuex-orm/commit/c3a1345277ca#new",
+        "old_code_raw": "static create (entities: Entity[]): Vuex.Module<any, any> {\nreturn {\nnamespaced: true,\nmodules: this.createTree(entities)\n}\n} ",
+        "old_comment_raw": "Creates module from the given entities.",
+        "new_code_raw": "static create (entities: Entity[]): Vuex.Module<any, any> {\nreturn {\nnamespaced: true,\nmodules: this.createTree(entities)\n}\n} ",
+        "new_comment_raw": "Creates module from the given entities.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/rokucommunity/brighterscript/commit/11667047f5b8#old",
+        "old_code_raw": "public findFilesForClass(className: string) {\nconst files = [] as BscFile[];\nconst lowerClassName = className.toLowerCase();\n//find every file with this class defined\nfor (const file of Object.values(this.files)) {\nif (isBrsFile(file)) {\n//TODO handle namespace-relative classes\n//if the file has a function with this name\nif (file.parser.references.classStatementLookup.get(lowerClassName) !== undefined) {\nfiles.push(file);\n}\n}\n}\nreturn files;\n} ",
+        "old_comment_raw": "Find a list of files in the program that have a function with the given name (case INsensitive)",
+        "new_code_raw": "public findFilesForClass(className: string) {\nconst files = [] as BscFile[];\nconst lowerClassName = className.toLowerCase();\n//find every file with this class defined\nfor (const file of Object.values(this.files)) {\nif (isBrsFile(file)) {\n//TODO handle namespace-relative classes\n//if the file has a function with this name\nif (file.parser.references.classStatementLookup.get(lowerClassName) !== undefined) {\nfiles.push(file);\n}\n}\n}\nreturn files;\n} ",
+        "new_comment_raw": "Find a list of files in the program that have a function with the given name (case INsensitive)",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/rokucommunity/brighterscript/commit/11667047f5b8#new",
+        "old_code_raw": "public findFilesForClass(className: string) {\nconst files = [] as BscFile[];\nconst lowerClassName = className.toLowerCase();\n//find every file with this class defined\nfor (const file of Object.values(this.files)) {\nif (isBrsFile(file)) {\n//TODO handle namespace-relative classes\n//if the file has a function with this name\nif (file.parser.references.classStatementLookup.get(lowerClassName) !== undefined) {\nfiles.push(file);\n}\n}\n}\nreturn files;\n} ",
+        "old_comment_raw": "Find a list of files in the program that have a class with the given name (case INsensitive)",
+        "new_code_raw": "public findFilesForClass(className: string) {\nconst files = [] as BscFile[];\nconst lowerClassName = className.toLowerCase();\n//find every file with this class defined\nfor (const file of Object.values(this.files)) {\nif (isBrsFile(file)) {\n//TODO handle namespace-relative classes\n//if the file has a function with this name\nif (file.parser.references.classStatementLookup.get(lowerClassName) !== undefined) {\nfiles.push(file);\n}\n}\n}\nreturn files;\n} ",
+        "new_comment_raw": "Find a list of files in the program that have a class with the given name (case INsensitive)",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/aws-quickstart/cdk-eks-blueprints/commit/912468c2e017#old",
+        "old_code_raw": "setupSecrets(clusterInfo: ClusterInfo, team: ApplicationTeam, csiDriver: Construct): void {\n// Create the service account for the team\nthis.addPolicyToServiceAccount(clusterInfo, team);\n\n// Create and apply SecretProviderClass manifest\nthis.createSecretProviderClass(clusterInfo, team, csiDriver);\n} ",
+        "old_comment_raw": "Setup the secrets for CSI driver",
+        "new_code_raw": "setupSecrets(clusterInfo: ClusterInfo, team: ApplicationTeam, csiDriver: Construct): void {\n// Create the service account for the team\nthis.addPolicyToServiceAccount(clusterInfo, team);\n\n// Create and apply SecretProviderClass manifest\nthis.createSecretProviderClass(clusterInfo, team, csiDriver);\n} ",
+        "new_comment_raw": "Setup the secrets for CSI driver",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/aws-quickstart/cdk-eks-blueprints/commit/912468c2e017#new",
+        "old_code_raw": "setupSecrets(clusterInfo: ClusterInfo, team: ApplicationTeam, csiDriver: Construct): void {\n// Create the service account for the team\nthis.addPolicyToServiceAccount(clusterInfo, team);\n\n// Create and apply SecretProviderClass manifest\nthis.createSecretProviderClass(clusterInfo, team, csiDriver);\n} ",
+        "old_comment_raw": "Setup Team secrets",
+        "new_code_raw": "setupSecrets(clusterInfo: ClusterInfo, team: ApplicationTeam, csiDriver: Construct): void {\n// Create the service account for the team\nthis.addPolicyToServiceAccount(clusterInfo, team);\n\n// Create and apply SecretProviderClass manifest\nthis.createSecretProviderClass(clusterInfo, team, csiDriver);\n} ",
+        "new_comment_raw": "Setup Team secrets",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/microsoft/vscode-js-profile-visualizer/commit/9010c204c15e#old",
+        "old_code_raw": "protected set(file: string, position: Position, data: ITreeNode) {\nlet list = this.data.get(lowerCaseInsensitivePath(file));\nif (!list) {\nlist = [];\nthis.data.set(lowerCaseInsensitivePath(file), list);\n}\n\nlet index = 0;\nwhile (index < list.length && list[index].position.line < position.line) {\nindex++;\n}\n\nif (list[index]?.position.line === position.line) {\nconst existing = list[index];\nif (position.character < existing.position.character) {\nexisting.position = new Position(position.line, position.character);\n}\nexisting.data.totalSize += data.totalSize;\nexisting.data.selfSize += data.selfSize;\n} else {\nlist.splice(index, 0, {\nposition: new Position(position.line, position.character),\ndata: {\ntotalSize: data.totalSize,\nselfSize: data.selfSize,\n},\n});\n}\n} ",
+        "old_comment_raw": "Adds a new code lens at the given location in the file.",
+        "new_code_raw": "protected set(file: string, position: Position, data: ITreeNode) {\nlet list = this.data.get(lowerCaseInsensitivePath(file));\nif (!list) {\nlist = [];\nthis.data.set(lowerCaseInsensitivePath(file), list);\n}\n\nlet index = 0;\nwhile (index < list.length && list[index].position.line < position.line) {\nindex++;\n}\n\nif (list[index]?.position.line === position.line) {\nconst existing = list[index];\nif (position.character < existing.position.character) {\nexisting.position = new Position(position.line, position.character);\n}\nexisting.data.totalSize += data.totalSize;\nexisting.data.selfSize += data.selfSize;\n} else {\nlist.splice(index, 0, {\nposition: new Position(position.line, position.character),\ndata: {\ntotalSize: data.totalSize,\nselfSize: data.selfSize,\n},\n});\n}\n} ",
+        "new_comment_raw": "Adds a new code lens at the given location in the file.",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/microsoft/vscode-js-profile-visualizer/commit/9010c204c15e#new",
+        "old_code_raw": "protected set(file: string, position: Position, data: ITreeNode) {\nlet list = this.data.get(lowerCaseInsensitivePath(file));\nif (!list) {\nlist = [];\nthis.data.set(lowerCaseInsensitivePath(file), list);\n}\n\nlet index = 0;\nwhile (index < list.length && list[index].position.line < position.line) {\nindex++;\n}\n\nif (list[index]?.position.line === position.line) {\nconst existing = list[index];\nif (position.character < existing.position.character) {\nexisting.position = new Position(position.line, position.character);\n}\nexisting.data.totalSize += data.totalSize;\nexisting.data.selfSize += data.selfSize;\n} else {\nlist.splice(index, 0, {\nposition: new Position(position.line, position.character),\ndata: {\ntotalSize: data.totalSize,\nselfSize: data.selfSize,\n},\n});\n}\n} ",
+        "old_comment_raw": "Adds a new code lens at the given treeNode in the file.",
+        "new_code_raw": "protected set(file: string, position: Position, data: ITreeNode) {\nlet list = this.data.get(lowerCaseInsensitivePath(file));\nif (!list) {\nlist = [];\nthis.data.set(lowerCaseInsensitivePath(file), list);\n}\n\nlet index = 0;\nwhile (index < list.length && list[index].position.line < position.line) {\nindex++;\n}\n\nif (list[index]?.position.line === position.line) {\nconst existing = list[index];\nif (position.character < existing.position.character) {\nexisting.position = new Position(position.line, position.character);\n}\nexisting.data.totalSize += data.totalSize;\nexisting.data.selfSize += data.selfSize;\n} else {\nlist.splice(index, 0, {\nposition: new Position(position.line, position.character),\ndata: {\ntotalSize: data.totalSize,\nselfSize: data.selfSize,\n},\n});\n}\n} ",
+        "new_comment_raw": "Adds a new code lens at the given treeNode in the file.",
+        "label": 0
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/lit/lit-element/commit/9a9aced52111#old",
+        "old_code_raw": "private _validate() {\n// Mixin instance properties once, if they exist.\nif (this._instanceProperties) {\nthis._applyInstanceProperties();\n}\nif (this.shouldUpdate(this._changedProperties)) {\nthis.update(this._changedProperties);\n} else {\nthis._markUpdated();\n}\n} ",
+        "old_comment_raw": "Validates the element by updating it via `update`, `finishUpdate`,",
+        "new_code_raw": "private _validate() {\n// Mixin instance properties once, if they exist.\nif (this._instanceProperties) {\nthis._applyInstanceProperties();\n}\nif (this.shouldUpdate(this._changedProperties)) {\nthis.update(this._changedProperties);\n} else {\nthis._markUpdated();\n}\n} ",
+        "new_comment_raw": "Validates the element by updating it via `update`, `finishUpdate`,",
+        "label": 1
+    },
+    {
+        "type": "summary",
+        "id": "https://github.com/lit/lit-element/commit/9a9aced52111#new",
+        "old_code_raw": "private _validate() {\n// Mixin instance properties once, if they exist.\nif (this._instanceProperties) {\nthis._applyInstanceProperties();\n}\nif (this.shouldUpdate(this._changedProperties)) {\nthis.update(this._changedProperties);\n} else {\nthis._markUpdated();\n}\n} ",
+        "old_comment_raw": "Validates the element by updating it via `update`.",
+        "new_code_raw": "private _validate() {\n// Mixin instance properties once, if they exist.\nif (this._instanceProperties) {\nthis._applyInstanceProperties();\n}\nif (this.shouldUpdate(this._changedProperties)) {\nthis.update(this._changedProperties);\n} else {\nthis._markUpdated();\n}\n} ",
+        "new_comment_raw": "Validates the element by updating it via `update`.",
+        "label": 0
+    }
+]
