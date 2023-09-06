@@ -6,7 +6,7 @@ It is organized by research question. Each research question consists of self-co
 That means the notebooks will download their data and dependencies on execution.
 Change the parameters at the top of the file to adjust its experiment settings.
 
-## RQ1: LLMs for Java Code Comment Consistency using data from Panthaplackel et al. (2020)
+## RQ1: LLMs for Java Code Comment Consistency using data from [Panthaplackel et al. (2020)](https://github.com/panthap2/deep-jit-inconsistency-detection)
 - Contains training notebooks for CodeBERT, Codegen, and replicated previous works (DeepJIT, BERT, Longformer).
 
 ## RQ2: Multi-lingual Code Comment Consistency with newly mined data
