@@ -12,10 +12,12 @@ Change the parameters at the top of the file to adjust its experiment settings.
 ## RQ2: Multi-lingual Code Comment Consistency with newly mined data
 - Contains data collection scripts for Java, Python, JavaScript, and Go.
 - Models are trained with the same notebooks as in **RQ1**. Make sure to update the data path.
+- The data is hosted on Kaggle: https://www.kaggle.com/datasets/pelmers/multilingual-paired-code-and-comment-changes
 
 ## RQ3: Handpicked Benchmark Set of Code Comment Consistency
 - Includes scripts that mine Github Pull Request Comments
 - The `benchmarks` folder contains the final set of manually selected examples of inconsistent comments (25 per language).
+- The raw pull request comment data is hosted on Kaggle: https://www.kaggle.com/datasets/pelmers/github-public-pull-request-comments
 
 ## RQ4: Social study, sending pull requests that fix inconsistent comments
 - Consists of a notebook that will execute a comment consistency model on any open source repository.
